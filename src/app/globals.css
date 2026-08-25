@@ -1,0 +1,157 @@
+@import "tailwindcss";
+
+:root {
+  --background: #08080c;
+  --surface: #121218;
+  --surface-2: #191922;
+  --border: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.14);
+  --foreground: #f4f4f7;
+  --muted: #a1a1ae;
+  --muted-2: #6f6f7d;
+  --accent: #a855f7;
+  --accent-strong: #9333ea;
+  --accent-soft: rgba(168, 85, 247, 0.12);
+  --glow-1: rgba(168, 85, 247, 0.16);
+  --glow-2: rgba(147, 51, 234, 0.1);
+  color-scheme: dark;
+
+  --ease-out-strong: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out-strong: cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+:root[data-theme="light"] {
+  --background: #f7f6fb;
+  --surface: #ffffff;
+  --surface-2: #f0eef7;
+  --border: rgba(23, 20, 33, 0.08);
+  --border-strong: rgba(23, 20, 33, 0.14);
+  --foreground: #18151f;
+  --muted: #55516a;
+  --muted-2: #83809a;
+  --accent: #9333ea;
+  --accent-strong: #7e22ce;
+  --accent-soft: rgba(147, 51, 234, 0.1);
+  --glow-1: rgba(168, 85, 247, 0.12);
+  --glow-2: rgba(147, 51, 234, 0.08);
+  color-scheme: light;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-muted-2: var(--muted-2);
+  --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
+  --color-accent-soft: var(--accent-soft);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+* {
+  border-color: var(--border);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+body {
+  background-image:
+    radial-gradient(60rem 30rem at 85% -10%, var(--glow-1), transparent 60%),
+    radial-gradient(40rem 24rem at -10% 20%, var(--glow-2), transparent 60%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+/* Smooth, flicker-free theme switching for elements without their own transition */
+body,
+main,
+section,
+header,
+footer,
+div,
+article,
+p,
+span,
+a,
+button,
+h1,
+h2,
+h3,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+svg,
+path {
+  transition:
+    background-color 260ms ease,
+    border-color 260ms ease,
+    color 260ms ease,
+    box-shadow 260ms ease;
+}
+
+::selection {
+  background: var(--accent);
+  color: white;
+}
+
+/* Press feedback for interactive elements */
+.press {
+  transition: transform 160ms var(--ease-out-strong);
+}
+.press:active {
+  transform: scale(0.97);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .hoverable {
+    transition:
+      transform 200ms var(--ease-out-strong),
+      background-color 200ms ease,
+      border-color 200ms ease,
+      color 200ms ease,
+      box-shadow 200ms ease;
+  }
+}
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity 600ms var(--ease-out-strong),
+    transform 600ms var(--ease-out-strong);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    transition: opacity 300ms ease;
+    transform: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+.text-balance {
+  text-wrap: balance;
+}

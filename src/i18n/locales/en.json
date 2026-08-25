@@ -1,0 +1,154 @@
+{
+  "nav": {
+    "research": "Research",
+    "projects": "Projects",
+    "experience": "Experience",
+    "education": "Education",
+    "contact": "Contact",
+    "downloadCv": "Download CV",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "switchToLight": "Switch to light mode",
+    "switchToDark": "Switch to dark mode"
+  },
+  "hero": {
+    "specialization": "Specialized in Frontend, Cloud & IT Support",
+    "role": "Computer Systems Engineering Student",
+    "tagline": "IT Support & Cloud Fundamentals · Frontend Development · English C1",
+    "description": "I build clean, functional interfaces and support reliable systems — grounded in structured process, documentation, and a growing cloud-native toolkit.",
+    "viewProjects": "View Projects",
+    "getInTouch": "Get in Touch",
+    "stats": [
+      { "label": "Semester", "value": "7th" },
+      { "label": "English", "value": "C1" },
+      { "label": "Focus", "value": "Frontend & Cloud" },
+      { "label": "Location", "value": "Aguascalientes" }
+    ]
+  },
+  "about": {
+    "eyebrow": "About",
+    "heading": "How I work",
+    "summary": "I combine hands-on IT support experience with growing frontend and cloud expertise — from internal support platforms and incident management to building clean, documented interfaces. I'm looking for roles where structured process meets real product work, across frontend, cloud, or IT support tracks.",
+    "values": [
+      { "title": "Clarity over cleverness", "body": "Clean, documented, predictable work beats clever shortcuts." },
+      { "title": "Structured process", "body": "ITIL-style discipline for requests, incidents, and follow-through." },
+      { "title": "Steady learning", "body": "Continuously deepening cloud fundamentals and frontend craft." }
+    ]
+  },
+  "skills": {
+    "eyebrow": "Skills",
+    "title": "Technologies I work with",
+    "description": "Filter by category to explore what I use day to day, from frontend fundamentals to cloud and support tooling.",
+    "all": "All",
+    "categories": {
+      "languagesFrontend": "Languages & Frontend",
+      "cloudTools": "Cloud & Tools",
+      "backendApis": "Backend & APIs",
+      "processSupport": "Process & Support"
+    },
+    "items": {
+      "html": "HTML",
+      "css": "CSS",
+      "javascript": "JavaScript",
+      "bootstrap": "Bootstrap",
+      "localStorage": "LocalStorage",
+      "azureFundamentals": "Azure Fundamentals",
+      "docker": "Docker",
+      "kubernetesFundamentals": "Kubernetes Fundamentals",
+      "gitGithub": "Git / GitHub",
+      "itil": "ITIL",
+      "restApis": "REST APIs",
+      "httpEndpoints": "HTTP Endpoints",
+      "fastapiFundamentals": "FastAPI Fundamentals",
+      "technicalDocumentation": "Technical Documentation",
+      "requestManagement": "Request Management",
+      "incidentManagement": "Incident Management",
+      "caseTracking": "Case Tracking",
+      "sensitiveDataHandling": "Sensitive Data Handling",
+      "documentation": "Documentation"
+    }
+  },
+  "projects": {
+    "eyebrow": "Projects",
+    "title": "Featured work",
+    "description": "Academic and collaborative projects where I worked across the stack — from resilient microservices to full-stack storefronts.",
+    "code": "Code",
+    "live": "Live",
+    "openAria": "Open {name}",
+    "items": {
+      "resilenciaKubernetes": {
+        "description": "Academic microservices system built to evaluate application resilience on Kubernetes.",
+        "bullets": [
+          "Developed and documented a microservices system for resilience testing on Kubernetes using Python, FastAPI, Docker, and Docker Compose.",
+          "Collaborated on refactoring, code organization, resilience testing, and observability documentation with Prometheus, Grafana, Jaeger, and OpenTelemetry."
+        ]
+      },
+      "bookiaStore": {
+        "description": "Online bookstore focused on browsing, search, and purchasing books.",
+        "bullets": [
+          "Built an online bookstore with search, product lookup, and purchase flows using Angular, Node.js, and MySQL.",
+          "Worked on frontend structure, navigation, visual components, and usability improvements to optimize the user experience."
+        ]
+      },
+      "ecommerceApi": {
+        "description": "Academic e-commerce platform with a product catalog and a basic checkout flow.",
+        "bullets": [
+          "Built an academic online store with a product catalog and basic purchase flow using HTML, CSS, JavaScript, Node.js, Express, and MySQL.",
+          "Collaborated on frontend/backend organization, routing, controllers, database connections, and code refactoring."
+        ]
+      }
+    }
+  },
+  "experience": {
+    "eyebrow": "Experience",
+    "title": "Where I've worked",
+    "description": "Customer-facing and administrative roles that shaped how I approach process, documentation, and detail.",
+    "items": {
+      "teleperformance": {
+        "role": "Customer Service Representative · Billing, Sales & Repair",
+        "bullets": [
+          "Managed customer requests across billing, sales, and technical support through internal service platforms.",
+          "Handled accounts, invoices, call history, and sensitive data within corporate interfaces.",
+          "Tracked cases related to payments, service, and repairs, applying ITIL fundamentals for request handling, incident management, and case follow-up and closure."
+        ]
+      },
+      "alphabiotista": {
+        "role": "Administrative Support · Documentation & Process Improvement",
+        "bullets": [
+          "Organized and improved internal documentation, ensuring clarity, accuracy, and standardization.",
+          "Reviewed data in the product acquisition system, including pricing, records, and information consistency."
+        ]
+      }
+    }
+  },
+  "education": {
+    "eyebrow": "Education",
+    "title": "Academic background & certifications",
+    "degreeLabel": "Degree",
+    "coursesLabel": "Courses & Certifications",
+    "languagesLabel": "Languages",
+    "degree": "B.S. in Computer Systems Engineering",
+    "period": "7th semester, in progress (2022 – Present)",
+    "languagesList": [
+      { "name": "Spanish", "level": "Native" },
+      { "name": "English", "level": "Advanced (C1)" }
+    ]
+  },
+  "contact": {
+    "eyebrow": "Contact",
+    "title": "Let's work together",
+    "description": "Open to opportunities across frontend, cloud, and IT support. Click email or phone to copy them instantly.",
+    "emailLabel": "Email",
+    "phoneLabel": "Phone",
+    "githubLabel": "GitHub",
+    "copied": "Copied to clipboard",
+    "copyEmailAria": "Copy email to clipboard",
+    "copyPhoneAria": "Copy phone number to clipboard"
+  },
+  "footer": {
+    "rights": "All rights reserved.",
+    "github": "GitHub",
+    "email": "Email",
+    "cv": "CV"
+  }
+}
