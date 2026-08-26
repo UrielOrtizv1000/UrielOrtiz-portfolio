@@ -15,7 +15,7 @@
     "specialization": "Especializado en Frontend, Cloud y Soporte IT",
     "role": "Estudiante de Ingeniería en Sistemas Computacionales",
     "tagline": "Soporte IT y Fundamentos Cloud · Desarrollo Frontend · Inglés C1",
-    "description": "Construyo interfaces limpias y funcionales, y doy soporte a sistemas confiables — con base en procesos estructurados, documentación y un conjunto de herramientas cloud en constante crecimiento.",
+    "description": "Levanto servidores y autoalojo mis propios servicios — notas, películas y comunicación P2P — y trabajo con método: primero el plan, luego paso a paso, depurando al cierre de cada fase.",
     "viewProjects": "Ver proyectos",
     "getInTouch": "Contáctame",
     "stats": [
@@ -28,11 +28,11 @@
   "about": {
     "eyebrow": "Sobre mí",
     "heading": "Cómo trabajo",
-    "summary": "Combino experiencia práctica en soporte IT con conocimientos crecientes en frontend y cloud — desde plataformas internas de atención y gestión de incidentes, hasta la construcción de interfaces limpias y documentadas. Busco roles donde el proceso estructurado se encuentre con trabajo real de producto, ya sea en frontend, cloud o soporte IT.",
+    "summary": "Fuera del aula levanto servidores por gusto y mantengo mis propios servicios: notas, películas y comunicación P2P, todo autoalojado. Trabajo con método: primero hago un plan, lo sigo paso a paso y, al cerrar cada fase, depuro errores y ajusto antes de continuar. Amante de los perros.",
     "values": [
-      { "title": "Claridad sobre ingenio", "body": "Un trabajo limpio, documentado y predecible vale más que atajos ingeniosos." },
-      { "title": "Proceso estructurado", "body": "Disciplina estilo ITIL para solicitudes, incidentes y seguimiento." },
-      { "title": "Aprendizaje constante", "body": "Profundizando continuamente en fundamentos cloud y en frontend." }
+      { "title": "Autoalojamiento por defecto", "body": "Levanto y mantengo mis propios servicios en hardware que yo administro, como si fueran producción real." },
+      { "title": "Método antes que velocidad", "body": "Primero el plan, luego paso a paso, depurar al cierre de cada fase." },
+      { "title": "Documentado y organizado", "body": "Un trabajo limpio, documentado y predecible vale más que atajos ingeniosos." }
     ]
   },
   "skills": {
@@ -57,6 +57,8 @@
       "kubernetesFundamentals": "Fundamentos de Kubernetes",
       "gitGithub": "Git / GitHub",
       "itil": "ITIL",
+      "aiAgents": "Agentes de IA (LLMs)",
+      "obsidian": "Obsidian",
       "restApis": "APIs REST",
       "httpEndpoints": "Endpoints HTTP",
       "fastapiFundamentals": "Fundamentos de FastAPI",
@@ -72,29 +74,48 @@
     "eyebrow": "Proyectos",
     "title": "Proyectos destacados",
     "description": "Proyectos académicos y colaborativos en los que trabajé a lo largo de todo el stack — desde microservicios resilientes hasta tiendas en línea full-stack.",
+    "toggleFeatured": "Destacados",
+    "toggleOther": "Otros proyectos",
+    "otherTitle": "Otros proyectos",
+    "otherDescription": "Proyectos personales y herramientas que construyo y mantengo por mi cuenta, desde una app de mensajería privada hasta un generador de currículums.",
     "code": "Código",
     "live": "En vivo",
     "openAria": "Abrir {name}",
     "items": {
       "resilenciaKubernetes": {
-        "description": "Sistema de microservicios académico para evaluar la resiliencia de aplicaciones en Kubernetes.",
+        "description": "Sistema de microservicios que prueba cómo se comporta una aplicación en Kubernetes cuando un servicio falla y cómo se recupera, construido con Python, FastAPI, Docker y Docker Compose.",
         "bullets": [
-          "Desarrollo y documentación de un sistema de microservicios para evaluar resiliencia sobre Kubernetes, utilizando Python, FastAPI, Docker y Docker Compose.",
-          "Colaboración en refactorización, organización del código, pruebas de resiliencia y documentación de observabilidad con Prometheus, Grafana, Jaeger y OpenTelemetry."
+          "Me encargué de generar 50,000 usuarios simulados para probarlo en condiciones cercanas a las reales, además de refactorizar y organizar el código, ejecutar las pruebas de resiliencia y documentar la observabilidad con Prometheus, Grafana, Jaeger y OpenTelemetry."
         ]
       },
       "bookiaStore": {
-        "description": "Tienda de libros en línea enfocada en la búsqueda, consulta y compra de productos.",
+        "description": "Tienda en línea donde el usuario busca, consulta y compra libros, con Angular en el frontend, Node.js en el backend y MySQL para los datos.",
         "bullets": [
-          "Desarrollo de una tienda online de libros con enfoque en búsqueda, consulta y compra de productos, utilizando Angular, Node.js y MySQL.",
-          "Trabajo en estructura frontend, navegación, componentes visuales y mejoras de usabilidad para optimizar la experiencia del usuario."
+          "Construí la estructura del frontend y la navegación, desarrollé los componentes visuales y mejoré la usabilidad del proceso de compra."
         ]
       },
       "ecommerceApi": {
-        "description": "Plataforma de e-commerce académica con catálogo de productos y un flujo básico de compra.",
+        "description": "Tienda en línea con catálogo de productos y flujo básico de compra, con HTML, CSS y JavaScript en el frontend y Node.js, Express y MySQL en el backend.",
         "bullets": [
-          "Desarrollo de una tienda en línea académica con catálogo de productos y flujo básico de compra, usando HTML, CSS, JavaScript, Node.js, Express y MySQL.",
-          "Colaboración en organización frontend/backend, rutas, controladores, conexión a base de datos y refactorización de código."
+          "Organicé el frontend y el backend, desarrollé rutas y controladores, conecté la base de datos y refactoricé código en equipo."
+        ]
+      },
+      "nova": {
+        "description": "Aplicación de chat privado para dos personas, en desarrollo: retención de mensajes de 15 días, llamadas y compartición de pantalla a 1080p60fps, hecha con Electron y un servidor propio expuesto de forma segura con Cloudflare Tunnel.",
+        "bullets": [
+          "Me encargué del proyecto completo: interfaz, comunicación en tiempo real y servidor, desarrollado con un agente de IA que yo mismo configuré y supervisé en cada etapa."
+        ]
+      },
+      "intercambioMagico": {
+        "description": "Sitio web de amigo secreto con sorteos con restricciones: crear eventos, agregar participantes, definir quién no puede regalarle a quién y sortear respetando esas reglas. 100% front-end con HTML5, CSS3, JavaScript, Bootstrap y localStorage.",
+        "bullets": [
+          "Me encargué del algoritmo de sorteo con exclusiones, de la interfaz con drag & drop y de la persistencia de datos en el navegador."
+        ]
+      },
+      "devprofile": {
+        "description": "Aplicación web para crear un CV desde cero: editar tus datos y secciones, ver la vista previa en vivo, revisar tus habilidades en gráficas y exportar el resultado a PDF. Hecha con React, Vite y Context API.",
+        "bullets": [
+          "Me encargué del editor, la vista previa en vivo, la exportación a PDF y del despliegue automático en GitHub Pages con GitHub Actions."
         ]
       }
     }
@@ -105,6 +126,7 @@
     "description": "Roles de atención al cliente y administrativos que dieron forma a mi manera de abordar el proceso, la documentación y el detalle.",
     "items": {
       "teleperformance": {
+        "period": "Abril 2020 – Octubre 2020",
         "role": "Representante de atención al cliente · Billing, Sales & Repair",
         "bullets": [
           "Gestión de solicitudes de clientes en facturación, ventas y soporte técnico mediante plataformas internas de atención.",
@@ -113,6 +135,7 @@
         ]
       },
       "alphabiotista": {
+        "period": "Enero 2024 – Noviembre 2026",
         "role": "Apoyo administrativo · Documentación y mejora de procesos",
         "bullets": [
           "Organización y mejora de documentación interna, cuidando claridad, precisión y estandarización de información.",
@@ -129,6 +152,7 @@
     "languagesLabel": "Idiomas",
     "degree": "Ingeniería en Sistemas Computacionales",
     "period": "7.º semestre, en curso (2022 – Actualidad)",
+    "description": "Formación enfocada en bases de datos (diseño, normalización y administración) y en el despliegue de aplicaciones web con el backend bien protegido. La seguridad se trabaja en toda la carrera, desde los agentes de desarrollo hasta los servicios finales.",
     "languagesList": [
       { "name": "Español", "level": "Nativo" },
       { "name": "Inglés", "level": "Avanzado (C1)" }
@@ -137,13 +161,11 @@
   "contact": {
     "eyebrow": "Contacto",
     "title": "Trabajemos juntos",
-    "description": "Abierto a oportunidades en frontend, cloud y soporte IT. Haz clic en el correo o el teléfono para copiarlos al instante.",
+    "description": "Abierto a oportunidades en frontend, cloud y soporte IT. Haz clic en el correo para copiarlo al instante.",
     "emailLabel": "Correo",
-    "phoneLabel": "Teléfono",
     "githubLabel": "GitHub",
     "copied": "Copiado al portapapeles",
-    "copyEmailAria": "Copiar correo al portapapeles",
-    "copyPhoneAria": "Copiar número de teléfono al portapapeles"
+    "copyEmailAria": "Copiar correo al portapapeles"
   },
   "footer": {
     "rights": "Todos los derechos reservados.",

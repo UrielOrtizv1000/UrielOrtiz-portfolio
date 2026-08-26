@@ -16,13 +16,13 @@ export type Language = "en" | "es";
 
 const dictionaries = { en, es } as const;
 
-type Vars = Record<string, string | number>;
+type InterpolationVars = Record<string, string | number>;
 
 type LanguageContextValue = {
   language: Language;
   setLanguage: (lang: Language) => void;
   toggleLanguage: () => void;
-  t: <T = string>(path: string, vars?: Vars) => T;
+  t: <T = string>(path: string, vars?: InterpolationVars) => T;
 };
 
 const LanguageContext = createContext<LanguageContextValue | null>(null);
@@ -37,7 +37,7 @@ function getByPath(source: unknown, path: string): unknown {
     );
 }
 
-function interpolate(value: string, vars?: Vars): string {
+function interpolate(value: string, vars?: InterpolationVars): string {
   if (!vars) return value;
   return value.replace(/\{(\w+)\}/g, (match, key: string) =>
     key in vars ? String(vars[key]) : match
@@ -80,7 +80,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   }, [language, setLanguage]);
 
   const t = useCallback(
-    <T = string,>(path: string, vars?: Vars): T => {
+    <T = string,>(path: string, vars?: InterpolationVars): T => {
       const value = getByPath(dictionaries[language], path);
       if (typeof value === "string") {
         return interpolate(value, vars) as unknown as T;

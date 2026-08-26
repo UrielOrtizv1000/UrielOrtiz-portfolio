@@ -15,7 +15,7 @@
     "specialization": "Specialized in Frontend, Cloud & IT Support",
     "role": "Computer Systems Engineering Student",
     "tagline": "IT Support & Cloud Fundamentals · Frontend Development · English C1",
-    "description": "I build clean, functional interfaces and support reliable systems — grounded in structured process, documentation, and a growing cloud-native toolkit.",
+    "description": "I set up servers and self-host my own services — notes, movies, and P2P communication — and work with a method: plan first, follow it step by step, and debug at the close of every phase.",
     "viewProjects": "View Projects",
     "getInTouch": "Get in Touch",
     "stats": [
@@ -28,11 +28,11 @@
   "about": {
     "eyebrow": "About",
     "heading": "How I work",
-    "summary": "I combine hands-on IT support experience with growing frontend and cloud expertise — from internal support platforms and incident management to building clean, documented interfaces. I'm looking for roles where structured process meets real product work, across frontend, cloud, or IT support tracks.",
+    "summary": "Outside the classroom I set up servers for fun and run my own services — notes, movies and P2P communication — all self-hosted. I work with a method: plan first, follow it step by step, and debug and adjust at the end of each phase before moving on. Dog lover.",
     "values": [
-      { "title": "Clarity over cleverness", "body": "Clean, documented, predictable work beats clever shortcuts." },
-      { "title": "Structured process", "body": "ITIL-style discipline for requests, incidents, and follow-through." },
-      { "title": "Steady learning", "body": "Continuously deepening cloud fundamentals and frontend craft." }
+      { "title": "Self-hosting by default", "body": "I run and maintain my own services on hardware I administer, treating them like real production." },
+      { "title": "Method over speed", "body": "Plan first, then step by step, debugging at the close of every phase." },
+      { "title": "Documented and organized", "body": "Clean, documented, predictable work beats clever shortcuts." }
     ]
   },
   "skills": {
@@ -57,6 +57,8 @@
       "kubernetesFundamentals": "Kubernetes Fundamentals",
       "gitGithub": "Git / GitHub",
       "itil": "ITIL",
+      "aiAgents": "AI Agents (LLMs)",
+      "obsidian": "Obsidian",
       "restApis": "REST APIs",
       "httpEndpoints": "HTTP Endpoints",
       "fastapiFundamentals": "FastAPI Fundamentals",
@@ -72,29 +74,48 @@
     "eyebrow": "Projects",
     "title": "Featured work",
     "description": "Academic and collaborative projects where I worked across the stack — from resilient microservices to full-stack storefronts.",
+    "toggleFeatured": "Featured",
+    "toggleOther": "Other projects",
+    "otherTitle": "Other projects",
+    "otherDescription": "Personal projects and tools I build and maintain on my own, from a private messaging app to a resume generator.",
     "code": "Code",
     "live": "Live",
     "openAria": "Open {name}",
     "items": {
       "resilenciaKubernetes": {
-        "description": "Academic microservices system built to evaluate application resilience on Kubernetes.",
+        "description": "Microservices system that tests how an application behaves on Kubernetes when a service fails and how it recovers, built with Python, FastAPI, Docker and Docker Compose.",
         "bullets": [
-          "Developed and documented a microservices system for resilience testing on Kubernetes using Python, FastAPI, Docker, and Docker Compose.",
-          "Collaborated on refactoring, code organization, resilience testing, and observability documentation with Prometheus, Grafana, Jaeger, and OpenTelemetry."
+          "I was responsible for generating 50,000 simulated users to test it in near-real conditions, in addition to refactoring and organizing the code, running the resilience tests and documenting observability with Prometheus, Grafana, Jaeger and OpenTelemetry."
         ]
       },
       "bookiaStore": {
-        "description": "Online bookstore focused on browsing, search, and purchasing books.",
+        "description": "Online store where users search, consult and buy books, with Angular on the frontend, Node.js on the backend and MySQL for the data.",
         "bullets": [
-          "Built an online bookstore with search, product lookup, and purchase flows using Angular, Node.js, and MySQL.",
-          "Worked on frontend structure, navigation, visual components, and usability improvements to optimize the user experience."
+          "Built the frontend structure and navigation, developed the visual components and improved the usability of the purchase process."
         ]
       },
       "ecommerceApi": {
-        "description": "Academic e-commerce platform with a product catalog and a basic checkout flow.",
+        "description": "Online store with product catalog and basic purchase flow, with HTML, CSS and JavaScript on the frontend and Node.js, Express and MySQL on the backend.",
         "bullets": [
-          "Built an academic online store with a product catalog and basic purchase flow using HTML, CSS, JavaScript, Node.js, Express, and MySQL.",
-          "Collaborated on frontend/backend organization, routing, controllers, database connections, and code refactoring."
+          "Organized the frontend and backend, developed routes and controllers, connected the database and refactored code as a team."
+        ]
+      },
+      "nova": {
+        "description": "Private Discord-style messaging app for two people, in development: 15-day message retention, calls and 1080p60fps screen sharing, built with Electron and a self-hosted server securely exposed with Cloudflare Tunnel.",
+        "bullets": [
+          "Led the entire project: interface, real-time communication and server, developed with an AI agent that I configured and supervised at every stage."
+        ]
+      },
+      "intercambioMagico": {
+        "description": "Secret Santa website with restricted draws: create events, add participants, define who cannot gift whom and run the draw respecting those rules. 100% front-end with HTML5, CSS3, JavaScript, Bootstrap and localStorage.",
+        "bullets": [
+          "Designed the draw algorithm with exclusions, built the drag & drop interface and implemented data persistence in the browser."
+        ]
+      },
+      "devprofile": {
+        "description": "Web application to create a resume from scratch: edit your data and sections, see the live preview, review your skills in charts and export the result to PDF. Built with React, Vite and Context API.",
+        "bullets": [
+          "Built the editor, the live preview and the PDF export, and deployed the app automatically to GitHub Pages with GitHub Actions."
         ]
       }
     }
@@ -105,6 +126,7 @@
     "description": "Customer-facing and administrative roles that shaped how I approach process, documentation, and detail.",
     "items": {
       "teleperformance": {
+        "period": "April 2020 – October 2020",
         "role": "Customer Service Representative · Billing, Sales & Repair",
         "bullets": [
           "Managed customer requests across billing, sales, and technical support through internal service platforms.",
@@ -113,6 +135,7 @@
         ]
       },
       "alphabiotista": {
+        "period": "January 2024 – November 2026",
         "role": "Administrative Support · Documentation & Process Improvement",
         "bullets": [
           "Organized and improved internal documentation, ensuring clarity, accuracy, and standardization.",
@@ -129,6 +152,7 @@
     "languagesLabel": "Languages",
     "degree": "B.S. in Computer Systems Engineering",
     "period": "7th semester, in progress (2022 – Present)",
+    "description": "Training focused on databases (design, normalization and administration) and on deploying web applications with a well-protected backend. Security is emphasized throughout the degree, from development agents to the final services.",
     "languagesList": [
       { "name": "Spanish", "level": "Native" },
       { "name": "English", "level": "Advanced (C1)" }
@@ -137,13 +161,11 @@
   "contact": {
     "eyebrow": "Contact",
     "title": "Let's work together",
-    "description": "Open to opportunities across frontend, cloud, and IT support. Click email or phone to copy them instantly.",
+    "description": "Open to opportunities across frontend, cloud, and IT support. Click email to copy it instantly.",
     "emailLabel": "Email",
-    "phoneLabel": "Phone",
     "githubLabel": "GitHub",
     "copied": "Copied to clipboard",
-    "copyEmailAria": "Copy email to clipboard",
-    "copyPhoneAria": "Copy phone number to clipboard"
+    "copyEmailAria": "Copy email to clipboard"
   },
   "footer": {
     "rights": "All rights reserved.",

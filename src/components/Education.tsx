@@ -2,29 +2,29 @@
 
 import { useLanguage } from "@/i18n/LanguageProvider";
 import { courses, education } from "@/lib/data";
-import Reveal from "./Reveal";
+import ScrollReveal from "./Reveal";
 import SectionHeading from "./SectionHeading";
 
-type LanguageEntry = { name: string; level: string };
+type SpokenLanguage = { name: string; level: string };
 
 export default function Education() {
   const { t } = useLanguage();
-  const languagesList = t<LanguageEntry[]>("education.languagesList");
+  const languagesList = t<SpokenLanguage[]>("education.languagesList");
 
   return (
     <section
       id="education"
       className="mx-auto max-w-6xl border-t border-border px-6 py-14 sm:px-8 sm:py-20"
     >
-      <Reveal>
+      <ScrollReveal>
         <SectionHeading
           eyebrow={t("education.eyebrow")}
           title={t("education.title")}
         />
-      </Reveal>
+      </ScrollReveal>
 
       <div className="grid gap-5 lg:grid-cols-3">
-        <Reveal className="lg:col-span-2">
+        <ScrollReveal className="lg:col-span-2">
           <div className="hoverable h-full rounded-2xl border border-border bg-surface p-7">
             <h3 className="text-xs font-bold uppercase tracking-wide text-accent">
               {t("education.degreeLabel")}
@@ -38,6 +38,9 @@ export default function Education() {
                   <p className="mt-1 text-sm text-muted">{t("education.degree")}</p>
                   <p className="mt-1 text-xs font-medium uppercase tracking-wide text-muted-2">
                     {t("education.period")}
+                  </p>
+                  <p className="mt-2 text-sm leading-relaxed text-muted">
+                    {t("education.description")}
                   </p>
                 </div>
               ))}
@@ -60,9 +63,9 @@ export default function Education() {
               ))}
             </ul>
           </div>
-        </Reveal>
+        </ScrollReveal>
 
-        <Reveal delay={100}>
+        <ScrollReveal delay={100}>
           <div className="hoverable h-full rounded-2xl border border-border bg-surface p-7">
             <h3 className="text-xs font-bold uppercase tracking-wide text-accent">
               {t("education.languagesLabel")}
@@ -80,7 +83,7 @@ export default function Education() {
               ))}
             </ul>
           </div>
-        </Reveal>
+        </ScrollReveal>
       </div>
     </section>
   );

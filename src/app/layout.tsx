@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   title: "Uriel Ortiz — Frontend Developer & IT/Cloud Support",
   description:
     "Portfolio of Uriel Ezequiel Ortiz Rosales — Computer Systems Engineering student specializing in frontend development and cloud/IT support fundamentals.",
-  metadataBase: new URL("https://urielortizv1000.github.io/UrielOrtiz-portfolio/"),
+  metadataBase: new URL("https://urielortiz.xyz/"),
   openGraph: {
     title: "Uriel Ortiz — Frontend Developer & IT/Cloud Support",
     description:
@@ -33,7 +33,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      data-theme="dark"
+      data-theme="light"
       suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >

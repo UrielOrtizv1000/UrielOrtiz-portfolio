@@ -7,7 +7,7 @@ export default function ThemeToggle() {
   const { theme, toggleTheme, mounted } = useTheme();
   const { t } = useLanguage();
 
-  const isDark = mounted ? theme === "dark" : true;
+  const isDark = mounted ? theme === "dark" : false;
 
   return (
     <button

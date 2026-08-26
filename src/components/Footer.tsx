@@ -6,7 +6,8 @@ import { profile } from "@/lib/data";
 const year = new Date().getFullYear();
 
 export default function Footer() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+  const cvFile = profile.cvFiles[language];
 
   return (
     <footer className="border-t border-border">
@@ -31,8 +32,8 @@ export default function Footer() {
             {t("footer.email")}
           </a>
           <a
-            href={profile.cvPath}
-            download
+            href={cvFile}
+            download={cvFile}
             className="hoverable press text-sm font-medium text-muted hover:text-accent"
           >
             {t("footer.cv")}

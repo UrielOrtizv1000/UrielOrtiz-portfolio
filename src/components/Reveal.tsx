@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState, type ReactNode } from "react";
 
-type RevealProps = {
+type ScrollRevealProps = {
   children: ReactNode;
   delay?: number;
   className?: string;
@@ -10,13 +10,13 @@ type RevealProps = {
   id?: string;
 };
 
-export default function Reveal({
+export default function ScrollReveal({
   children,
   delay = 0,
   className = "",
   as = "div",
   id,
-}: RevealProps) {
+}: ScrollRevealProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
 

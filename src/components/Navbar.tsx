@@ -7,12 +7,13 @@ import LanguageToggle from "./LanguageToggle";
 import ThemeToggle from "./ThemeToggle";
 
 export default function Navbar() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const cvFile = profile.cvFiles[language];
 
   const links = [
-    { label: t("nav.research"), href: "#research" },
+    { label: t("nav.research"), href: "#about" },
     { label: t("nav.projects"), href: "#projects" },
     { label: t("nav.experience"), href: "#experience" },
     { label: t("nav.education"), href: "#education" },
@@ -72,8 +73,8 @@ export default function Navbar() {
 
           <div className="hidden md:block">
             <a
-              href={profile.cvPath}
-              download
+              href={cvFile}
+              download={cvFile}
               className="hoverable press inline-flex items-center gap-2 rounded-full bg-accent px-4 py-2 text-sm font-semibold text-white shadow-[0_0_0_1px_rgba(168,85,247,0.4)] hover:bg-accent-strong hover:shadow-[0_0_24px_-4px_rgba(168,85,247,0.6)]"
             >
               {t("nav.downloadCv")}
@@ -147,8 +148,8 @@ export default function Navbar() {
             ))}
             <li className="pt-2">
               <a
-                href={profile.cvPath}
-                download
+                href={cvFile}
+                download={cvFile}
                 onClick={() => setMenuOpen(false)}
                 className="press flex items-center justify-center gap-2 rounded-full bg-accent px-4 py-2.5 text-sm font-semibold text-white hover:bg-accent-strong"
               >

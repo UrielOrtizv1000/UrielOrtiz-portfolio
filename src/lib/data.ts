@@ -4,9 +4,11 @@ export const profile = {
   version: "v1000",
   location: "Aguascalientes, Mexico",
   email: "urielortizrr@gmail.com",
-  phone: "+52 449 387 9973",
   github: "https://github.com/UrielOrtizv1000",
-  cvPath: "Uriel_Ortiz_Rosales_CV.pdf",
+  cvFiles: {
+    en: "Uriel_Ortiz_Rosales_EN.pdf",
+    es: "Uriel_Ortiz_Rosales.pdf",
+  },
 };
 
 export type SkillCategory = {
@@ -27,6 +29,8 @@ export const skillCategories: SkillCategory[] = [
       "kubernetesFundamentals",
       "gitGithub",
       "itil",
+      "aiAgents",
+      "obsidian",
     ],
   },
   {
@@ -58,52 +62,71 @@ export type Project = {
   live?: string;
 };
 
-export const projects: Project[] = [
-  {
-    id: "resilenciaKubernetes",
-    name: "Resilencia-Kubernetes",
-    tech: [
-      "Python",
-      "FastAPI",
-      "Docker",
-      "Kubernetes",
-      "Prometheus",
-      "Grafana",
-      "Jaeger",
-      "OpenTelemetry",
-    ],
-    github: "https://github.com/AzaelFajardo/Resilencia-Kubernetes",
-  },
-  {
-    id: "bookiaStore",
-    name: "bookIA-store",
-    tech: ["Angular", "Node.js", "MySQL"],
-    github: "https://github.com/UrielOrtizv1000/bookIA-store",
-  },
-  {
-    id: "ecommerceApi",
-    name: "Ecommerce API — Team Tokioona",
-    tech: ["HTML", "CSS", "JavaScript", "Node.js", "Express", "MySQL"],
-    github: "https://github.com/UrielOrtizv1000/Ecommerce-API-EquipoTokioona",
-  },
-];
+export const projects: { featured: Project[]; other: Project[] } = {
+  featured: [
+    {
+      id: "resilenciaKubernetes",
+      name: "Resilencia-Kubernetes",
+      tech: [
+        "Python",
+        "FastAPI",
+        "Docker",
+        "Kubernetes",
+        "Prometheus",
+        "Grafana",
+        "Jaeger",
+        "OpenTelemetry",
+      ],
+      github: "https://github.com/AzaelFajardo/Resilencia-Kubernetes",
+    },
+    {
+      id: "bookiaStore",
+      name: "bookIA-store",
+      tech: ["Angular", "Node.js", "MySQL"],
+      github: "https://github.com/UrielOrtizv1000/bookIA-store",
+    },
+    {
+      id: "ecommerceApi",
+      name: "Ecommerce API — Team Tokioona",
+      tech: ["HTML", "CSS", "JavaScript", "Node.js", "Express", "MySQL"],
+      github: "https://github.com/UrielOrtizv1000/Ecommerce-API-EquipoTokioona",
+    },
+  ],
+  other: [
+    {
+      id: "nova",
+      name: "NOVA",
+      tech: ["Electron", "Cloudflare Tunnel"],
+      github: "https://github.com/ejemplo/ejemplo",
+    },
+    {
+      id: "intercambioMagico",
+      name: "Intercambio Mágico",
+      tech: ["HTML5", "CSS3", "JavaScript", "Bootstrap", "LocalStorage"],
+      github: "https://github.com/UrielOrtizv1000/gift-exchange-web-app",
+    },
+    {
+      id: "devprofile",
+      name: "DevProfile",
+      tech: ["React", "Vite", "Context API"],
+      github: "https://github.com/UrielOrtizv1000/devprofile-cv-generator",
+    },
+  ],
+};
 
 export type ExperienceItem = {
   id: string;
   company: string;
-  period: string;
 };
 
 export const experience: ExperienceItem[] = [
   {
     id: "teleperformance",
     company: "Teleperformance — Comcast",
-    period: "2020 – 2021",
   },
   {
     id: "alphabiotista",
     company: "Centro Alphabiotista de Corrección y Balanceo",
-    period: "2024 – 2026",
   },
 ];
 

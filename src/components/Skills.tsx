@@ -3,12 +3,12 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useLanguage } from "@/i18n/LanguageProvider";
 import { skillCategories } from "@/lib/data";
-import Reveal from "./Reveal";
+import ScrollReveal from "./Reveal";
 import SectionHeading from "./SectionHeading";
 
 export default function Skills() {
   const { t, language } = useLanguage();
-  const [active, setActive] = useState(0);
+  const [activeTabIndex, setActiveTabIndex] = useState(0);
   const [transitioning, setTransitioning] = useState(false);
   const tabRefs = useRef<Array<HTMLButtonElement | null>>([]);
   const [indicator, setIndicator] = useState({ left: 0, width: 0 });
@@ -25,37 +25,37 @@ export default function Skills() {
   };
 
   useEffect(() => {
-    updateIndicator(active);
-    const onResize = () => updateIndicator(active);
+    updateIndicator(activeTabIndex);
+    const onResize = () => updateIndicator(activeTabIndex);
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
     // Re-measure on language change too — translated labels have different widths.
-  }, [active, language]);
+  }, [activeTabIndex, language]);
 
   const selectTab = (index: number) => {
-    if (index === active) return;
+    if (index === activeTabIndex) return;
     setTransitioning(true);
-    setActive(index);
+    setActiveTabIndex(index);
     window.setTimeout(() => setTransitioning(false), 160);
   };
 
   const visibleGroups =
-    active === 0 ? skillCategories : skillCategories.filter((_, i) => i === active - 1);
+    activeTabIndex === 0 ? skillCategories : skillCategories.filter((_, i) => i === activeTabIndex - 1);
 
   return (
     <section
       id="skills"
       className="mx-auto max-w-6xl border-t border-border px-6 py-14 sm:px-8 sm:py-20"
     >
-      <Reveal>
+      <ScrollReveal>
         <SectionHeading
           eyebrow={t("skills.eyebrow")}
           title={t("skills.title")}
           description={t("skills.description")}
         />
-      </Reveal>
+      </ScrollReveal>
 
-      <Reveal delay={80}>
+      <ScrollReveal delay={80}>
         <div className="relative -mx-1 mb-6 flex gap-1 overflow-x-auto px-1 pb-1">
           <div
             aria-hidden="true"
@@ -75,7 +75,7 @@ export default function Skills() {
               type="button"
               onClick={() => selectTab(index)}
               className={`press hoverable relative z-10 flex-shrink-0 rounded-full px-4 py-2 text-sm font-medium transition-colors duration-200 ${
-                active === index
+                activeTabIndex === index
                   ? "text-white"
                   : "text-muted hover:text-foreground"
               }`}
@@ -84,9 +84,9 @@ export default function Skills() {
             </button>
           ))}
         </div>
-      </Reveal>
+      </ScrollReveal>
 
-      <Reveal delay={140}>
+      <ScrollReveal delay={140}>
       <div
         className="grid gap-5 transition-[opacity,filter] duration-150"
         style={{
@@ -96,7 +96,7 @@ export default function Skills() {
       >
         {visibleGroups.map((group) => (
           <div key={group.id}>
-            {active === 0 ? (
+            {activeTabIndex === 0 ? (
               <h3 className="mb-2.5 text-xs font-bold uppercase tracking-wide text-muted-2">
                 {t(`skills.categories.${group.id}`)}
               </h3>
@@ -114,7 +114,7 @@ export default function Skills() {
           </div>
         ))}
       </div>
-      </Reveal>
+      </ScrollReveal>
     </section>
   );
 }

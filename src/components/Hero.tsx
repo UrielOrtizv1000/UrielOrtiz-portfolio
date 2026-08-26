@@ -2,15 +2,15 @@
 
 import { useLanguage } from "@/i18n/LanguageProvider";
 import { profile } from "@/lib/data";
-import Reveal from "./Reveal";
+import ScrollReveal from "./Reveal";
 
-type Stat = { label: string; value: string };
-type Value = { title: string; body: string };
+type HeroStat = { label: string; value: string };
+type AboutValue = { title: string; body: string };
 
 export default function Hero() {
   const { t } = useLanguage();
-  const stats = t<Stat[]>("hero.stats");
-  const values = t<Value[]>("about.values");
+  const stats = t<HeroStat[]>("hero.stats");
+  const values = t<AboutValue[]>("about.values");
 
   return (
     <section
@@ -20,7 +20,7 @@ export default function Hero() {
       <div className="grid gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-14">
         {/* Left: identity */}
         <div className="flex flex-col items-start">
-          <Reveal>
+          <ScrollReveal>
             <span className="hoverable inline-flex items-center gap-2 rounded-full border border-border-strong bg-surface px-3.5 py-1.5 text-xs font-medium text-muted">
               <span className="relative flex h-1.5 w-1.5">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75" />
@@ -28,27 +28,27 @@ export default function Hero() {
               </span>
               {t("hero.specialization")}
             </span>
-          </Reveal>
+          </ScrollReveal>
 
-          <Reveal delay={80}>
+          <ScrollReveal delay={80}>
             <h1 className="mt-5 max-w-2xl text-4xl font-extrabold tracking-tight text-foreground sm:text-6xl text-balance">
               {profile.fullName}
             </h1>
-          </Reveal>
+          </ScrollReveal>
 
-          <Reveal delay={140}>
+          <ScrollReveal delay={140}>
             <p className="mt-3 max-w-xl text-lg font-semibold text-accent sm:text-xl">
               {t("hero.role")}
             </p>
-          </Reveal>
+          </ScrollReveal>
 
-          <Reveal delay={200}>
+          <ScrollReveal delay={200}>
             <p className="mt-4 max-w-xl text-base leading-relaxed text-muted sm:text-lg">
               {t("hero.tagline")}. {t("hero.description")}
             </p>
-          </Reveal>
+          </ScrollReveal>
 
-          <Reveal delay={260}>
+          <ScrollReveal delay={260}>
             <div className="mt-7 flex flex-wrap items-center gap-4">
               <a
                 href="#projects"
@@ -63,9 +63,9 @@ export default function Hero() {
                 {t("hero.getInTouch")}
               </a>
             </div>
-          </Reveal>
+          </ScrollReveal>
 
-          <Reveal delay={320} className="w-full">
+          <ScrollReveal delay={320} className="w-full">
             <dl className="mt-8 grid w-full max-w-xl grid-cols-2 gap-5 border-t border-border pt-6 sm:grid-cols-4">
               {stats.map((stat) => (
                 <div key={stat.label}>
@@ -78,11 +78,11 @@ export default function Hero() {
                 </div>
               ))}
             </dl>
-          </Reveal>
+          </ScrollReveal>
         </div>
 
         {/* Right: about */}
-        <Reveal delay={140} id="research" className="scroll-mt-24">
+        <ScrollReveal delay={140} id="about" className="scroll-mt-24">
           <div className="hoverable h-full rounded-2xl border border-border bg-surface p-6 sm:p-7">
             <span className="text-xs font-bold uppercase tracking-[0.2em] text-accent">
               {t("about.eyebrow")}
@@ -108,7 +108,7 @@ export default function Hero() {
               ))}
             </ul>
           </div>
-        </Reveal>
+        </ScrollReveal>
       </div>
     </section>
   );
