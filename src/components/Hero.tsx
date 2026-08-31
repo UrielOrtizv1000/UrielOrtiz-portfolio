@@ -2,6 +2,7 @@
 
 import { useLanguage } from "@/i18n/LanguageProvider";
 import { profile } from "@/lib/data";
+import NetworkBackground from "./NetworkBackground";
 import ScrollReveal from "./Reveal";
 
 type HeroStat = { label: string; value: string };
@@ -15,9 +16,13 @@ export default function Hero() {
   return (
     <section
       id="top"
-      className="relative mx-auto max-w-6xl px-6 pb-14 pt-14 sm:px-8 sm:pb-20 sm:pt-20"
+      className="relative mx-auto max-w-6xl overflow-hidden px-6 pb-14 pt-14 sm:overflow-visible sm:px-8 sm:pb-20 sm:pt-20"
     >
-      <div className="grid gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-14">
+      <div className="absolute inset-x-0 top-0 -z-0 h-[560px] opacity-70">
+        <NetworkBackground />
+      </div>
+
+      <div className="relative grid gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-14">
         {/* Left: identity */}
         <div className="flex flex-col items-start">
           <ScrollReveal>
@@ -37,7 +42,7 @@ export default function Hero() {
           </ScrollReveal>
 
           <ScrollReveal delay={140}>
-            <p className="mt-3 max-w-xl text-lg font-semibold text-accent sm:text-xl">
+            <p className="mono-tag mt-3 max-w-xl text-sm uppercase tracking-[0.08em] text-accent sm:text-base">
               {t("hero.role")}
             </p>
           </ScrollReveal>
@@ -72,7 +77,7 @@ export default function Hero() {
                   <dt className="text-xs uppercase tracking-wide text-muted-2">
                     {stat.label}
                   </dt>
-                  <dd className="mt-1 text-base font-bold text-foreground sm:text-lg">
+                  <dd className="mono-tag mt-1 text-base font-bold text-foreground sm:text-lg">
                     {stat.value}
                   </dd>
                 </div>
@@ -84,10 +89,7 @@ export default function Hero() {
         {/* Right: about */}
         <ScrollReveal delay={140} id="about" className="scroll-mt-24">
           <div className="hoverable h-full rounded-2xl border border-border bg-surface p-6 sm:p-7">
-            <span className="text-xs font-bold uppercase tracking-[0.2em] text-accent">
-              {t("about.eyebrow")}
-            </span>
-            <h2 className="mt-2 text-xl font-extrabold tracking-tight text-foreground sm:text-2xl">
+            <h2 className="text-xl font-extrabold tracking-tight text-foreground sm:text-2xl">
               {t("about.heading")}
             </h2>
             <p className="mt-3 text-sm leading-relaxed text-muted sm:text-base">

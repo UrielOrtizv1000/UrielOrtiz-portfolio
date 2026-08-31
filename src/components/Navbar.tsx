@@ -49,7 +49,7 @@ export default function Navbar() {
           className="press flex items-baseline gap-1.5 text-base font-semibold tracking-tight text-foreground"
         >
           {profile.name}
-          <span className="text-sm font-normal text-muted-2">
+          <span className="mono-tag text-sm font-normal text-muted-2">
             ({profile.version})
           </span>
         </a>

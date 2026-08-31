@@ -71,7 +71,7 @@ export default function Contact() {
               )}
             </span>
             <div className="mt-6">
-              <p className="text-xs font-semibold uppercase tracking-wide text-muted-2">
+              <p className="mono-tag text-xs font-semibold uppercase tracking-wide text-muted-2">
                 {t("contact.emailLabel")}
               </p>
               <p
@@ -100,7 +100,7 @@ export default function Contact() {
               </svg>
             </span>
             <div className="mt-6">
-              <p className="text-xs font-semibold uppercase tracking-wide text-muted-2">
+              <p className="mono-tag text-xs font-semibold uppercase tracking-wide text-muted-2">
                 {t("contact.githubLabel")}
               </p>
               <p className="mt-1 text-sm font-medium text-foreground group-hover:text-accent">

@@ -42,7 +42,7 @@ export default function Footer() {
       </div>
 
       {}
-      <p className="border-t border-border py-4 text-center text-xs text-muted-2">
+      <p className="mono-tag border-t border-border py-4 text-center text-xs text-muted-2">
         developed by v1000
       </p>
     </footer>

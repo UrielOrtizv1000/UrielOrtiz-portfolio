@@ -155,3 +155,9 @@ path {
 .text-balance {
   text-wrap: balance;
 }
+
+/* Mono face for technical accents (labels, levels, dates) */
+.mono-tag {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  letter-spacing: -0.01em;
+}

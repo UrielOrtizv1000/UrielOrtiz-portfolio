@@ -34,7 +34,7 @@ export default function Experience() {
                     {item.company}
                   </h3>
                   {period ? (
-                    <span className="text-xs font-medium uppercase tracking-wide text-accent">
+                    <span className="mono-tag text-xs font-medium uppercase tracking-wide text-accent">
                       {period}
                     </span>
                   ) : null}
