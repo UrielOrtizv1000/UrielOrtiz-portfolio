@@ -49,7 +49,7 @@ export default function ProjectCard({ project }: { project: Project }) {
         {project.tech.map((tech) => (
           <span
             key={tech}
-            className="rounded-md border border-border bg-surface-2 px-2 py-1 text-xs font-medium text-muted"
+            className="mono-tag rounded-md border border-border bg-surface-2 px-2 py-1 text-xs font-medium text-muted"
           >
             {tech}
           </span>
