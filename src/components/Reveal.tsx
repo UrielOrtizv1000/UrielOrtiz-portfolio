@@ -8,7 +8,6 @@ type ScrollRevealProps = {
   className?: string;
   as?: "div" | "li";
   id?: string;
-  variant?: "up" | "scale";
 };
 
 export default function ScrollReveal({
@@ -17,7 +16,6 @@ export default function ScrollReveal({
   className = "",
   as = "div",
   id,
-  variant = "up",
 }: ScrollRevealProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
@@ -35,7 +33,7 @@ export default function ScrollReveal({
           }
         }
       },
-      { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
+      { threshold: 0.15, rootMargin: "-40px" }
     );
 
     observer.observe(node);
@@ -48,7 +46,6 @@ export default function ScrollReveal({
     <Tag
       ref={ref as never}
       id={id}
-      data-variant={variant}
       className={`reveal ${visible ? "is-visible" : ""} ${className}`}
       style={{ transitionDelay: `${delay}ms` }}
     >

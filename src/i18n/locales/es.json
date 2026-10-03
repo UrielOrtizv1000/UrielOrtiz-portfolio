@@ -12,41 +12,17 @@
     "switchToDark": "Cambiar a modo oscuro"
   },
   "hero": {
-    "available": "Abierto a oportunidades",
-    "rolePrefix": "Estudiante de",
-    "roleStrong": "Ingeniería en Sistemas",
-    "roleRest": "enfocado en frontend, cloud y soporte IT.",
+    "specialization": "Especializado en Frontend, Cloud y Soporte IT",
+    "role": "Estudiante de Ingeniería en Sistemas Computacionales",
+    "tagline": "Soporte IT y Fundamentos Cloud · Desarrollo Frontend · Inglés C1",
     "description": "Levanto servidores y autoalojo mis propios servicios — notas, películas y comunicación P2P — y trabajo con método: primero el plan, luego paso a paso, depurando al cierre de cada fase.",
     "viewProjects": "Ver proyectos",
     "getInTouch": "Contáctame",
-    "dinoHover": "pasa el cursor ↘",
-    "dinoTap": "tócalo ↘",
-    "dinoRunning": "¡corriendo!",
     "stats": [
-      {
-        "value": "7.º",
-        "label": "Semestre de Ingeniería en Sistemas Computacionales"
-      },
-      {
-        "value": "C1",
-        "label": "Inglés avanzado para trabajar con equipos internacionales"
-      },
-      {
-        "value": "+6",
-        "label": "Proyectos construidos, de microservicios a apps de escritorio"
-      },
-      {
-        "value": "50k",
-        "label": "Usuarios simulados en pruebas de resiliencia con Kubernetes"
-      }
-    ]
-  },
-  "marquee": {
-    "words": [
-      "frontend",
-      "cloud",
-      "soporte IT",
-      "self-hosting"
+      { "label": "Semestre", "value": "7.º" },
+      { "label": "Inglés", "value": "C1" },
+      { "label": "Enfoque", "value": "Frontend y Cloud" },
+      { "label": "Ubicación", "value": "Aguascalientes, México" }
     ]
   },
   "about": {
@@ -54,18 +30,9 @@
     "heading": "Cómo trabajo",
     "summary": "Fuera del aula levanto servidores por gusto y mantengo mis propios servicios: notas, películas y comunicación P2P, todo autoalojado. Trabajo con método: primero hago un plan, lo sigo paso a paso y, al cerrar cada fase, depuro errores y ajusto antes de continuar. Amante de los perros.",
     "values": [
-      {
-        "title": "Autoalojamiento por defecto",
-        "body": "Levanto y mantengo mis propios servicios en hardware que yo administro, como si fueran producción real."
-      },
-      {
-        "title": "Método antes que velocidad",
-        "body": "Primero el plan, luego paso a paso, depurar al cierre de cada fase."
-      },
-      {
-        "title": "Documentado y organizado",
-        "body": "Un trabajo limpio, documentado y predecible vale más que atajos ingeniosos."
-      }
+      { "title": "Autoalojamiento por defecto", "body": "Levanto y mantengo mis propios servicios en hardware que yo administro, como si fueran producción real." },
+      { "title": "Método antes que velocidad", "body": "Primero el plan, luego paso a paso, depurar al cierre de cada fase." },
+      { "title": "Documentado y organizado", "body": "Un trabajo limpio, documentado y predecible vale más que atajos ingeniosos." }
     ]
   },
   "skills": {
@@ -105,21 +72,17 @@
   },
   "projects": {
     "eyebrow": "Proyectos",
-    "title": "Proyectos en acción",
-    "description": "Seis proyectos, del clúster de Kubernetes a la app de escritorio. Elige uno para verlo crecer y funcionar: cada tarjeta trae una demo animada de su interfaz.",
+    "title": "Proyectos destacados",
+    "description": "Proyectos académicos y colaborativos en los que trabajé a lo largo de todo el stack — desde microservicios resilientes hasta tiendas en línea full-stack.",
+    "toggleFeatured": "Destacados",
+    "toggleOther": "Otros proyectos",
+    "otherTitle": "Otros proyectos",
+    "otherDescription": "Proyectos personales y herramientas que construyo y mantengo por mi cuenta, desde una app de mensajería privada hasta un generador de currículums.",
     "code": "Código",
     "live": "En vivo",
-    "openAria": "Ver {name} en acción",
-    "hint": "Haz clic en cualquier tarjeta para ampliarla. Pasa el cursor sobre las pequeñas para un vistazo rápido.",
-    "hoverHint": "Ver en acción",
-    "simTab": "Demo",
-    "liveTab": "En vivo",
-    "simNote": "Demo simulada de la interfaz",
-    "liveNote": "Sitio desplegado",
-    "featuredBadge": "Destacado",
-    "myRole": "Mi rol",
-    "prev": "Proyecto anterior",
-    "next": "Proyecto siguiente",
+    "viewDemo": "Ver demo",
+    "simNote": "Demo animada que simula la interfaz",
+    "openAria": "Abrir {name}",
     "items": {
       "resilenciaKubernetes": {
         "description": "Sistema de microservicios que prueba cómo se comporta una aplicación en Kubernetes cuando un servicio falla y cómo se recupera, construido con Python, FastAPI, Docker y Docker Compose.",
@@ -193,14 +156,8 @@
     "period": "7.º semestre, en curso (2022 – Actualidad)",
     "description": "Formación enfocada en bases de datos (diseño, normalización y administración) y en el despliegue de aplicaciones web con el backend bien protegido. La seguridad se trabaja en toda la carrera, desde los agentes de desarrollo hasta los servicios finales.",
     "languagesList": [
-      {
-        "name": "Español",
-        "level": "Nativo"
-      },
-      {
-        "name": "Inglés",
-        "level": "Avanzado (C1)"
-      }
+      { "name": "Español", "level": "Nativo" },
+      { "name": "Inglés", "level": "Avanzado (C1)" }
     ]
   },
   "contact": {
@@ -210,24 +167,12 @@
     "emailLabel": "Correo",
     "githubLabel": "GitHub",
     "copied": "Copiado al portapapeles",
-    "copyEmailAria": "Copiar correo al portapapeles",
-    "titleA": "Trabajemos",
-    "titleB": "juntos",
-    "cvLabel": "Currículum",
-    "cvAction": "Descargar PDF",
-    "githubAction": "Ver repositorios"
+    "copyEmailAria": "Copiar correo al portapapeles"
   },
   "footer": {
     "rights": "Todos los derechos reservados.",
     "github": "GitHub",
     "email": "Correo",
-    "cv": "CV",
-    "gameTitle": "dino.exe",
-    "gameHint": "Espacio o toca para saltar",
-    "gameStart": "Clic para jugar",
-    "gameOver": "Game over · clic para reintentar",
-    "score": "Puntos",
-    "best": "Récord",
-    "backToTop": "Volver arriba"
+    "cv": "CV"
   }
 }

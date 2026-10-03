@@ -10,10 +10,10 @@ const copy = {
     typing: "typing…",
     sharing: "Sharing screen",
     messages: [
-      { me: false, text: "Is the server up yet? 👀" },
-      { me: true, text: "Yep — exposed through Cloudflare Tunnel 🔒" },
+      { me: false, text: "Is the server up yet?" },
+      { me: true, text: "Yep — exposed through Cloudflare Tunnel" },
       { me: false, text: "Can you share your screen?" },
-      { me: true, text: "Sure, 1080p at 60fps 🚀" },
+      { me: true, text: "Sure, 1080p at 60fps" },
     ],
   },
   es: {
@@ -23,10 +23,10 @@ const copy = {
     typing: "escribiendo…",
     sharing: "Compartiendo pantalla",
     messages: [
-      { me: false, text: "¿Ya quedó el servidor? 👀" },
-      { me: true, text: "Sí, expuesto con Cloudflare Tunnel 🔒" },
+      { me: false, text: "¿Ya quedó el servidor?" },
+      { me: true, text: "Sí, expuesto con Cloudflare Tunnel" },
       { me: false, text: "¿Me compartes pantalla?" },
-      { me: true, text: "Va, a 1080p y 60fps 🚀" },
+      { me: true, text: "Va, a 1080p y 60fps" },
     ],
   },
 };

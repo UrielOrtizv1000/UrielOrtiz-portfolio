@@ -1,22 +1,33 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { LayoutGroup } from "motion/react";
+import { LayoutGroup, motion } from "motion/react";
 import { useLanguage } from "@/i18n/LanguageProvider";
-import { allProjects } from "@/lib/data";
-import ProjectTile from "./ProjectCard";
+import { projects } from "@/lib/data";
+import ProjectCard from "./ProjectCard";
 import ScrollReveal from "./Reveal";
 import SectionHeading from "./SectionHeading";
 
+type ProjectGroup = "featured" | "other";
+
 export default function Projects() {
   const { t } = useLanguage();
-  const [selectedId, setSelectedId] = useState(allProjects[0].id);
+  const [group, setGroup] = useState<ProjectGroup>("featured");
+  const [selectedId, setSelectedId] = useState(projects.featured[0].id);
   const gridRef = useRef<HTMLDivElement>(null);
 
-  // The selected project always leads the grid so it lands in the large
-  // top-left slot; the rest keep their original order around it.
-  const selected = allProjects.find((p) => p.id === selectedId) ?? allProjects[0];
-  const ordered = [selected, ...allProjects.filter((p) => p.id !== selected.id)];
+  const isFeatured = group === "featured";
+  const activeProjects = isFeatured ? projects.featured : projects.other;
+
+  // The selected project always comes first so it takes the large slot;
+  // the others keep their order beside it.
+  const selected = activeProjects.find((p) => p.id === selectedId) ?? activeProjects[0];
+  const ordered = [selected, ...activeProjects.filter((p) => p.id !== selected.id)];
+
+  const switchGroup = (next: ProjectGroup) => {
+    setGroup(next);
+    setSelectedId((next === "featured" ? projects.featured : projects.other)[0].id);
+  };
 
   const select = (id: string) => {
     setSelectedId(id);
@@ -26,43 +37,74 @@ export default function Projects() {
     }
   };
 
-  const step = (dir: -1 | 1) => {
-    const i = allProjects.findIndex((p) => p.id === selected.id);
-    const next = allProjects[(i + dir + allProjects.length) % allProjects.length];
-    setSelectedId(next.id);
-  };
-
   return (
-    <section id="projects" className="mx-auto max-w-6xl px-5 py-24 sm:px-8 sm:py-32">
+    <section
+      id="projects"
+      className="mx-auto max-w-6xl border-t border-border px-6 py-14 sm:px-8 sm:py-20"
+    >
       <ScrollReveal>
-        <div className="flex flex-wrap items-end justify-between gap-6">
+        <div className="flex flex-wrap items-start justify-between gap-4">
           <SectionHeading
-            index="03"
             eyebrow={t("projects.eyebrow")}
-            title={t("projects.title")}
-            description={t("projects.description")}
+            title={isFeatured ? t("projects.title") : t("projects.otherTitle")}
+            description={
+              isFeatured ? t("projects.description") : t("projects.otherDescription")
+            }
           />
-          <p className="mono-tag mb-14 hidden max-w-[15rem] text-right text-xs leading-relaxed text-muted-2 lg:block">
-            ↳ {t("projects.hint")}
-          </p>
+
+          <div className="flex flex-shrink-0 items-center gap-0.5 rounded-full border border-border p-0.5 text-xs font-bold">
+            <button
+              type="button"
+              onClick={() => switchGroup("featured")}
+              aria-pressed={isFeatured}
+              className={`press hoverable rounded-full px-3 py-1.5 transition-colors ${
+                isFeatured
+                  ? "bg-accent text-white"
+                  : "text-muted hover:text-foreground"
+              }`}
+            >
+              {t("projects.toggleFeatured")}
+            </button>
+            <button
+              type="button"
+              onClick={() => switchGroup("other")}
+              aria-pressed={!isFeatured}
+              className={`press hoverable rounded-full px-3 py-1.5 transition-colors ${
+                !isFeatured
+                  ? "bg-accent text-white"
+                  : "text-muted hover:text-foreground"
+              }`}
+            >
+              {t("projects.toggleOther")}
+            </button>
+          </div>
         </div>
       </ScrollReveal>
 
       <LayoutGroup>
         <div
           ref={gridRef}
-          className="grid scroll-mt-28 grid-cols-1 gap-4 md:grid-cols-2 lg:grid-flow-dense lg:grid-cols-3"
+          className="grid scroll-mt-24 grid-cols-1 gap-6 md:grid-cols-2 lg:grid-flow-dense lg:grid-cols-3"
         >
-          {ordered.map((project) => (
-            <ProjectTile
+          {ordered.map((project, index) => (
+            <motion.div
               key={project.id}
-              project={project}
-              index={allProjects.indexOf(project)}
-              total={allProjects.length}
-              selected={project.id === selected.id}
-              onSelect={() => select(project.id)}
-              onStep={step}
-            />
+              layout
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{
+                layout: { type: "spring", stiffness: 220, damping: 30 },
+                default: { duration: 0.6, ease: [0.23, 1, 0.32, 1], delay: index * 0.09 },
+              }}
+              className={project.id === selected.id ? "md:col-span-2 lg:row-span-2" : ""}
+            >
+              <ProjectCard
+                project={project}
+                selected={project.id === selected.id}
+                onSelect={() => select(project.id)}
+              />
+            </motion.div>
           ))}
         </div>
       </LayoutGroup>

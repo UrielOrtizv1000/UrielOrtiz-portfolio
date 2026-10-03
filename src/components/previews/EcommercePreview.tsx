@@ -95,11 +95,14 @@ export default function EcommercePreview({ active, lang }: PreviewProps) {
                 }`}
               >
                 <span
-                  className="flex h-11 w-11 items-center justify-center rounded-lg text-[18px]"
-                  style={{ background: ["#fef3c7", "#e0e7ff", "#dcfce7"][i] }}
+                  className="flex h-11 w-11 items-center justify-center rounded-lg text-[13px] font-bold"
+                  style={{
+                    background: ["#fef3c7", "#e0e7ff", "#dcfce7"][i],
+                    color: ["#b45309", "#4338ca", "#15803d"][i],
+                  }}
                   aria-hidden="true"
                 >
-                  {["🎧", "⌨️", "🖱️"][i]}
+                  {name.slice(0, 2).toUpperCase()}
                 </span>
                 <div className="min-w-0">
                   <p className="text-[12px] font-semibold">{name}</p>

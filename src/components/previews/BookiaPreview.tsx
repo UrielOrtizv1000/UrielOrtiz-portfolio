@@ -17,8 +17,8 @@ const QUERIES = ["", "orwell", "asimov", "dune"];
 const HOLD = 7;
 
 const copy = {
-  en: { nav: ["Catalog", "Deals", "My account"], search: "Search books, authors…", picks: "✦ AI picks for you", results: "Results for", add: "Add", added: "Added to cart" },
-  es: { nav: ["Catálogo", "Ofertas", "Mi cuenta"], search: "Busca libros, autores…", picks: "✦ Recomendados por IA", results: "Resultados para", add: "Agregar", added: "Agregado al carrito" },
+  en: { nav: ["Catalog", "Deals", "My account"], search: "Search books, authors…", picks: "AI picks for you", results: "Results for", add: "Add", added: "Added to cart" },
+  es: { nav: ["Catálogo", "Ofertas", "Mi cuenta"], search: "Busca libros, autores…", picks: "Recomendados por IA", results: "Resultados para", add: "Agregar", added: "Agregado al carrito" },
 };
 
 /* Walk the query cycle to find where tick `t` lands, counting cart adds on the way. */
@@ -115,7 +115,7 @@ export default function BookiaPreview({ active, lang }: PreviewProps) {
               style={{ background: `linear-gradient(160deg, ${book.color}cc, ${book.color})` }}
             >
               <span className="absolute left-2 top-2 h-[3px] w-6 rounded-full bg-white/50" />
-              <span className="serif-accent text-[17px] leading-none">{book.title}</span>
+              <span className="text-[16px] italic leading-none" style={{ fontFamily: "Georgia, serif" }}>{book.title}</span>
               <span className="mt-1 text-[8.5px] uppercase tracking-wider text-white/75">{book.author}</span>
             </div>
             <div className="mt-2 flex items-center justify-between px-0.5">

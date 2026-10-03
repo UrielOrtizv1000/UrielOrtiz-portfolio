@@ -54,7 +54,7 @@ export default function IntercambioPreview({ active, lang }: PreviewProps) {
   return (
     <div className="flex h-full w-full flex-col bg-[#fff7f5] font-sans text-[#1f1315]">
       <header className="flex h-12 items-center gap-3 bg-[#b91c1c] px-5 text-white">
-        <span className="text-[18px]" aria-hidden="true">🎁</span>
+        <span className="flex h-6 w-6 items-center justify-center rounded-md bg-white/20 text-[11px] font-black" aria-hidden="true">IM</span>
         <span className="text-[15px] font-bold tracking-tight">{c.title}</span>
         <span className="ml-auto rounded-full bg-white/15 px-2.5 py-1 text-[10px] font-medium">{c.event}</span>
       </header>
@@ -97,7 +97,7 @@ export default function IntercambioPreview({ active, lang }: PreviewProps) {
               pressing ? "scale-95 bg-[#15803d]" : shuffling ? "bg-[#15803d]/70" : "bg-[#16a34a]"
             }`}
           >
-            {shuffling ? c.drawing : `✦ ${c.draw}`}
+            {shuffling ? c.drawing : c.draw}
           </span>
         </div>
 

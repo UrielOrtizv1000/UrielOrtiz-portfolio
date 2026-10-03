@@ -7,10 +7,10 @@ import { DINO_FRAMES, DINO_H, DINO_W, RAMP } from "@/lib/ascii";
    2 rows at line-height 1.2 keeps each sprite pixel square. */
 const SX = 4;
 const SY = 2;
-const PAD_X = 8;
-const PAD_Y = 3;
+const PAD_X = 4;
+const PAD_TOP = 2; // no bottom padding: the feet sit on the box's lower edge
 const COLS = DINO_W * SX + PAD_X * 2;
-const ROWS = DINO_H * SY + PAD_Y * 2;
+const ROWS = DINO_H * SY + PAD_TOP;
 const GLITCH = "01<>/\\{}[]#$%&*+=?";
 
 type Grid = Float32Array;
@@ -30,7 +30,7 @@ function coverage(frame: string[], eyeOpen: boolean): Grid {
   for (let cy = 0; cy < ROWS; cy++) {
     for (let cx = 0; cx < COLS; cx++) {
       const u = (cx - PAD_X + 0.5) / SX - 0.5;
-      const v = (cy - PAD_Y + 0.5) / SY - 0.5;
+      const v = (cy - PAD_TOP + 0.5) / SY - 0.5;
       const x0 = Math.floor(u);
       const y0 = Math.floor(v);
       const fx = u - x0;
@@ -136,9 +136,7 @@ export default function AsciiDino({ running = false }: { running?: boolean }) {
             const v = Math.min(1, Math.max(0, cov * 0.78 + 0.16 + wave));
             out += RAMP[3 + Math.round(v * (RAMP.length - 4))];
           } else {
-            const field = Math.sin(cx * 0.21 + t * 0.9) * Math.cos(cy * 0.37 - t * 0.6);
-            if (near) out += Math.random() < 0.3 ? "·" : " ";
-            else out += field > 0.82 ? "." : field < -0.93 ? "·" : " ";
+            out += near && Math.random() < 0.25 ? "·" : " ";
           }
         }
         out += "\n";
@@ -174,7 +172,7 @@ export default function AsciiDino({ running = false }: { running?: boolean }) {
   }, []);
 
   return (
-    <div ref={boxRef} className="flex h-full w-full items-center justify-center" aria-hidden="true">
+    <div ref={boxRef} className="flex h-full w-full items-end justify-center" aria-hidden="true">
       <pre
         ref={preRef}
         className="m-0 select-none font-mono leading-[1.2] tracking-normal"

@@ -59,10 +59,8 @@ export type Project = {
   name: string;
   tech: string[];
   github: string;
-  /* Public URL of a deployed build. When set, the project card offers a
-     "Live" tab that embeds it next to the built-in simulation. */
   live?: string;
-  /* Address shown in the preview window's URL bar. */
+  /* Address shown in the URL bar of the project's animated demo. */
   previewPath: string;
 };
 
@@ -123,11 +121,6 @@ export const projects: { featured: Project[]; other: Project[] } = {
     },
   ],
 };
-
-export const allProjects = [
-  ...projects.featured.map((p) => ({ ...p, featured: true })),
-  ...projects.other.map((p) => ({ ...p, featured: false })),
-];
 
 export type ExperienceItem = {
   id: string;

@@ -10,19 +10,16 @@ A single page, fully static React app. All content is data driven: text lives in
 
 - Full English/Spanish switching. The language preference is saved in localStorage.
 - Light and dark themes built on CSS custom properties, applied before first paint so there's no flash.
-- Liquid glass surfaces: frosted, saturated backdrop blur with a specular rim and a sheen that follows the cursor, over a slowly drifting aurora and a fine grid.
-- A floating glass navbar that tracks the active section, shows scroll progress as a ring around the logo, and opens an animated mobile menu.
-- A hero with oversized type revealed letter by letter, counting stats, and a tilting card holding a "living" ASCII T-rex: it decodes in on load, shimmers, scrambles near the cursor and runs on hover (or tap).
-- A marquee band whose speed and direction follow scroll velocity.
-- An "about" paragraph whose words light up as you scroll through it.
-- Filterable skills in glass cards, with a sliding tab indicator.
-- Projects as a bento grid: the selected project grows to fill the large slot and plays an animated, self-running demo of its interface inside a browser window (Kubernetes dashboard, bookstore, API terminal, chat app, gift-exchange draw, CV editor). Smaller cards play their demo on hover. A project with a `live` URL also gets a tab that embeds the deployed site.
-- An experience timeline whose line fills as you scroll.
-- Education, certifications and languages in a glass bento with animated level bars.
-- A contact section with a magnetic email card that copies the address on click, plus GitHub and CV cards.
-- ASCII dinosaur "specimens" scattered through the page background with parallax; they light up in the accent colour around the cursor.
-- A playable ASCII-sprite dino runner in the footer (space, ↑, click or tap to jump), with the best score kept in localStorage.
-- Scroll reveal animations (rise and unblur) done with IntersectionObserver; everything respects prefers-reduced-motion.
+- A sticky, scroll aware navbar with an animated mobile menu.
+- A hero section with the name revealed letter by letter, profile stats, and an "about" card in liquid glass with an animated ASCII T-rex standing on it (it shimmers, scrambles near the cursor and runs on hover or tap).
+- Filterable skills: category tabs with an animated indicator and grouped chips.
+- Featured projects as cards that link out to each project's repo, and to the live URL when there is one. The selected project takes a larger slot and plays an animated demo that simulates its interface; "View demo" on any other card swaps it in.
+- An experience timeline with role and responsibility bullets.
+- Education, certifications and languages.
+- A contact section that copies email or phone to the clipboard with one click, plus a GitHub link.
+- Scroll reveal animations done with IntersectionObserver.
+- Liquid glass cards (backdrop blur, specular rim and a cursor-following sheen).
+- Faint ASCII dinosaurs across the page background, with parallax; they light up in purple around the cursor.
 - A downloadable CV served from public/.
 - SEO and OpenGraph metadata in the App Router layout.
 - Responsive layout and ARIA labels on interactive controls.
@@ -36,9 +33,9 @@ page.tsx  →  layout.tsx (providers)  →  section components  →  data + dict
 ```
 
 - Providers: LanguageProvider (EN/ES context) and ThemeProvider (dark/light context) wrap the page in layout.tsx.
-- Components: section components (Hero, Marquee, About, Skills, Projects, Experience, Education, Contact, Navbar, Footer) plus reusable primitives (Reveal, SectionHeading, ProjectCard, ThemeToggle, LanguageToggle), the ambient layers (Backdrop: aurora, grid, ASCII dinos), AsciiDino and DinoRunner.
-- Project demos: src/components/previews/ holds one simulated, self-running interface per project, drawn on a fixed 640×400 stage and scaled to fit its card. They are illustrations of each app, not the deployed apps.
-- ASCII art: the background specimens and the pixel T-rex sprite live in src/lib/ascii.ts.
+- Components: section components (Hero, Skills, Projects, Experience, Education, Contact, Navbar, Footer) plus reusable primitives (Reveal, SectionHeading, ProjectCard, ThemeToggle, LanguageToggle, Backdrop, AsciiDino).
+- Project demos: src/components/previews/ holds one simulated, self-running interface per project, drawn on a fixed 640×400 stage and scaled to fit the card. They illustrate each app; they are not the deployed apps.
+- ASCII art: the background dinosaurs and the pixel T-rex sprite live in src/lib/ascii.ts.
 - Data: profile, skills, projects, experience and education live in src/lib/data.ts. All visible text lives in src/i18n/locales/{en,es}.json.
 - Theming: CSS custom properties defined in src/app/globals.css, mapped into Tailwind via @theme.
 
@@ -64,8 +61,8 @@ flowchart LR
 - Language: TypeScript 5 (strict)
 - Styling: Tailwind CSS 4 (@tailwindcss/postcss)
 - Linting: ESLint (eslint-config-next core-web-vitals + typescript)
-- Animation: Motion (motion/react) for layout, scroll-linked and spring animations
-- Fonts: Geist / Geist Mono / Instrument Serif via next/font
+- Animation: Motion (motion/react)
+- Fonts: Geist / Geist Mono via next/font
 
 No backend, database, API routes or server side data fetching. The app is fully static.
 

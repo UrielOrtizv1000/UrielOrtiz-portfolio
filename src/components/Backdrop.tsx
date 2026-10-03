@@ -4,8 +4,7 @@ import { useEffect, useRef } from "react";
 import { motion, useScroll, useTransform, type MotionValue } from "motion/react";
 import { specimens } from "@/lib/ascii";
 
-/* Fixed aurora + grid behind everything, plus the pointer bookkeeping the
-   glass ".spot" sheen relies on. */
+/* Pointer bookkeeping for the glass ".spot" sheen. */
 export function Ambient() {
   useEffect(() => {
     if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
@@ -36,25 +35,15 @@ export function Ambient() {
     };
   }, []);
 
-  return (
-    <>
-      <div className="aurora" aria-hidden="true">
-        <span />
-        <span />
-        <span />
-        <span />
-      </div>
-      <div className="grid-lines" aria-hidden="true" />
-    </>
-  );
+  return null;
 }
 
 const placements = [
-  { id: "trex", top: "13%", side: "right", speed: 0.5 },
-  { id: "bronto", top: "33%", side: "left", speed: 0.8 },
-  { id: "ptero", top: "50%", side: "right", speed: 1.2 },
-  { id: "stego", top: "68%", side: "left", speed: 0.6 },
-  { id: "trex", top: "86%", side: "right", speed: 0.9 },
+  { id: "bronto", top: "22%", side: "left", speed: 0.8 },
+  { id: "ptero", top: "40%", side: "right", speed: 1.2 },
+  { id: "stego", top: "60%", side: "left", speed: 0.6 },
+  { id: "trex", top: "80%", side: "right", speed: 0.9 },
+  { id: "ptero", top: "94%", side: "left", speed: 0.5 },
 ] as const;
 
 function Specimens({ offsets }: { offsets: MotionValue<number>[] }) {
@@ -73,9 +62,6 @@ function Specimens({ offsets }: { offsets: MotionValue<number>[] }) {
             }}
           >
             <pre>{specimen.art}</pre>
-            <figcaption className="mt-3 text-[11px] uppercase tracking-[0.18em]">
-              ⌖ {specimen.label}
-            </figcaption>
           </motion.figure>
         );
       })}

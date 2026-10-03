@@ -1,17 +1,15 @@
 /* ASCII dinosaurs used across the site.
-   Line art lives in the page backdrop; the pixel sprite drives the hero
-   card and the footer runner game. */
+   Line art lives in the page backdrop; the pixel sprite drives the
+   animated T-rex in the hero. */
 
 export type AsciiSpecimen = {
   id: string;
-  label: string;
   art: string;
 };
 
 export const specimens: AsciiSpecimen[] = [
   {
     id: "trex",
-    label: "001 — Tyrannosaurus rex",
     art: String.raw`
                          _.--------.
                         /  o        \
@@ -30,7 +28,6 @@ export const specimens: AsciiSpecimen[] = [
   },
   {
     id: "bronto",
-    label: "002 — Brontosaurus",
     art: String.raw`
                                  __
                                 / o\_
@@ -48,7 +45,6 @@ export const specimens: AsciiSpecimen[] = [
   },
   {
     id: "ptero",
-    label: "003 — Pteranodon",
     art: String.raw`
        _                      _
        \'-._              _.-'/
@@ -59,7 +55,6 @@ export const specimens: AsciiSpecimen[] = [
   },
   {
     id: "stego",
-    label: "004 — Stegosaurus",
     art: String.raw`
               /\    /\    /\
          /\  /  \  /  \  /  \  /\
@@ -120,11 +115,6 @@ export const DINO_FRAMES = {
 
 export const DINO_W = 20;
 export const DINO_H = DINO_BODY.length + LEGS_STAND.length;
-
-export const CACTI = [
-  ["..#..", "#.#..", "#.#.#", "###.#", "..###", "..#..", "..#.."],
-  ["..#...", "..#..#", "#.#..#", "#.####", "###...", "..#...", "..#..."],
-];
 
 /* Density ramp, light → heavy */
 export const RAMP = " .:-=+*#%@";
