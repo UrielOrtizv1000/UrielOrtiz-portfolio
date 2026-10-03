@@ -59,7 +59,11 @@ export type Project = {
   name: string;
   tech: string[];
   github: string;
+  /* Public URL of a deployed build. When set, the project card offers a
+     "Live" tab that embeds it next to the built-in simulation. */
   live?: string;
+  /* Address shown in the preview window's URL bar. */
+  previewPath: string;
 };
 
 export const projects: { featured: Project[]; other: Project[] } = {
@@ -78,18 +82,21 @@ export const projects: { featured: Project[]; other: Project[] } = {
         "OpenTelemetry",
       ],
       github: "https://github.com/AzaelFajardo/Resilencia-Kubernetes",
+      previewPath: "localhost:3000/d/resilience",
     },
     {
       id: "bookiaStore",
       name: "bookIA-store",
       tech: ["Angular", "Node.js", "MySQL"],
       github: "https://github.com/UrielOrtizv1000/bookIA-store",
+      previewPath: "localhost:4200/catalogo",
     },
     {
       id: "ecommerceApi",
       name: "Ecommerce API — Team Tokioona",
       tech: ["HTML", "CSS", "JavaScript", "Node.js", "Express", "MySQL"],
       github: "https://github.com/UrielOrtizv1000/Ecommerce-API-EquipoTokioona",
+      previewPath: "localhost:3000/api",
     },
   ],
   other: [
@@ -98,21 +105,29 @@ export const projects: { featured: Project[]; other: Project[] } = {
       name: "NOVA",
       tech: ["Electron", "Cloudflare Tunnel"],
       github: "https://github.com/ejemplo/ejemplo",
+      previewPath: "nova://chat",
     },
     {
       id: "intercambioMagico",
       name: "Intercambio Mágico",
       tech: ["HTML5", "CSS3", "JavaScript", "Bootstrap", "LocalStorage"],
       github: "https://github.com/UrielOrtizv1000/gift-exchange-web-app",
+      previewPath: "localhost:5500/sorteo",
     },
     {
       id: "devprofile",
       name: "DevProfile",
       tech: ["React", "Vite", "Context API"],
       github: "https://github.com/UrielOrtizv1000/devprofile-cv-generator",
+      previewPath: "localhost:5173/editor",
     },
   ],
 };
+
+export const allProjects = [
+  ...projects.featured.map((p) => ({ ...p, featured: true })),
+  ...projects.other.map((p) => ({ ...p, featured: false })),
+];
 
 export type ExperienceItem = {
   id: string;

@@ -1,6 +1,6 @@
 {
   "nav": {
-    "research": "Research",
+    "research": "About",
     "projects": "Projects",
     "experience": "Experience",
     "education": "Education",
@@ -12,17 +12,41 @@
     "switchToDark": "Switch to dark mode"
   },
   "hero": {
-    "specialization": "Specialized in Frontend, Cloud & IT Support",
-    "role": "Computer Systems Engineering Student",
-    "tagline": "IT Support & Cloud Fundamentals · Frontend Development · English C1",
+    "available": "Open to opportunities",
+    "rolePrefix": "Studying",
+    "roleStrong": "Computer Systems Engineering",
+    "roleRest": "— focused on frontend, cloud & IT support.",
     "description": "I set up servers and self-host my own services — notes, movies, and P2P communication — and work with a method: plan first, follow it step by step, and debug at the close of every phase.",
     "viewProjects": "View Projects",
     "getInTouch": "Get in Touch",
+    "dinoHover": "hover me ↘",
+    "dinoTap": "tap me ↘",
+    "dinoRunning": "running!",
     "stats": [
-      { "label": "Semester", "value": "7th" },
-      { "label": "English", "value": "C1" },
-      { "label": "Focus", "value": "Frontend & Cloud" },
-      { "label": "Location", "value": "Aguascalientes, Mexico" }
+      {
+        "value": "7th",
+        "label": "Semester of Computer Systems Engineering"
+      },
+      {
+        "value": "C1",
+        "label": "Advanced English for working with international teams"
+      },
+      {
+        "value": "+6",
+        "label": "Projects built, from microservices to desktop apps"
+      },
+      {
+        "value": "50k",
+        "label": "Simulated users in Kubernetes resilience testing"
+      }
+    ]
+  },
+  "marquee": {
+    "words": [
+      "frontend",
+      "cloud",
+      "IT support",
+      "self-hosting"
     ]
   },
   "about": {
@@ -30,9 +54,18 @@
     "heading": "How I work",
     "summary": "Outside the classroom I set up servers for fun and run my own services — notes, movies and P2P communication — all self-hosted. I work with a method: plan first, follow it step by step, and debug and adjust at the end of each phase before moving on. Dog lover.",
     "values": [
-      { "title": "Self-hosting by default", "body": "I run and maintain my own services on hardware I administer, treating them like real production." },
-      { "title": "Method over speed", "body": "Plan first, then step by step, debugging at the close of every phase." },
-      { "title": "Documented and organized", "body": "Clean, documented, predictable work beats clever shortcuts." }
+      {
+        "title": "Self-hosting by default",
+        "body": "I run and maintain my own services on hardware I administer, treating them like real production."
+      },
+      {
+        "title": "Method over speed",
+        "body": "Plan first, then step by step, debugging at the close of every phase."
+      },
+      {
+        "title": "Documented and organized",
+        "body": "Clean, documented, predictable work beats clever shortcuts."
+      }
     ]
   },
   "skills": {
@@ -72,15 +105,21 @@
   },
   "projects": {
     "eyebrow": "Projects",
-    "title": "Featured work",
-    "description": "Academic and collaborative projects where I worked across the stack — from resilient microservices to full-stack storefronts.",
-    "toggleFeatured": "Featured",
-    "toggleOther": "Other projects",
-    "otherTitle": "Other projects",
-    "otherDescription": "Personal projects and tools I build and maintain on my own, from a private messaging app to a resume generator.",
+    "title": "Projects in action",
+    "description": "Six projects, from a Kubernetes cluster to a desktop app. Pick one to watch it grow and run: every card ships with an animated demo of its interface.",
     "code": "Code",
     "live": "Live",
-    "openAria": "Open {name}",
+    "openAria": "See {name} in action",
+    "hint": "Click any card to expand it. Hover the small ones for a quick peek.",
+    "hoverHint": "See it in action",
+    "simTab": "Demo",
+    "liveTab": "Live",
+    "simNote": "Simulated interface demo",
+    "liveNote": "Deployed site",
+    "featuredBadge": "Featured",
+    "myRole": "My role",
+    "prev": "Previous project",
+    "next": "Next project",
     "items": {
       "resilenciaKubernetes": {
         "description": "Microservices system that tests how an application behaves on Kubernetes when a service fails and how it recovers, built with Python, FastAPI, Docker and Docker Compose.",
@@ -154,8 +193,14 @@
     "period": "7th semester, in progress (2022 – Present)",
     "description": "Training focused on databases (design, normalization and administration) and on deploying web applications with a well-protected backend. Security is emphasized throughout the degree, from development agents to the final services.",
     "languagesList": [
-      { "name": "Spanish", "level": "Native" },
-      { "name": "English", "level": "Advanced (C1)" }
+      {
+        "name": "Spanish",
+        "level": "Native"
+      },
+      {
+        "name": "English",
+        "level": "Advanced (C1)"
+      }
     ]
   },
   "contact": {
@@ -165,12 +210,24 @@
     "emailLabel": "Email",
     "githubLabel": "GitHub",
     "copied": "Copied to clipboard",
-    "copyEmailAria": "Copy email to clipboard"
+    "copyEmailAria": "Copy email to clipboard",
+    "titleA": "Let's work",
+    "titleB": "together",
+    "cvLabel": "Résumé",
+    "cvAction": "Download PDF",
+    "githubAction": "Browse repositories"
   },
   "footer": {
     "rights": "All rights reserved.",
     "github": "GitHub",
     "email": "Email",
-    "cv": "CV"
+    "cv": "CV",
+    "gameTitle": "dino.exe",
+    "gameHint": "Space or tap to jump",
+    "gameStart": "Click to play",
+    "gameOver": "Game over · click to retry",
+    "score": "Score",
+    "best": "Best",
+    "backToTop": "Back to top"
   }
 }
