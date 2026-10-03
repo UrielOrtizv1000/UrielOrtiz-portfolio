@@ -16,11 +16,13 @@
   --accent-soft: rgba(168, 85, 247, 0.12);
   --glow-1: rgba(168, 85, 247, 0.16);
   --glow-2: rgba(147, 51, 234, 0.1);
-  --glass-fill: rgba(28, 26, 38, 0.55);
-  --glass-fill-2: rgba(18, 18, 24, 0.35);
-  --glass-rim: rgba(255, 255, 255, 0.16);
-  --glass-rim-dim: rgba(255, 255, 255, 0.04);
-  --glass-shadow: rgba(0, 0, 0, 0.45);
+  --glass-fill: rgba(255, 255, 255, 0.07);
+  --glass-fill-2: rgba(255, 255, 255, 0.02);
+  --glass-rim: rgba(255, 255, 255, 0.22);
+  --glass-rim-dim: rgba(255, 255, 255, 0.05);
+  --glass-inner: rgba(168, 85, 247, 0.16);
+  --glass-shadow: rgba(0, 0, 0, 0.5);
+  --glow-spot: rgba(147, 51, 234, 0.2);
   --spot: rgba(168, 85, 247, 0.14);
   --ascii-dim: rgba(168, 85, 247, 0.1);
   --ascii-lit: rgba(192, 132, 252, 0.75);
@@ -44,11 +46,13 @@
   --accent-soft: rgba(147, 51, 234, 0.1);
   --glow-1: rgba(168, 85, 247, 0.12);
   --glow-2: rgba(147, 51, 234, 0.08);
-  --glass-fill: rgba(255, 255, 255, 0.66);
-  --glass-fill-2: rgba(255, 255, 255, 0.42);
-  --glass-rim: rgba(255, 255, 255, 0.95);
-  --glass-rim-dim: rgba(255, 255, 255, 0.4);
-  --glass-shadow: rgba(76, 29, 149, 0.08);
+  --glass-fill: rgba(255, 255, 255, 0.58);
+  --glass-fill-2: rgba(255, 255, 255, 0.24);
+  --glass-rim: rgba(255, 255, 255, 1);
+  --glass-rim-dim: rgba(255, 255, 255, 0.5);
+  --glass-inner: rgba(147, 51, 234, 0.1);
+  --glass-shadow: rgba(76, 29, 149, 0.1);
+  --glow-spot: rgba(168, 85, 247, 0.16);
   --spot: rgba(147, 51, 234, 0.08);
   --ascii-dim: rgba(147, 51, 234, 0.1);
   --ascii-lit: rgba(126, 34, 206, 0.7);
@@ -195,14 +199,22 @@ path {
   .glass {
     position: relative;
     isolation: isolate;
-    background: linear-gradient(150deg, var(--glass-fill), var(--glass-fill-2));
-    -webkit-backdrop-filter: blur(18px) saturate(170%);
-    backdrop-filter: blur(18px) saturate(170%);
+    background: linear-gradient(160deg, var(--glass-fill), var(--glass-fill-2));
+    -webkit-backdrop-filter: blur(20px) saturate(180%) brightness(1.03);
+    backdrop-filter: blur(20px) saturate(180%) brightness(1.03);
     border: 1px solid var(--border);
     box-shadow:
-      inset 0 1px 0 0 var(--glass-rim-dim),
+      /* specular line along the top edge */
+      inset 0 1px 0 0 var(--glass-rim),
+      /* light pooling inside the top and tinted refraction at the bottom */
+      inset 0 14px 24px -20px var(--glass-rim-dim),
+      inset 0 -16px 28px -22px var(--glass-inner),
       0 1px 2px var(--glass-shadow),
-      0 16px 36px -22px var(--glass-shadow);
+      0 18px 40px -24px var(--glass-shadow);
+    transition:
+      box-shadow 300ms ease,
+      border-color 300ms ease,
+      transform 260ms var(--ease-out-strong);
   }
 
   /* Specular rim: catches light at the top-left and again at the bottom-right */
@@ -321,4 +333,59 @@ path {
 }
 .no-scrollbar::-webkit-scrollbar {
   display: none;
+}
+
+/* ── Soft purple light behind sections, for the glass to refract ─────── */
+
+.glow-spot {
+  position: absolute;
+  z-index: -2;
+  width: 38rem;
+  height: 38rem;
+  border-radius: 9999px;
+  pointer-events: none;
+  background: radial-gradient(circle, var(--glow-spot), transparent 65%);
+}
+
+/* ── Button animations ────────────────────────────────────────────────── */
+
+/* A highlight that sweeps across the button on hover */
+.btn-shine {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.btn-shine::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    110deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.42) 50%,
+    transparent 70%
+  );
+  transform: translateX(-120%);
+  transition: transform 750ms var(--ease-out-strong);
+  pointer-events: none;
+}
+.btn-shine:hover::after {
+  transform: translateX(120%);
+}
+
+@keyframes nudge-down {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(2px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-shine::after {
+    display: none;
+  }
 }

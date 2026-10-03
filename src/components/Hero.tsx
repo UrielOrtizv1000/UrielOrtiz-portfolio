@@ -5,6 +5,7 @@ import { motion } from "motion/react";
 import { useLanguage } from "@/i18n/LanguageProvider";
 import { profile } from "@/lib/data";
 import AsciiDino from "./AsciiDino";
+import Magnetic from "./Magnetic";
 import NetworkBackground from "./NetworkBackground";
 import ScrollReveal from "./Reveal";
 
@@ -89,18 +90,38 @@ export default function Hero() {
 
           <ScrollReveal delay={260}>
             <div className="mt-7 flex flex-wrap items-center gap-4">
-              <a
-                href="#projects"
-                className="hoverable press inline-flex items-center gap-2 rounded-lg bg-accent px-5 py-2.5 text-sm font-semibold text-white hover:bg-accent-strong hover:shadow-[0_0_24px_-4px_rgba(168,85,247,0.6)]"
-              >
-                {t("hero.viewProjects")}
-              </a>
-              <a
-                href="#contact"
-                className="glass hoverable press inline-flex items-center gap-2 rounded-lg px-5 py-2.5 text-sm font-semibold text-foreground hover:border-accent hover:text-accent"
-              >
-                {t("hero.getInTouch")}
-              </a>
+              <Magnetic>
+                <a
+                  href="#projects"
+                  className="btn-shine hoverable press group inline-flex items-center rounded-full bg-accent px-5 py-2.5 text-sm font-semibold text-white hover:bg-accent-strong hover:shadow-[0_0_24px_-4px_rgba(168,85,247,0.6)]"
+                >
+                  {t("hero.viewProjects")}
+                  <svg
+                    aria-hidden="true"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    className="h-3.5 w-0 opacity-0 transition-all duration-300 group-hover:ml-2 group-hover:w-3.5 group-hover:opacity-100"
+                  >
+                    <path d="M8 2.5v11m0 0L4 9.5M8 13.5l4-4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </a>
+              </Magnetic>
+              <Magnetic>
+                <a
+                  href="#contact"
+                  className="glass spot hoverable press group inline-flex items-center rounded-full px-5 py-2.5 text-sm font-semibold text-foreground hover:-translate-y-0.5 hover:border-accent/60 hover:text-accent"
+                >
+                  {t("hero.getInTouch")}
+                  <svg
+                    aria-hidden="true"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    className="h-3.5 w-0 opacity-0 transition-all duration-300 group-hover:ml-2 group-hover:w-3.5 group-hover:opacity-100"
+                  >
+                    <path d="M2.5 8h11m0 0L9.5 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </a>
+              </Magnetic>
             </div>
           </ScrollReveal>
 
@@ -146,11 +167,9 @@ export default function Hero() {
               </p>
 
               <ul className="mt-6 space-y-3.5 border-t border-border pt-5">
-                {values.map((item, i) => (
+                {values.map((item) => (
                   <li key={item.title} className="flex gap-3">
-                    <span className="mono-tag mt-px text-xs text-accent">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
+                    <span className="mt-[0.6rem] h-px w-2.5 flex-shrink-0 bg-accent" />
                     <div>
                       <p className="text-sm font-semibold text-foreground">
                         {item.title}

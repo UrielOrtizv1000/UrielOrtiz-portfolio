@@ -1,4 +1,4 @@
-import { AsciiDinos, Ambient } from "@/components/Backdrop";
+import { AsciiDinos, Ambient, GlowSpots } from "@/components/Backdrop";
 import Contact from "@/components/Contact";
 import Education from "@/components/Education";
 import Experience from "@/components/Experience";
@@ -16,6 +16,7 @@ export default function Home() {
       <ScrollProgress />
       <Navbar />
       <div className="relative flex flex-1 flex-col">
+        <GlowSpots />
         <AsciiDinos />
         <main className="flex-1">
           <Hero />

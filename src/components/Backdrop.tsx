@@ -38,6 +38,19 @@ export function Ambient() {
   return null;
 }
 
+/* Soft purple light pooled behind a few sections, so the glass cards have
+   something to blur and tint. Static on purpose: no drifting blobs. */
+export function GlowSpots() {
+  return (
+    <div className="pointer-events-none absolute inset-0 -z-[2] overflow-hidden" aria-hidden="true">
+      <span className="glow-spot -left-40 top-[14%]" />
+      <span className="glow-spot -right-48 top-[33%]" />
+      <span className="glow-spot -left-32 top-[55%]" />
+      <span className="glow-spot -right-40 top-[78%]" />
+    </div>
+  );
+}
+
 const placements = [
   { id: "bronto", top: "22%", side: "left", speed: 0.8 },
   { id: "ptero", top: "40%", side: "right", speed: 1.2 },

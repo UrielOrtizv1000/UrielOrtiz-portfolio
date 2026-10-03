@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useLanguage } from "@/i18n/LanguageProvider";
 import { profile } from "@/lib/data";
 import LanguageToggle from "./LanguageToggle";
+import Magnetic from "./Magnetic";
 import ThemeToggle from "./ThemeToggle";
 
 export default function Navbar() {
@@ -71,18 +72,18 @@ export default function Navbar() {
           <ThemeToggle />
           <LanguageToggle />
 
-          <div className="hidden md:block">
+          <Magnetic strength={0.2} className="hidden md:inline-flex">
             <a
               href={cvFile}
               download={cvFile}
-              className="hoverable press inline-flex items-center gap-2 rounded-lg bg-accent px-4 py-2 text-sm font-semibold text-white shadow-[0_0_0_1px_rgba(168,85,247,0.4)] hover:bg-accent-strong hover:shadow-[0_0_24px_-4px_rgba(168,85,247,0.6)]"
+              className="btn-shine hoverable press group inline-flex items-center gap-2 rounded-full bg-accent px-4 py-2 text-sm font-semibold text-white shadow-[0_0_0_1px_rgba(168,85,247,0.4)] hover:bg-accent-strong hover:shadow-[0_0_24px_-4px_rgba(168,85,247,0.6)]"
             >
               {t("nav.downloadCv")}
               <svg
                 aria-hidden="true"
                 viewBox="0 0 16 16"
                 fill="none"
-                className="h-3.5 w-3.5"
+                className="h-3.5 w-3.5 group-hover:animate-[nudge-down_0.9s_ease-in-out_infinite]"
               >
                 <path
                   d="M8 1.5v9m0 0L4.5 7M8 10.5L11.5 7M2.5 13.5h11"
@@ -93,14 +94,14 @@ export default function Navbar() {
                 />
               </svg>
             </a>
-          </div>
+          </Magnetic>
 
           <button
             type="button"
             onClick={() => setMenuOpen((v) => !v)}
             aria-label={menuOpen ? t("nav.closeMenu") : t("nav.openMenu")}
             aria-expanded={menuOpen}
-            className="press hoverable flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg text-foreground hover:bg-surface-2 md:hidden"
+            className="press hoverable flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full border border-border text-foreground md:hidden"
           >
             <svg
               aria-hidden="true"
@@ -129,7 +130,7 @@ export default function Navbar() {
       </nav>
 
       <div
-        className={`grid overflow-hidden border-b border-border bg-background/95 backdrop-blur-md transition-[grid-template-rows] duration-300 ease-out md:hidden ${
+        className={`grid overflow-hidden border-b border-border bg-background/85 backdrop-blur-xl backdrop-saturate-150 transition-[grid-template-rows] duration-300 ease-out md:hidden ${
           menuOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
         }`}
       >
@@ -151,7 +152,7 @@ export default function Navbar() {
                 href={cvFile}
                 download={cvFile}
                 onClick={() => setMenuOpen(false)}
-                className="press flex items-center justify-center gap-2 rounded-lg bg-accent px-4 py-2.5 text-sm font-semibold text-white hover:bg-accent-strong"
+                className="btn-shine press flex items-center justify-center gap-2 rounded-full bg-accent px-4 py-2.5 text-sm font-semibold text-white hover:bg-accent-strong"
               >
                 {t("nav.downloadCv")}
               </a>

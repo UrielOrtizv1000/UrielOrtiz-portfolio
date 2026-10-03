@@ -12,13 +12,14 @@ A single page, fully static React app. All content is data driven: text lives in
 - Light and dark themes built on CSS custom properties, applied before first paint so there's no flash.
 - A sticky, scroll aware navbar with an animated mobile menu.
 - A hero section with the name revealed letter by letter, profile stats, and an "about" card in liquid glass with an animated ASCII T-rex standing on it (it shimmers, scrambles near the cursor and runs on hover or tap).
-- Filterable skills: text tabs with a sliding underline and a live count; skill tiles reflow with a layout animation when filtering, and hovering one decodes its name out of ASCII glyphs and highlights the rest of its category.
+- Filterable skills: category tabs with a sliding indicator and one glass panel per category; filtering animates the panels in and out, and hovering a skill decodes its name out of ASCII glyphs.
 - Featured projects as cards that link out to each project's repo, and to the live URL when there is one. The selected project takes a larger slot and plays an animated demo that simulates its interface; "View demo" on any other card swaps it in.
 - An experience timeline with role and responsibility bullets.
 - Education, certifications and languages.
 - A contact section that copies email or phone to the clipboard with one click, plus a GitHub link.
 - Scroll reveal animations done with IntersectionObserver.
-- Liquid glass cards (backdrop blur, specular rim and a cursor-following sheen).
+- Liquid glass cards and controls (backdrop blur, specular rim, tinted inner light and a cursor-following sheen) over soft purple light spots.
+- Button animations: a shine sweep, a slight magnetic pull toward the cursor and small icon motions.
 - Faint ASCII dinosaurs across the page background, with parallax; they light up in purple around the cursor.
 - A downloadable CV served from public/.
 - SEO and OpenGraph metadata in the App Router layout.

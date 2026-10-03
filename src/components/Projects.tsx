@@ -7,7 +7,6 @@ import { projects } from "@/lib/data";
 import ProjectCard from "./ProjectCard";
 import ScrollReveal from "./Reveal";
 import SectionHeading from "./SectionHeading";
-import UnderlineTabs from "./UnderlineTabs";
 
 type ProjectGroup = "featured" | "other";
 
@@ -53,16 +52,30 @@ export default function Projects() {
             }
           />
 
-          <UnderlineTabs
-            tabs={[
-              { id: "featured", label: t("projects.toggleFeatured") },
-              { id: "other", label: t("projects.toggleOther") },
-            ]}
-            active={group}
-            onChange={(id) => switchGroup(id as ProjectGroup)}
-            layoutId="projects-tab"
-            className="flex-shrink-0"
-          />
+          <div className="glass flex flex-shrink-0 items-center gap-0.5 rounded-full p-0.5 text-xs font-bold">
+            {(["featured", "other"] as const).map((id) => (
+              <button
+                key={id}
+                type="button"
+                onClick={() => switchGroup(id)}
+                aria-pressed={group === id}
+                className={`press hoverable relative rounded-full px-3 py-1.5 transition-colors ${
+                  group === id ? "text-white" : "text-muted hover:text-foreground"
+                }`}
+              >
+                {group === id ? (
+                  <motion.span
+                    layoutId="projects-group-pill"
+                    className="absolute inset-0 rounded-full bg-accent"
+                    transition={{ type: "spring", stiffness: 400, damping: 32 }}
+                  />
+                ) : null}
+                <span className="relative">
+                  {id === "featured" ? t("projects.toggleFeatured") : t("projects.toggleOther")}
+                </span>
+              </button>
+            ))}
+          </div>
         </div>
       </ScrollReveal>
 

@@ -66,7 +66,7 @@ export default function Education() {
         </ScrollReveal>
 
         <ScrollReveal delay={100}>
-          <div className="h-full border-t border-border pt-6 lg:border-t-0 lg:border-l lg:pl-7 lg:pt-0">
+          <div className="glass spot hoverable rounded-2xl p-7">
             <h3 className="mono-tag text-[11px] uppercase tracking-[0.14em] text-muted-2">
               {t("education.languagesLabel")}
             </h3>
