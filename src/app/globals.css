@@ -328,13 +328,6 @@ path {
   animation: blink-caret 1s steps(1) infinite;
 }
 
-.no-scrollbar {
-  scrollbar-width: none;
-}
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-
 /* ── Soft purple light behind sections, for the glass to refract ─────── */
 
 .glow-spot {
