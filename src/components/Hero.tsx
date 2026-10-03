@@ -52,13 +52,10 @@ export default function Hero() {
         {/* Left: identity */}
         <div className="flex flex-col items-start">
           <ScrollReveal>
-            <span className="glass inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 text-xs font-medium text-muted">
-              <span className="relative flex h-1.5 w-1.5">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75" />
-                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-accent" />
-              </span>
-              {t("hero.specialization")}
-            </span>
+            <p className="mono-tag text-xs text-muted sm:text-sm">
+              <span className="text-accent">~$</span> {t("hero.specialization")}
+              <span className="caret ml-1 inline-block h-3.5 w-[7px] translate-y-[2px] bg-accent" />
+            </p>
           </ScrollReveal>
 
           <h1
@@ -94,13 +91,13 @@ export default function Hero() {
             <div className="mt-7 flex flex-wrap items-center gap-4">
               <a
                 href="#projects"
-                className="hoverable press inline-flex items-center gap-2 rounded-full bg-accent px-5 py-2.5 text-sm font-semibold text-white hover:bg-accent-strong hover:shadow-[0_0_24px_-4px_rgba(168,85,247,0.6)]"
+                className="hoverable press inline-flex items-center gap-2 rounded-lg bg-accent px-5 py-2.5 text-sm font-semibold text-white hover:bg-accent-strong hover:shadow-[0_0_24px_-4px_rgba(168,85,247,0.6)]"
               >
                 {t("hero.viewProjects")}
               </a>
               <a
                 href="#contact"
-                className="glass hoverable press inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold text-foreground hover:border-accent hover:text-accent"
+                className="glass hoverable press inline-flex items-center gap-2 rounded-lg px-5 py-2.5 text-sm font-semibold text-foreground hover:border-accent hover:text-accent"
               >
                 {t("hero.getInTouch")}
               </a>
@@ -149,9 +146,11 @@ export default function Hero() {
               </p>
 
               <ul className="mt-6 space-y-3.5 border-t border-border pt-5">
-                {values.map((item) => (
+                {values.map((item, i) => (
                   <li key={item.title} className="flex gap-3">
-                    <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent" />
+                    <span className="mono-tag mt-px text-xs text-accent">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
                     <div>
                       <p className="text-sm font-semibold text-foreground">
                         {item.title}

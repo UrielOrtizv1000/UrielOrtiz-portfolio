@@ -12,7 +12,7 @@ A single page, fully static React app. All content is data driven: text lives in
 - Light and dark themes built on CSS custom properties, applied before first paint so there's no flash.
 - A sticky, scroll aware navbar with an animated mobile menu.
 - A hero section with the name revealed letter by letter, profile stats, and an "about" card in liquid glass with an animated ASCII T-rex standing on it (it shimmers, scrambles near the cursor and runs on hover or tap).
-- Filterable skills: category tabs with an animated indicator and grouped chips.
+- Filterable skills: text tabs with a sliding underline and a live count; skill tiles reflow with a layout animation when filtering, and hovering one decodes its name out of ASCII glyphs and highlights the rest of its category.
 - Featured projects as cards that link out to each project's repo, and to the live URL when there is one. The selected project takes a larger slot and plays an animated demo that simulates its interface; "View demo" on any other card swaps it in.
 - An experience timeline with role and responsibility bullets.
 - Education, certifications and languages.

@@ -315,3 +315,10 @@ path {
 .caret {
   animation: blink-caret 1s steps(1) infinite;
 }
+
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}

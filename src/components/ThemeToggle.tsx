@@ -14,7 +14,7 @@ export default function ThemeToggle() {
       type="button"
       onClick={toggleTheme}
       aria-label={mounted ? t(isDark ? "nav.switchToLight" : "nav.switchToDark") : undefined}
-      className="press hoverable flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full border border-border text-foreground"
+      className="press hoverable flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg hover:bg-surface-2 text-foreground"
     >
       {isDark ? (
         <svg

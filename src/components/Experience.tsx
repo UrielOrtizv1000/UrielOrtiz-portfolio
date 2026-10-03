@@ -27,7 +27,7 @@ export default function Experience() {
           const period = t(`experience.items.${item.id}.period`);
           return (
             <ScrollReveal key={item.id} delay={index * 100} as="li" className="relative">
-              <span className="absolute -left-[7px] mt-1.5 h-3.5 w-3.5 rounded-full border-2 border-background bg-accent" />
+              <span className="absolute -left-[37px] top-7 z-10 h-2.5 w-2.5 rotate-45 bg-accent shadow-[0_0_0_4px_var(--background)] sm:-left-[45px]" />
               <div className="hoverable rounded-2xl glass spot p-6 hover:border-accent/50">
                 <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
                   <h3 className="text-base font-bold text-foreground">
@@ -45,7 +45,7 @@ export default function Experience() {
                 <ul className="mt-4 space-y-2.5">
                   {bullets.map((bullet) => (
                     <li key={bullet} className="flex gap-2.5 text-sm leading-relaxed text-muted-2">
-                      <span className="mt-2 h-1 w-1 flex-shrink-0 rounded-full bg-accent" />
+                      <span className="mt-[0.7rem] h-px w-2.5 flex-shrink-0 bg-accent" />
                       {bullet}
                     </li>
                   ))}

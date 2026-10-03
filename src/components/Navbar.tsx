@@ -75,7 +75,7 @@ export default function Navbar() {
             <a
               href={cvFile}
               download={cvFile}
-              className="hoverable press inline-flex items-center gap-2 rounded-full bg-accent px-4 py-2 text-sm font-semibold text-white shadow-[0_0_0_1px_rgba(168,85,247,0.4)] hover:bg-accent-strong hover:shadow-[0_0_24px_-4px_rgba(168,85,247,0.6)]"
+              className="hoverable press inline-flex items-center gap-2 rounded-lg bg-accent px-4 py-2 text-sm font-semibold text-white shadow-[0_0_0_1px_rgba(168,85,247,0.4)] hover:bg-accent-strong hover:shadow-[0_0_24px_-4px_rgba(168,85,247,0.6)]"
             >
               {t("nav.downloadCv")}
               <svg
@@ -100,7 +100,7 @@ export default function Navbar() {
             onClick={() => setMenuOpen((v) => !v)}
             aria-label={menuOpen ? t("nav.closeMenu") : t("nav.openMenu")}
             aria-expanded={menuOpen}
-            className="press hoverable flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full border border-border text-foreground md:hidden"
+            className="press hoverable flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg text-foreground hover:bg-surface-2 md:hidden"
           >
             <svg
               aria-hidden="true"
@@ -151,7 +151,7 @@ export default function Navbar() {
                 href={cvFile}
                 download={cvFile}
                 onClick={() => setMenuOpen(false)}
-                className="press flex items-center justify-center gap-2 rounded-full bg-accent px-4 py-2.5 text-sm font-semibold text-white hover:bg-accent-strong"
+                className="press flex items-center justify-center gap-2 rounded-lg bg-accent px-4 py-2.5 text-sm font-semibold text-white hover:bg-accent-strong"
               >
                 {t("nav.downloadCv")}
               </a>

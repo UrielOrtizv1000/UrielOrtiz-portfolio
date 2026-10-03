@@ -51,9 +51,8 @@ export default function ProjectCard({ project, selected, onSelect }: ProjectCard
               <Preview active={inView} lang={language} />
             </ScaledStage>
           </BrowserFrame>
-          <p className="mono-tag mt-2.5 flex items-center gap-1.5 px-1 text-[11px] text-muted-2">
-            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-accent" />
-            {t("projects.simNote")}
+          <p className="mono-tag mt-2.5 px-1 text-[11px] text-muted-2">
+            <span className="text-accent">{"//"}</span> {t("projects.simNote")}
           </p>
         </motion.div>
       ) : null}
@@ -71,7 +70,7 @@ export default function ProjectCard({ project, selected, onSelect }: ProjectCard
             target="_blank"
             rel="noopener noreferrer"
             aria-label={t("projects.openAria", { name: project.name })}
-            className="hoverable press flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full border border-border-strong text-muted transition-transform group-hover:rotate-45 group-hover:border-accent group-hover:text-accent"
+            className="hoverable press -mr-1.5 -mt-1 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-md text-muted transition-transform group-hover:rotate-45 group-hover:text-accent hover:bg-accent-soft"
           >
             <svg aria-hidden="true" viewBox="0 0 16 16" fill="none" className="h-3.5 w-3.5">
               <path
@@ -94,7 +93,7 @@ export default function ProjectCard({ project, selected, onSelect }: ProjectCard
             <ul className="mt-3 space-y-2">
               {bullets.map((bullet) => (
                 <li key={bullet} className="flex gap-2.5 text-sm leading-relaxed text-muted-2">
-                  <span className="mt-2 h-1 w-1 flex-shrink-0 rounded-full bg-accent" />
+                  <span className="mt-[0.7rem] h-px w-2.5 flex-shrink-0 bg-accent" />
                   {bullet}
                 </li>
               ))}
@@ -148,12 +147,12 @@ export default function ProjectCard({ project, selected, onSelect }: ProjectCard
             <button
               type="button"
               onClick={onSelect}
-              className="hoverable press ml-auto inline-flex items-center gap-1.5 rounded-full bg-accent-soft px-3 py-1.5 text-xs font-semibold text-accent hover:bg-accent hover:text-white"
+              className="hoverable press group/demo ml-auto inline-flex items-center gap-1.5 text-sm font-medium text-accent"
             >
-              <svg aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" className="h-3 w-3">
-                <path d="M4.5 3.2v9.6a.6.6 0 00.92.5l7.2-4.8a.6.6 0 000-1L5.42 2.7a.6.6 0 00-.92.5z" />
-              </svg>
               {t("projects.viewDemo")}
+              <svg aria-hidden="true" viewBox="0 0 16 16" fill="none" className="h-3.5 w-3.5 transition-transform duration-300 group-hover/demo:translate-x-1">
+                <path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
             </button>
           ) : null}
         </div>

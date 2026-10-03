@@ -7,6 +7,7 @@ import { projects } from "@/lib/data";
 import ProjectCard from "./ProjectCard";
 import ScrollReveal from "./Reveal";
 import SectionHeading from "./SectionHeading";
+import UnderlineTabs from "./UnderlineTabs";
 
 type ProjectGroup = "featured" | "other";
 
@@ -52,32 +53,16 @@ export default function Projects() {
             }
           />
 
-          <div className="flex flex-shrink-0 items-center gap-0.5 rounded-full border border-border p-0.5 text-xs font-bold">
-            <button
-              type="button"
-              onClick={() => switchGroup("featured")}
-              aria-pressed={isFeatured}
-              className={`press hoverable rounded-full px-3 py-1.5 transition-colors ${
-                isFeatured
-                  ? "bg-accent text-white"
-                  : "text-muted hover:text-foreground"
-              }`}
-            >
-              {t("projects.toggleFeatured")}
-            </button>
-            <button
-              type="button"
-              onClick={() => switchGroup("other")}
-              aria-pressed={!isFeatured}
-              className={`press hoverable rounded-full px-3 py-1.5 transition-colors ${
-                !isFeatured
-                  ? "bg-accent text-white"
-                  : "text-muted hover:text-foreground"
-              }`}
-            >
-              {t("projects.toggleOther")}
-            </button>
-          </div>
+          <UnderlineTabs
+            tabs={[
+              { id: "featured", label: t("projects.toggleFeatured") },
+              { id: "other", label: t("projects.toggleOther") },
+            ]}
+            active={group}
+            onChange={(id) => switchGroup(id as ProjectGroup)}
+            layoutId="projects-tab"
+            className="flex-shrink-0"
+          />
         </div>
       </ScrollReveal>
 
