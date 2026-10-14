@@ -1,117 +1,102 @@
 "use client";
 
+import Image from "next/image";
 import { useLanguage } from "@/i18n/LanguageProvider";
-import { profile } from "@/lib/data";
 import NetworkBackground from "./NetworkBackground";
+import Rich from "./Rich";
 import ScrollReveal from "./Reveal";
 
-type HeroStat = { label: string; value: string };
-type AboutValue = { title: string; body: string };
+type Fact = { label: string; value: string };
+
+const headline = "display text-[clamp(60px,11vw,160px)] leading-[0.9] tracking-[-0.005em]";
 
 export default function Hero() {
   const { t } = useLanguage();
-  const stats = t<HeroStat[]>("hero.stats");
-  const values = t<AboutValue[]>("about.values");
+  const facts = t<Fact[]>("hero.facts");
+  const alt = t("hero.imageAlt");
 
   return (
-    <section
-      id="top"
-      className="relative mx-auto max-w-6xl overflow-hidden px-6 pb-14 pt-14 sm:overflow-visible sm:px-8 sm:pb-20 sm:pt-20"
-    >
-      <div className="absolute inset-x-0 top-0 -z-0 h-[560px] opacity-70">
-        <NetworkBackground />
-      </div>
+    <>
+      <section
+        id="top"
+        className="relative flex min-h-[calc(100vh-70px)] flex-col justify-center gap-[clamp(20px,3vw,36px)] pb-8 pt-12"
+      >
+        {/* Full-bleed animated network, faded out toward the bottom edge */}
+        <div className="pointer-events-none absolute inset-y-0 left-1/2 w-screen -translate-x-1/2 opacity-85 [mask-image:linear-gradient(to_bottom,black_65%,transparent)]">
+          <NetworkBackground />
+        </div>
 
-      <div className="relative grid gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-14">
-        {/* Left: identity */}
-        <div className="flex flex-col items-start">
+        <div className="relative flex flex-wrap items-center gap-x-12 gap-y-5">
           <ScrollReveal>
-            <span className="hoverable inline-flex items-center gap-2 rounded-full border border-border-strong bg-surface px-3.5 py-1.5 text-xs font-medium text-muted">
-              <span className="relative flex h-1.5 w-1.5">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75" />
-                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-accent" />
-              </span>
-              {t("hero.specialization")}
-            </span>
-          </ScrollReveal>
-
-          <ScrollReveal delay={80}>
-            <h1 className="mt-5 max-w-2xl text-4xl font-extrabold tracking-tight text-foreground sm:text-6xl text-balance">
-              {profile.fullName}
+            <h1 className={headline}>
+              <Rich text={t("hero.greeting")} />
             </h1>
           </ScrollReveal>
-
-          <ScrollReveal delay={140}>
-            <p className="mono-tag mt-3 max-w-xl text-sm uppercase tracking-[0.08em] text-accent sm:text-base">
-              {t("hero.role")}
+          <ScrollReveal delay={120}>
+            <p className="max-w-[250px] text-[15px] leading-[1.55] text-muted">
+              <Rich text={t("hero.intro")} />
             </p>
-          </ScrollReveal>
-
-          <ScrollReveal delay={200}>
-            <p className="mt-4 max-w-xl text-base leading-relaxed text-muted sm:text-lg">
-              {t("hero.tagline")}. {t("hero.description")}
-            </p>
-          </ScrollReveal>
-
-          <ScrollReveal delay={260}>
-            <div className="mt-7 flex flex-wrap items-center gap-4">
-              <a
-                href="#projects"
-                className="hoverable press inline-flex items-center gap-2 rounded-full bg-accent px-5 py-2.5 text-sm font-semibold text-white hover:bg-accent-strong hover:shadow-[0_0_24px_-4px_rgba(168,85,247,0.6)]"
-              >
-                {t("hero.viewProjects")}
-              </a>
-              <a
-                href="#contact"
-                className="hoverable press inline-flex items-center gap-2 rounded-full border border-border-strong bg-surface px-5 py-2.5 text-sm font-semibold text-foreground hover:border-accent hover:text-accent"
-              >
-                {t("hero.getInTouch")}
-              </a>
-            </div>
-          </ScrollReveal>
-
-          <ScrollReveal delay={320} className="w-full">
-            <dl className="mt-8 grid w-full max-w-xl grid-cols-2 gap-5 border-t border-border pt-6 sm:grid-cols-4">
-              {stats.map((stat) => (
-                <div key={stat.label}>
-                  <dt className="text-xs uppercase tracking-wide text-muted-2">
-                    {stat.label}
-                  </dt>
-                  <dd className="mono-tag mt-1 text-base font-bold text-foreground sm:text-lg">
-                    {stat.value}
-                  </dd>
-                </div>
-              ))}
-            </dl>
           </ScrollReveal>
         </div>
 
-        {/* Right: about */}
-        <ScrollReveal delay={140} id="about" className="scroll-mt-24">
-          <div className="hoverable h-full rounded-2xl border border-border bg-surface p-6 sm:p-7">
-            <h2 className="text-xl font-extrabold tracking-tight text-foreground sm:text-2xl">
-              {t("about.heading")}
-            </h2>
-            <p className="mt-3 text-sm leading-relaxed text-muted sm:text-base">
-              {t("about.summary")}
+        <div className="relative flex flex-wrap-reverse items-center gap-x-12 gap-y-5">
+          <ScrollReveal delay={200}>
+            <p className="max-w-[250px] text-[15px] leading-[1.55] text-muted">
+              <Rich text={t("hero.intro2")} />
             </p>
+          </ScrollReveal>
+          <ScrollReveal delay={280}>
+            <p className={headline}>
+              <Rich text={t("hero.headline")} />
+            </p>
+          </ScrollReveal>
+        </div>
 
-            <ul className="mt-6 space-y-3.5 border-t border-border pt-5">
-              {values.map((item) => (
-                <li key={item.title} className="flex gap-3">
-                  <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent" />
-                  <div>
-                    <p className="text-sm font-semibold text-foreground">
-                      {item.title}
-                    </p>
-                    <p className="mt-0.5 text-sm text-muted">{item.body}</p>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </div>
+        <ScrollReveal
+          delay={360}
+          className="pointer-events-none absolute bottom-24 right-[clamp(0px,4vw,53px)] z-[2] hidden min-[900px]:block"
+        >
+          <Image
+            src="/assets/lego-wave.webp"
+            alt={alt}
+            width={293}
+            height={440}
+            priority
+            className="h-[440px] w-[293px] drop-shadow-[0_30px_40px_rgba(0,0,0,0.45)]"
+          />
         </ScrollReveal>
-      </div>
-    </section>
+        <Image
+          src="/assets/lego-wave.webp"
+          alt={alt}
+          width={200}
+          height={300}
+          priority
+          className="relative h-[300px] w-auto self-center drop-shadow-[0_20px_30px_rgba(0,0,0,0.45)] min-[900px]:hidden"
+        />
+
+        <a
+          href="#about"
+          className="label-cond relative z-[3] mx-auto mt-[clamp(32px,6vh,72px)] flex flex-col items-center gap-2.5 text-sm tracking-[0.06em] hover:text-accent"
+        >
+          {t("hero.scrollCue")}
+          <span className="block h-11 w-[1.5px] overflow-hidden">
+            <span className="scroll-cue-line block h-full w-full bg-current" />
+          </span>
+        </a>
+      </section>
+
+      <ScrollReveal>
+        <dl className="grid grid-cols-[repeat(auto-fit,minmax(150px,1fr))] gap-x-6 gap-y-2 rounded-3xl border border-border bg-surface px-[clamp(20px,3vw,36px)] py-2.5">
+          {facts.map((fact) => (
+            <div key={fact.label} className="flex flex-col gap-1.5 py-[18px]">
+              <dt className="font-mono text-[11px] uppercase tracking-[0.06em] text-muted-2">
+                {fact.label}
+              </dt>
+              <dd className="display text-2xl leading-[1.05]">{fact.value}</dd>
+            </div>
+          ))}
+        </dl>
+      </ScrollReveal>
+    </>
   );
 }

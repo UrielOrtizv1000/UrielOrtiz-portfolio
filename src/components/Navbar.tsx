@@ -6,25 +6,30 @@ import { profile } from "@/lib/data";
 import LanguageToggle from "./LanguageToggle";
 import ThemeToggle from "./ThemeToggle";
 
+const SECTIONS = ["about", "skills", "projects", "experience", "education", "contact"] as const;
+
 export default function Navbar() {
   const { t, language } = useLanguage();
-  const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [active, setActive] = useState<string>("");
   const cvFile = profile.cvFiles[language];
 
-  const links = [
-    { label: t("nav.research"), href: "#about" },
-    { label: t("nav.projects"), href: "#projects" },
-    { label: t("nav.experience"), href: "#experience" },
-    { label: t("nav.education"), href: "#education" },
-    { label: t("nav.contact"), href: "#contact" },
-  ];
+  const links = SECTIONS.map((id) => ({ id, label: t(`nav.${id}`), href: `#${id}` }));
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) setActive(entry.target.id);
+        }
+      },
+      { rootMargin: "-45% 0px -50% 0px" }
+    );
+    for (const id of SECTIONS) {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    }
+    return () => observer.disconnect();
   }, []);
 
   useEffect(() => {
@@ -36,30 +41,23 @@ export default function Navbar() {
   }, [menuOpen]);
 
   return (
-    <header
-      className={`hoverable sticky top-0 z-50 border-b transition-colors ${
-        scrolled
-          ? "border-border bg-background/80 backdrop-blur-md"
-          : "border-transparent bg-transparent"
-      }`}
-    >
-      <nav className="mx-auto flex h-16 max-w-6xl items-center gap-4 px-6 sm:px-8">
-        <a
-          href="#top"
-          className="press flex items-baseline gap-1.5 text-base font-semibold tracking-tight text-foreground"
-        >
-          {profile.name}
-          <span className="mono-tag text-sm font-normal text-muted-2">
-            ({profile.version})
+    <header className="sticky top-0 z-40 bg-[var(--nav)] backdrop-blur-[10px]">
+      <nav className="mx-auto flex max-w-[1240px] items-center gap-4 px-[clamp(20px,4vw,48px)] py-3.5">
+        <a href="#top" className="press flex items-baseline gap-2 whitespace-nowrap">
+          <span className="text-[22px] font-extrabold leading-none tracking-[-0.04em] [font-stretch:125%]">
+            UO<span className="text-brand">.</span>
           </span>
+          <span className="font-mono text-xs text-muted-2">({profile.version})</span>
         </a>
 
-        <ul className="hidden items-center gap-8 md:flex">
+        <ul className="ml-auto hidden items-center md:flex">
           {links.map((link) => (
-            <li key={link.href}>
+            <li key={link.id}>
               <a
                 href={link.href}
-                className="hoverable press text-sm font-medium text-muted hover:text-foreground"
+                className={`hoverable label-cond block whitespace-nowrap px-2 py-[7px] text-base hover:text-accent ${
+                  active === link.id ? "text-accent" : "text-foreground"
+                }`}
               >
                 {link.label}
               </a>
@@ -67,61 +65,39 @@ export default function Navbar() {
           ))}
         </ul>
 
-        <div className="ml-auto flex items-center gap-2">
+        <div className="ml-auto flex shrink-0 items-center gap-2 md:ml-0">
           <ThemeToggle />
           <LanguageToggle />
 
-          <div className="hidden md:block">
-            <a
-              href={cvFile}
-              download={cvFile}
-              className="hoverable press inline-flex items-center gap-2 rounded-full bg-accent px-4 py-2 text-sm font-semibold text-white shadow-[0_0_0_1px_rgba(168,85,247,0.4)] hover:bg-accent-strong hover:shadow-[0_0_24px_-4px_rgba(168,85,247,0.6)]"
-            >
-              {t("nav.downloadCv")}
-              <svg
-                aria-hidden="true"
-                viewBox="0 0 16 16"
-                fill="none"
-                className="h-3.5 w-3.5"
-              >
-                <path
-                  d="M8 1.5v9m0 0L4.5 7M8 10.5L11.5 7M2.5 13.5h11"
-                  stroke="currentColor"
-                  strokeWidth="1.4"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </a>
-          </div>
+          <a
+            href={cvFile}
+            download={cvFile}
+            className="hoverable press label-cond hidden items-center gap-1.5 whitespace-nowrap rounded-full bg-brand px-4 py-[9px] text-[15px] !text-white hover:bg-brand-strong md:flex"
+          >
+            {t("nav.downloadCv")}
+            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" className="h-3 w-3">
+              <path
+                d="M12 4v11M7 10l5 5 5-5M5 20h14"
+                stroke="currentColor"
+                strokeWidth="2.2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </a>
 
           <button
             type="button"
             onClick={() => setMenuOpen((v) => !v)}
             aria-label={menuOpen ? t("nav.closeMenu") : t("nav.openMenu")}
             aria-expanded={menuOpen}
-            className="press hoverable flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full border border-border text-foreground md:hidden"
+            className="press hoverable flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-border-strong text-foreground md:hidden"
           >
-            <svg
-              aria-hidden="true"
-              viewBox="0 0 20 20"
-              fill="none"
-              className="h-4 w-4"
-            >
+            <svg aria-hidden="true" viewBox="0 0 20 20" fill="none" className="h-4 w-4">
               {menuOpen ? (
-                <path
-                  d="M5 5l10 10M15 5L5 15"
-                  stroke="currentColor"
-                  strokeWidth="1.6"
-                  strokeLinecap="round"
-                />
+                <path d="M5 5l10 10M15 5L5 15" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
               ) : (
-                <path
-                  d="M3 6h14M3 10h14M3 14h14"
-                  stroke="currentColor"
-                  strokeWidth="1.6"
-                  strokeLinecap="round"
-                />
+                <path d="M3 6h14M3 10h14M3 14h14" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
               )}
             </svg>
           </button>
@@ -129,18 +105,20 @@ export default function Navbar() {
       </nav>
 
       <div
-        className={`grid overflow-hidden border-b border-border bg-background/95 backdrop-blur-md transition-[grid-template-rows] duration-300 ease-out md:hidden ${
+        className={`grid overflow-hidden bg-[var(--nav)] backdrop-blur-[10px] transition-[grid-template-rows] duration-300 ease-out md:hidden ${
           menuOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
         }`}
       >
         <div className="min-h-0">
-          <ul className="flex flex-col gap-1 px-6 py-4">
+          <ul className="flex flex-col gap-1 px-[clamp(20px,4vw,48px)] pb-4 pt-2">
             {links.map((link) => (
-              <li key={link.href}>
+              <li key={link.id}>
                 <a
                   href={link.href}
                   onClick={() => setMenuOpen(false)}
-                  className="press block rounded-lg px-3 py-2.5 text-sm font-medium text-muted hover:bg-surface hover:text-foreground"
+                  className={`label-cond block rounded-lg px-3 py-2.5 text-lg hover:bg-surface hover:text-accent ${
+                    active === link.id ? "text-accent" : "text-foreground"
+                  }`}
                 >
                   {link.label}
                 </a>
@@ -151,7 +129,7 @@ export default function Navbar() {
                 href={cvFile}
                 download={cvFile}
                 onClick={() => setMenuOpen(false)}
-                className="press flex items-center justify-center gap-2 rounded-full bg-accent px-4 py-2.5 text-sm font-semibold text-white hover:bg-accent-strong"
+                className="label-cond flex items-center justify-center gap-2 rounded-full bg-brand px-4 py-2.5 text-lg !text-white hover:bg-brand-strong"
               >
                 {t("nav.downloadCv")}
               </a>

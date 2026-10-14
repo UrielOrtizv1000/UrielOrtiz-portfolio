@@ -97,7 +97,7 @@ export const projects: { featured: Project[]; other: Project[] } = {
       id: "nova",
       name: "NOVA",
       tech: ["Electron", "Cloudflare Tunnel"],
-      github: "https://github.com/ejemplo/ejemplo",
+      github: "https://github.com/UrielOrtizv1000",
     },
     {
       id: "intercambioMagico",
@@ -126,7 +126,7 @@ export const experience: ExperienceItem[] = [
   },
   {
     id: "alphabiotista",
-    company: "Centro Alphabiotista de Corrección y Balanceo",
+    company: "Centro Alphabiotista",
   },
 ];
 
@@ -143,6 +143,6 @@ export const education: EducationItem[] = [
 ];
 
 export const courses = [
-  { name: "ITIL 4 Foundation: Service Management", provider: "Udemy" },
-  { name: "Microsoft Azure Administrator Associate (AZ-104)", provider: "Udemy" },
+  { name: "ITIL 4 Foundation", provider: "Udemy" },
+  { name: "Azure Administrator (AZ-104)", provider: "Udemy" },
 ];

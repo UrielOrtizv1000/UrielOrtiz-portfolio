@@ -71,8 +71,8 @@ export default function NetworkBackground() {
       ctx.clearRect(0, 0, width, height);
       for (const n of nodes) {
         ctx.beginPath();
-        ctx.arc(n.x, n.y, 1.4, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(${accentColor}, 0.5)`;
+        ctx.arc(n.x, n.y, 2.2, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${accentColor}, 0.85)`;
         ctx.fill();
       }
     };
@@ -111,7 +111,7 @@ export default function NetworkBackground() {
             ctx.beginPath();
             ctx.moveTo(a.x, a.y);
             ctx.lineTo(b.x, b.y);
-            ctx.strokeStyle = `rgba(${accentColor}, ${(1 - dist / LINK_DISTANCE) * 0.22})`;
+            ctx.strokeStyle = `rgba(${accentColor}, ${(1 - dist / LINK_DISTANCE) * 0.38})`;
             ctx.lineWidth = 1;
             ctx.stroke();
           }
@@ -120,8 +120,8 @@ export default function NetworkBackground() {
 
       for (const n of nodes) {
         ctx.beginPath();
-        ctx.arc(n.x, n.y, 1.4, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(${accentColor}, 0.55)`;
+        ctx.arc(n.x, n.y, 2.2, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${accentColor}, 0.9)`;
         ctx.fill();
       }
 

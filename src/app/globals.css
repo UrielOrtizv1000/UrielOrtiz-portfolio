@@ -1,17 +1,21 @@
 @import "tailwindcss";
 
 :root {
-  --background: #08080c;
-  --surface: #121218;
-  --surface-2: #191922;
-  --border: rgba(255, 255, 255, 0.08);
-  --border-strong: rgba(255, 255, 255, 0.14);
-  --foreground: #f4f4f7;
-  --muted: #a1a1ae;
-  --muted-2: #6f6f7d;
-  --accent: #a855f7;
-  --accent-strong: #9333ea;
-  --accent-soft: rgba(168, 85, 247, 0.12);
+  --background: #121214;
+  --nav: rgba(18, 18, 20, 0.85);
+  --surface: #1b1a1f;
+  --surface-2: #232228;
+  --border: #26252a;
+  --border-strong: #36353c;
+  --foreground: #f2f1f4;
+  --heading: #e9e8ec;
+  --body: #d4d2d9;
+  --muted: #a3a1aa;
+  --muted-2: #7c7a84;
+  --accent: #a66ef0;
+  --accent-soft: rgba(166, 110, 240, 0.12);
+  --brand: #9333ea;
+  --brand-strong: #7e22ce;
   --glow-1: rgba(168, 85, 247, 0.16);
   --glow-2: rgba(147, 51, 234, 0.1);
   color-scheme: dark;
@@ -21,17 +25,19 @@
 }
 
 :root[data-theme="light"] {
-  --background: #f7f6fb;
-  --surface: #ffffff;
-  --surface-2: #f0eef7;
-  --border: rgba(23, 20, 33, 0.08);
-  --border-strong: rgba(23, 20, 33, 0.14);
-  --foreground: #18151f;
-  --muted: #55516a;
-  --muted-2: #83809a;
-  --accent: #9333ea;
-  --accent-strong: #7e22ce;
-  --accent-soft: rgba(147, 51, 234, 0.1);
+  --background: #f3f2ef;
+  --nav: rgba(243, 242, 239, 0.88);
+  --surface: #e9e7e1;
+  --surface-2: #dfddd6;
+  --border: #dddbd5;
+  --border-strong: #c9c6bf;
+  --foreground: #141316;
+  --heading: #161519;
+  --body: #2c2a31;
+  --muted: #58555e;
+  --muted-2: #6f6c75;
+  --accent: #7e22ce;
+  --accent-soft: rgba(126, 34, 206, 0.1);
   --glow-1: rgba(168, 85, 247, 0.12);
   --glow-2: rgba(147, 51, 234, 0.08);
   color-scheme: light;
@@ -44,13 +50,17 @@
   --color-border: var(--border);
   --color-border-strong: var(--border-strong);
   --color-foreground: var(--foreground);
+  --color-heading: var(--heading);
+  --color-body: var(--body);
   --color-muted: var(--muted);
   --color-muted-2: var(--muted-2);
   --color-accent: var(--accent);
-  --color-accent-strong: var(--accent-strong);
   --color-accent-soft: var(--accent-soft);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-brand: var(--brand);
+  --color-brand-strong: var(--brand-strong);
+  --font-sans: var(--font-archivo);
+  --font-mono: var(--font-jetbrains);
+  --font-serif: var(--font-instrument);
 }
 
 * {
@@ -59,12 +69,14 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 72px;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  font-family: var(--font-archivo), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 
 body {
@@ -106,8 +118,24 @@ path {
 }
 
 ::selection {
-  background: var(--accent);
+  background: var(--brand);
   color: white;
+}
+
+/* Condensed uppercase display type (Archivo, width axis 62%) */
+.display {
+  font-weight: 700;
+  font-stretch: 62%;
+  text-transform: uppercase;
+  color: var(--heading);
+}
+
+/* Small uppercase label in the condensed face (nav links, pills, buttons) */
+.label-cond {
+  font-weight: 700;
+  font-stretch: 62%;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 
 /* Press feedback for interactive elements */
@@ -142,10 +170,36 @@ path {
   transform: translateY(0);
 }
 
+/* "See my work" cue line */
+@keyframes drop {
+  0% {
+    transform: scaleY(0);
+    transform-origin: top;
+  }
+  50% {
+    transform: scaleY(1);
+    transform-origin: top;
+  }
+  50.01% {
+    transform-origin: bottom;
+  }
+  100% {
+    transform: scaleY(0);
+    transform-origin: bottom;
+  }
+}
+.scroll-cue-line {
+  animation: drop 2s var(--ease-in-out-strong) infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .reveal {
     transition: opacity 300ms ease;
     transform: none;
+  }
+  .scroll-cue-line {
+    animation: none;
+    transform: scaleY(1);
   }
   html {
     scroll-behavior: auto;
@@ -154,10 +208,4 @@ path {
 
 .text-balance {
   text-wrap: balance;
-}
-
-/* Mono face for technical accents (labels, levels, dates) */
-.mono-tag {
-  font-family: var(--font-mono), ui-monospace, monospace;
-  letter-spacing: -0.01em;
 }

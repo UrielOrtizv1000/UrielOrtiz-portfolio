@@ -4,8 +4,8 @@ import { useState } from "react";
 import { useLanguage } from "@/i18n/LanguageProvider";
 import { projects } from "@/lib/data";
 import ProjectCard from "./ProjectCard";
+import Rich from "./Rich";
 import ScrollReveal from "./Reveal";
-import SectionHeading from "./SectionHeading";
 
 type ProjectGroup = "featured" | "other";
 
@@ -16,57 +16,48 @@ export default function Projects() {
   const isFeatured = group === "featured";
   const activeProjects = isFeatured ? projects.featured : projects.other;
 
-  return (
-    <section
-      id="projects"
-      className="mx-auto max-w-6xl border-t border-border px-6 py-14 sm:px-8 sm:py-20"
-    >
-      <ScrollReveal>
-        <div className="flex flex-wrap items-start justify-between gap-4">
-          <SectionHeading
-            eyebrow={t("projects.eyebrow")}
-            title={isFeatured ? t("projects.title") : t("projects.otherTitle")}
-            description={
-              isFeatured ? t("projects.description") : t("projects.otherDescription")
-            }
-          />
+  const tabs: { id: ProjectGroup; label: string }[] = [
+    { id: "featured", label: t("projects.toggleFeatured") },
+    { id: "other", label: t("projects.toggleOther") },
+  ];
 
-          <div className="flex flex-shrink-0 items-center gap-0.5 rounded-full border border-border p-0.5 text-xs font-bold">
-            <button
-              type="button"
-              onClick={() => setGroup("featured")}
-              aria-pressed={isFeatured}
-              className={`press hoverable rounded-full px-3 py-1.5 transition-colors ${
-                isFeatured
-                  ? "bg-accent text-white"
-                  : "text-muted hover:text-foreground"
-              }`}
-            >
-              {t("projects.toggleFeatured")}
-            </button>
-            <button
-              type="button"
-              onClick={() => setGroup("other")}
-              aria-pressed={!isFeatured}
-              className={`press hoverable rounded-full px-3 py-1.5 transition-colors ${
-                !isFeatured
-                  ? "bg-accent text-white"
-                  : "text-muted hover:text-foreground"
-              }`}
-            >
-              {t("projects.toggleOther")}
-            </button>
+  return (
+    <section id="projects" className="flex flex-col gap-10 py-[clamp(110px,13vw,180px)]">
+      <ScrollReveal>
+        <div className="flex flex-wrap items-end justify-between gap-x-12 gap-y-5">
+          <h2 className="display text-[clamp(46px,7vw,100px)] leading-[0.92]">
+            <Rich text={t(isFeatured ? "projects.titleFeatured" : "projects.titleOther")} />
+          </h2>
+          <div className="flex gap-1.5 pb-2">
+            {tabs.map((tab) => {
+              const on = group === tab.id;
+              return (
+                <button
+                  key={tab.id}
+                  type="button"
+                  onClick={() => setGroup(tab.id)}
+                  aria-pressed={on}
+                  className={`press hoverable label-cond rounded-full border px-3.5 py-2 text-base tracking-[0.03em] ${
+                    on
+                      ? "border-foreground bg-foreground text-background"
+                      : "border-border-strong text-muted hover:text-foreground"
+                  }`}
+                >
+                  {tab.label}
+                </button>
+              );
+            })}
           </div>
         </div>
       </ScrollReveal>
 
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <ol key={group} className="flex flex-col">
         {activeProjects.map((project, index) => (
-          <ScrollReveal key={project.id} delay={index * 90} className="h-full">
+          <ScrollReveal key={project.id} as="li" delay={index * 90}>
             <ProjectCard project={project} />
           </ScrollReveal>
         ))}
-      </div>
+      </ol>
     </section>
   );
 }
