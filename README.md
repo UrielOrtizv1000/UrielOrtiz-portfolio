@@ -122,7 +122,7 @@ There are no unit or browser tests yet. Run the same validation gates as CI:
 
 ```bash
 npm run lint
-npx tsc --noEmit
+npx next typegen && npx tsc --noEmit
 npm audit --omit=dev --audit-level=high
 npm run build
 ```
