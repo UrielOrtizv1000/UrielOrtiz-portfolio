@@ -21,8 +21,8 @@ export default function SectionHeading({
         centered ? "items-center justify-center" : "items-end"
       }`}
     >
-      <div className="flex flex-col gap-4">
-        <h2 className="display text-[clamp(46px,7vw,100px)] leading-[0.92]">
+      <div className="min-w-0 max-w-full flex flex-col gap-4">
+        <h2 className="display text-balance text-[clamp(36px,7vw,100px)] leading-[1.02]">
           <Rich text={title} />
         </h2>
         {description ? (

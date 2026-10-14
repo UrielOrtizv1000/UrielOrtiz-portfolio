@@ -35,8 +35,22 @@ export default function Navbar() {
   useEffect(() => {
     if (!menuOpen) return;
     document.body.style.overflow = "hidden";
+    const desktop = window.matchMedia("(min-width: 1100px)");
+    const closeOnDesktop = () => {
+      if (desktop.matches) setMenuOpen(false);
+    };
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setMenuOpen(false);
+        document.querySelector<HTMLButtonElement>('[aria-controls="mobile-navigation"]')?.focus();
+      }
+    };
+    desktop.addEventListener("change", closeOnDesktop);
+    window.addEventListener("keydown", closeOnEscape);
     return () => {
       document.body.style.overflow = "";
+      desktop.removeEventListener("change", closeOnDesktop);
+      window.removeEventListener("keydown", closeOnEscape);
     };
   }, [menuOpen]);
 
@@ -50,7 +64,7 @@ export default function Navbar() {
           <span className="font-mono text-xs text-muted-2">({profile.version})</span>
         </a>
 
-        <ul className="ml-auto hidden items-center md:flex">
+        <ul className="ml-auto hidden items-center min-[1100px]:flex">
           {links.map((link) => (
             <li key={link.id}>
               <a
@@ -65,14 +79,14 @@ export default function Navbar() {
           ))}
         </ul>
 
-        <div className="ml-auto flex shrink-0 items-center gap-2 md:ml-0">
+        <div className="ml-auto flex shrink-0 items-center gap-2 min-[1100px]:ml-0">
           <ThemeToggle />
           <LanguageToggle />
 
           <a
             href={cvFile}
             download={cvFile}
-            className="hoverable press label-cond hidden items-center gap-1.5 whitespace-nowrap rounded-full bg-brand px-4 py-[9px] text-[15px] !text-white hover:bg-brand-strong md:flex"
+            className="hoverable press label-cond hidden items-center gap-1.5 whitespace-nowrap rounded-full bg-brand px-4 py-[9px] text-[15px] !text-white hover:bg-brand-strong min-[1100px]:flex"
           >
             {t("nav.downloadCv")}
             <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" className="h-3 w-3">
@@ -91,7 +105,8 @@ export default function Navbar() {
             onClick={() => setMenuOpen((v) => !v)}
             aria-label={menuOpen ? t("nav.closeMenu") : t("nav.openMenu")}
             aria-expanded={menuOpen}
-            className="press hoverable flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-border-strong text-foreground md:hidden"
+            aria-controls="mobile-navigation"
+            className="press hoverable flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-border-strong text-foreground min-[1100px]:hidden"
           >
             <svg aria-hidden="true" viewBox="0 0 20 20" fill="none" className="h-4 w-4">
               {menuOpen ? (
@@ -105,11 +120,13 @@ export default function Navbar() {
       </nav>
 
       <div
-        className={`grid overflow-hidden bg-[var(--nav)] backdrop-blur-[10px] transition-[grid-template-rows] duration-300 ease-out md:hidden ${
+        id="mobile-navigation"
+        inert={!menuOpen}
+        className={`grid overflow-hidden bg-[var(--nav)] backdrop-blur-[10px] transition-[grid-template-rows] duration-300 ease-out min-[1100px]:hidden ${
           menuOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
         }`}
       >
-        <div className="min-h-0">
+        <div className="min-h-0 max-h-[calc(100dvh-72px)] overflow-y-auto">
           <ul className="flex flex-col gap-1 px-[clamp(20px,4vw,48px)] pb-4 pt-2">
             {links.map((link) => (
               <li key={link.id}>
