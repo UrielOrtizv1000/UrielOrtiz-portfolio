@@ -209,3 +209,49 @@ path {
 .text-balance {
   text-wrap: balance;
 }
+
+/* Reserve space for artwork instead of covering translated headlines. */
+.hero-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.hero-headline {
+  font-size: clamp(48px, 8vw, 112px);
+  text-wrap: balance;
+}
+
+.hero-copy {
+  text-wrap: pretty;
+}
+
+@media (min-width: 900px) {
+  .hero-layout {
+    grid-template-columns: minmax(0, 1fr) 240px;
+    align-items: center;
+  }
+
+  .hero-introduction,
+  .hero-cue {
+    grid-column: 1 / -1;
+  }
+
+  .hero-specialty .hero-headline {
+    font-size: clamp(64px, 7vw, 100px);
+  }
+}
+
+@media (max-width: 639px) {
+  main > section:not(#top) {
+    padding-block: 72px;
+  }
+
+  #top .hero-copy {
+    max-width: 34ch;
+  }
+
+  #contact h2 {
+    font-size: clamp(48px, 12vw, 76px);
+    line-height: 1.05;
+  }
+}
