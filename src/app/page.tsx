@@ -1,3 +1,5 @@
+import About from "@/components/About";
+import BackToTop from "@/components/BackToTop";
 import Contact from "@/components/Contact";
 import Education from "@/components/Education";
 import Experience from "@/components/Experience";
@@ -10,11 +12,12 @@ import Skills from "@/components/Skills";
 
 export default function Home() {
   return (
-    <>
+    <div className="flex min-h-screen flex-col overflow-x-clip">
       <ScrollProgress />
       <Navbar />
-      <main className="flex-1">
+      <main className="mx-auto w-full max-w-[1240px] flex-1 px-[clamp(20px,4vw,48px)]">
         <Hero />
+        <About />
         <Skills />
         <Projects />
         <Experience />
@@ -22,6 +25,7 @@ export default function Home() {
         <Contact />
       </main>
       <Footer />
-    </>
+      <BackToTop />
+    </div>
   );
 }

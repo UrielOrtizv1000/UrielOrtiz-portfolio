@@ -1,28 +1,37 @@
+import type { ReactNode } from "react";
+import Rich from "./Rich";
+
 type SectionHeadingProps = {
-  eyebrow: string;
   title: string;
   description?: string;
+  /** Extra content aligned with the heading's baseline (image, controls). */
+  aside?: ReactNode;
+  centered?: boolean;
 };
 
 export default function SectionHeading({
-  eyebrow,
   title,
   description,
+  aside,
+  centered = false,
 }: SectionHeadingProps) {
   return (
-    <div className="mb-8 sm:mb-10">
-      <span className="mono-tag inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-accent">
-        <span className="h-px w-6 bg-accent" />
-        {eyebrow}
-      </span>
-      <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl text-balance">
-        {title}
-      </h2>
-      {description ? (
-        <p className="mt-3 max-w-2xl text-base leading-relaxed text-muted">
-          {description}
-        </p>
-      ) : null}
+    <div
+      className={`flex flex-wrap gap-x-12 gap-y-5 ${
+        centered ? "items-center justify-center" : "items-end"
+      }`}
+    >
+      <div className="flex flex-col gap-4">
+        <h2 className="display text-[clamp(46px,7vw,100px)] leading-[0.92]">
+          <Rich text={title} />
+        </h2>
+        {description ? (
+          <p className="max-w-[520px] text-[17px] leading-relaxed text-muted">
+            <Rich text={description} />
+          </p>
+        ) : null}
+      </div>
+      {aside}
     </div>
   );
 }

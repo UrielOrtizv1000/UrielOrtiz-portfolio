@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { AnimatePresence, motion, type Variants } from "motion/react";
+import Image from "next/image";
 import { useLanguage } from "@/i18n/LanguageProvider";
 import { skillCategories } from "@/lib/data";
 import ScrollReveal from "./Reveal";
@@ -9,15 +10,14 @@ import SectionHeading from "./SectionHeading";
 
 const list: Variants = {
   hidden: {},
-  visible: { transition: { staggerChildren: 0.035 } },
+  visible: { transition: { staggerChildren: 0.05 } },
 };
 
-const chip: Variants = {
-  hidden: { opacity: 0, y: 8, scale: 0.96 },
+const row: Variants = {
+  hidden: { opacity: 0, y: 8 },
   visible: {
     opacity: 1,
     y: 0,
-    scale: 1,
     transition: { type: "spring", stiffness: 260, damping: 22 },
   },
 };
@@ -35,43 +35,48 @@ export default function Skills() {
     activeTabIndex === 0 ? skillCategories : skillCategories.filter((_, i) => i === activeTabIndex - 1);
 
   return (
-    <section
-      id="skills"
-      className="mx-auto max-w-6xl border-t border-border px-6 py-14 sm:px-8 sm:py-20"
-    >
+    <section id="skills" className="flex flex-col gap-10 py-[clamp(110px,13vw,180px)]">
       <ScrollReveal>
         <SectionHeading
-          eyebrow={t("skills.eyebrow")}
           title={t("skills.title")}
           description={t("skills.description")}
+          aside={
+            <Image
+              src="/assets/lego-point.webp"
+              alt=""
+              width={200}
+              height={300}
+              className="-mb-[60px] ml-auto h-[clamp(200px,22vw,300px)] w-auto drop-shadow-[0_24px_30px_rgba(0,0,0,0.4)]"
+            />
+          }
         />
       </ScrollReveal>
 
       <ScrollReveal delay={80}>
-        <div className="-mx-1 mb-6 flex gap-1 overflow-x-auto px-1 pb-1">
-          {tabs.map((tab, index) => (
-            <button
-              key={tab}
-              type="button"
-              onClick={() => setActiveTabIndex(index)}
-              className="press hoverable relative flex-shrink-0 rounded-full px-4 py-2 text-sm font-medium transition-colors duration-200"
-            >
-              {activeTabIndex === index ? (
-                <motion.span
-                  layoutId="skills-tab-indicator"
-                  className="absolute inset-0 rounded-full bg-accent"
-                  transition={{ type: "spring", stiffness: 300, damping: 28 }}
-                />
-              ) : null}
-              <span
-                className={`relative z-10 ${
-                  activeTabIndex === index ? "text-white" : "text-muted hover:text-foreground"
-                }`}
+        <div className="flex flex-wrap gap-1.5">
+          {tabs.map((tab, index) => {
+            const on = activeTabIndex === index;
+            return (
+              <button
+                key={tab}
+                type="button"
+                onClick={() => setActiveTabIndex(index)}
+                aria-pressed={on}
+                className="press hoverable label-cond relative whitespace-nowrap rounded-full border border-border-strong px-3.5 py-2 text-base tracking-[0.03em]"
               >
-                {tab}
-              </span>
-            </button>
-          ))}
+                {on ? (
+                  <motion.span
+                    layoutId="skills-tab-indicator"
+                    className="absolute -inset-px rounded-full bg-foreground"
+                    transition={{ type: "spring", stiffness: 300, damping: 28 }}
+                  />
+                ) : null}
+                <span className={`relative z-10 ${on ? "text-background" : "text-muted hover:text-foreground"}`}>
+                  {tab}
+                </span>
+              </button>
+            );
+          })}
         </div>
       </ScrollReveal>
 
@@ -79,30 +84,32 @@ export default function Skills() {
         <AnimatePresence mode="wait">
           <motion.div
             key={activeTabIndex}
-            className="grid gap-5"
+            className="flex flex-col"
             variants={list}
             initial="hidden"
             animate="visible"
             exit={{ opacity: 0 }}
           >
             {visibleGroups.map((group) => (
-              <div key={group.id}>
-                {activeTabIndex === 0 ? (
-                  <h3 className="mono-tag mb-2.5 text-xs font-bold uppercase tracking-wide text-muted-2">
-                    {t(`skills.categories.${group.id}`)}
-                  </h3>
-                ) : null}
-                <ul className="flex flex-wrap gap-2.5">
-                  {group.skillIds.map((skillId) => (
-                    <motion.li key={skillId} variants={chip}>
-                      <span className="hoverable press inline-flex cursor-default items-center gap-2 rounded-full border border-border-strong bg-surface px-4 py-2 text-sm font-medium text-foreground hover:-translate-y-0.5 hover:border-accent hover:bg-accent-soft hover:text-accent">
-                        <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+              <motion.div
+                key={group.id}
+                variants={row}
+                className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,240px),1fr))] gap-x-10 gap-y-3 border-t border-border py-[22px]"
+              >
+                <h3 className="display !text-foreground text-[23px] leading-none">
+                  {t(`skills.categories.${group.id}`)}
+                </h3>
+                <ul className="flex flex-wrap items-center gap-y-1 text-[17px] leading-[1.7] text-muted md:col-span-2">
+                  {group.skillIds.map((skillId, i) => (
+                    <li key={skillId} className="flex items-center">
+                      {i > 0 ? <span aria-hidden="true" className="px-2.5 text-muted-2">·</span> : null}
+                      <span className="hoverable cursor-default hover:text-accent">
                         {t(`skills.items.${skillId}`)}
                       </span>
-                    </motion.li>
+                    </li>
                   ))}
                 </ul>
-              </div>
+              </motion.div>
             ))}
           </motion.div>
         </AnimatePresence>

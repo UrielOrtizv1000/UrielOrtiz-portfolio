@@ -1,6 +1,7 @@
 {
   "nav": {
-    "research": "Sobre mí",
+    "about": "Sobre mí",
+    "skills": "Habilidades",
     "projects": "Proyectos",
     "experience": "Experiencia",
     "education": "Educación",
@@ -12,33 +13,61 @@
     "switchToDark": "Cambiar a modo oscuro"
   },
   "hero": {
-    "specialization": "Especializado en Frontend, Cloud y Soporte IT",
-    "role": "Estudiante de Ingeniería en Sistemas Computacionales",
-    "tagline": "Soporte IT y Fundamentos Cloud · Desarrollo Frontend · Inglés C1",
-    "description": "Levanto servidores y autoalojo mis propios servicios — notas, películas y comunicación P2P — y trabajo con método: primero el plan, luego paso a paso, depurando al cierre de cada fase.",
-    "viewProjects": "Ver proyectos",
-    "getInTouch": "Contáctame",
-    "stats": [
-      { "label": "Semestre", "value": "7.º" },
-      { "label": "Inglés", "value": "C1" },
-      { "label": "Enfoque", "value": "Frontend y Cloud" },
-      { "label": "Ubicación", "value": "Aguascalientes, México" }
+    "greeting": "¡Hola! Soy {Uriel}",
+    "intro": "**Uriel Ezequiel Ortiz Rosales** — estudiante de *Ingeniería en Sistemas Computacionales* en Aguascalientes, MX. Inglés *C1*.",
+    "headline": "Frontend {&} Cloud",
+    "intro2": "Construyo interfaces y mantengo mi propia nube *autoalojada* — notas, películas y comunicación P2P. Experiencia con *LLMs*.",
+    "imageAlt": "Minifigura Lego de Uriel saludando",
+    "scrollCue": "Ver mi trabajo",
+    "facts": [
+      {
+        "label": "Semestre",
+        "value": "7.º"
+      },
+      {
+        "label": "Inglés",
+        "value": "C1"
+      },
+      {
+        "label": "Enfoque",
+        "value": "Frontend y Cloud"
+      },
+      {
+        "label": "Ubicación",
+        "value": "Aguascalientes"
+      },
+      {
+        "label": "Proyectos",
+        "value": "+6 creados"
+      },
+      {
+        "label": "IA",
+        "value": "Experiencia con LLMs"
+      }
     ]
   },
   "about": {
-    "eyebrow": "Sobre mí",
-    "heading": "Cómo trabajo",
-    "summary": "Fuera del aula levanto servidores por gusto y mantengo mis propios servicios: notas, películas y comunicación P2P, todo autoalojado. Trabajo con método: primero hago un plan, lo sigo paso a paso y, al cerrar cada fase, depuro errores y ajusto antes de continuar. Amante de los perros.",
+    "title": "Cómo {trabajo}",
+    "lead": "Fuera del aula levanto servidores *por gusto* — notas, películas y comunicación P2P, todo autoalojado. Amante de los perros.",
+    "sub": "Primero *hago un plan*, lo sigo paso a paso y depuro al cierre de cada fase.",
     "values": [
-      { "title": "Autoalojamiento por defecto", "body": "Levanto y mantengo mis propios servicios en hardware que yo administro, como si fueran producción real." },
-      { "title": "Método antes que velocidad", "body": "Primero el plan, luego paso a paso, depurar al cierre de cada fase." },
-      { "title": "Documentado y organizado", "body": "Un trabajo limpio, documentado y predecible vale más que atajos ingeniosos." }
+      {
+        "title": "Autoalojamiento por defecto",
+        "body": "Levanto y mantengo mis propios servicios en hardware que yo administro, como si fueran producción real."
+      },
+      {
+        "title": "Método antes que velocidad",
+        "body": "Primero el plan, luego paso a paso, depurar al cierre de cada fase."
+      },
+      {
+        "title": "Documentado y organizado",
+        "body": "Un trabajo limpio, documentado y predecible vale más que atajos ingeniosos."
+      }
     ]
   },
   "skills": {
-    "eyebrow": "Habilidades",
-    "title": "Tecnologías con las que trabajo",
-    "description": "Filtra por categoría para explorar lo que uso día a día, desde fundamentos de frontend hasta herramientas de cloud y soporte.",
+    "title": "Herramientas que {uso}",
+    "description": "Desde fundamentos de *frontend* hasta herramientas de *cloud* y soporte. Filtra por categoría.",
     "all": "Todas",
     "categories": {
       "languagesFrontend": "Lenguajes y Frontend",
@@ -71,62 +100,78 @@
     }
   },
   "projects": {
-    "eyebrow": "Proyectos",
-    "title": "Proyectos destacados",
-    "description": "Proyectos académicos y colaborativos en los que trabajé a lo largo de todo el stack — desde microservicios resilientes hasta tiendas en línea full-stack.",
+    "titleFeatured": "Proyectos {destacados}",
+    "titleOther": "Otros {proyectos}",
     "toggleFeatured": "Destacados",
-    "toggleOther": "Otros proyectos",
-    "otherTitle": "Otros proyectos",
-    "otherDescription": "Proyectos personales y herramientas que construyo y mantengo por mi cuenta, desde una app de mensajería privada hasta un generador de currículums.",
-    "code": "Código",
+    "toggleOther": "Otros",
+    "builtWith": "Hecho con",
+    "role": "Mi rol:",
+    "code": "Ver código ↗",
     "live": "En vivo",
     "openAria": "Abrir {name}",
     "items": {
       "resilenciaKubernetes": {
-        "description": "Sistema de microservicios que prueba cómo se comporta una aplicación en Kubernetes cuando un servicio falla y cómo se recupera, construido con Python, FastAPI, Docker y Docker Compose.",
-        "bullets": [
-          "Me encargué de generar 50,000 usuarios simulados para probarlo en condiciones cercanas a las reales, además de refactorizar y organizar el código, ejecutar las pruebas de resiliencia y documentar la observabilidad con Prometheus, Grafana, Jaeger y OpenTelemetry."
-        ]
+        "kinds": [
+          "Académico",
+          "Equipo",
+          "Cloud / DevOps"
+        ],
+        "description": "Sistema de microservicios que prueba cómo se comporta una aplicación en Kubernetes cuando un servicio falla y cómo se recupera.",
+        "role": "Generé 50,000 usuarios simulados para pruebas casi reales, refactoricé el código, ejecuté las pruebas de resiliencia y documenté la observabilidad."
       },
       "bookiaStore": {
-        "description": "Tienda en línea donde el usuario busca, consulta y compra libros, con Angular en el frontend, Node.js en el backend y MySQL para los datos.",
-        "bullets": [
-          "Construí la estructura del frontend y la navegación, desarrollé los componentes visuales y mejoré la usabilidad del proceso de compra."
-        ]
+        "kinds": [
+          "Académico",
+          "Full-stack",
+          "Rol frontend"
+        ],
+        "description": "Tienda en línea donde el usuario busca, consulta y compra libros.",
+        "role": "Construí la estructura del frontend y la navegación, desarrollé los componentes visuales y mejoré la usabilidad del proceso de compra."
       },
       "ecommerceApi": {
-        "description": "Tienda en línea con catálogo de productos y flujo básico de compra, con HTML, CSS y JavaScript en el frontend y Node.js, Express y MySQL en el backend.",
-        "bullets": [
-          "Organicé el frontend y el backend, desarrollé rutas y controladores, conecté la base de datos y refactoricé código en equipo."
-        ]
+        "kinds": [
+          "Académico",
+          "Equipo",
+          "Full-stack"
+        ],
+        "description": "Tienda en línea con catálogo de productos y flujo básico de compra.",
+        "role": "Organicé el frontend y el backend, desarrollé rutas y controladores, conecté la base de datos y refactoricé código en equipo."
       },
       "nova": {
-        "description": "Aplicación de chat privado para dos personas, en desarrollo: retención de mensajes de 15 días, llamadas y compartición de pantalla a 1080p60fps, hecha con Electron y un servidor propio expuesto de forma segura con Cloudflare Tunnel.",
-        "bullets": [
-          "Me encargué del proyecto completo: interfaz, comunicación en tiempo real y servidor, desarrollado con un agente de IA que yo mismo configuré y supervisé en cada etapa."
-        ]
+        "kinds": [
+          "Personal",
+          "Individual",
+          "En desarrollo"
+        ],
+        "description": "Aplicación de chat privado estilo Discord para dos personas, en desarrollo: retención de mensajes de 15 días, llamadas y compartición de pantalla a 1080p60fps en un servidor propio.",
+        "role": "Me encargué del proyecto completo — interfaz, comunicación en tiempo real y servidor — desarrollado con un agente de IA que yo mismo configuré y supervisé en cada etapa."
       },
       "intercambioMagico": {
-        "description": "Sitio web de amigo secreto con sorteos con restricciones: crear eventos, agregar participantes, definir quién no puede regalarle a quién y sortear respetando esas reglas. 100% front-end con HTML5, CSS3, JavaScript, Bootstrap y localStorage.",
-        "bullets": [
-          "Me encargué del algoritmo de sorteo con exclusiones, de la interfaz con drag & drop y de la persistencia de datos en el navegador."
-        ]
+        "kinds": [
+          "Personal",
+          "Individual",
+          "Frontend"
+        ],
+        "description": "Sitio web de amigo secreto con sorteos con restricciones: crear eventos, agregar participantes y definir quién no puede regalarle a quién.",
+        "role": "Diseñé el algoritmo de sorteo con exclusiones, construí la interfaz con drag & drop e implementé la persistencia en el navegador."
       },
       "devprofile": {
-        "description": "Aplicación web para crear un CV desde cero: editar tus datos y secciones, ver la vista previa en vivo, revisar tus habilidades en gráficas y exportar el resultado a PDF. Hecha con React, Vite y Context API.",
-        "bullets": [
-          "Me encargué del editor, la vista previa en vivo, la exportación a PDF y del despliegue automático en GitHub Pages con GitHub Actions."
-        ]
+        "kinds": [
+          "Personal",
+          "Individual",
+          "App web"
+        ],
+        "description": "Aplicación web para crear un CV desde cero con vista previa en vivo, gráficas de habilidades y exportación a PDF.",
+        "role": "Construí el editor, la vista previa en vivo y la exportación a PDF, y la desplegué automáticamente en GitHub Pages con GitHub Actions."
       }
     }
   },
   "experience": {
-    "eyebrow": "Experiencia",
-    "title": "Dónde he trabajado",
-    "description": "Roles de atención al cliente y administrativos que dieron forma a mi manera de abordar el proceso, la documentación y el detalle.",
+    "title": "Experi{encia}",
+    "description": "Roles de atención al cliente y administrativos que dieron forma a mi manera de abordar el *proceso*, la documentación y el *detalle*.",
     "items": {
       "teleperformance": {
-        "period": "Abril 2020 – Octubre 2020",
+        "period": "Abr 2020 – Oct 2020",
         "role": "Representante de atención al cliente · Billing, Sales & Repair",
         "bullets": [
           "Gestión de solicitudes de clientes en facturación, ventas y soporte técnico mediante plataformas internas de atención.",
@@ -135,7 +180,7 @@
         ]
       },
       "alphabiotista": {
-        "period": "Enero 2024 – Noviembre 2026",
+        "period": "Ene 2024 – Nov 2026",
         "role": "Apoyo administrativo · Documentación y mejora de procesos",
         "bullets": [
           "Organización y mejora de documentación interna, cuidando claridad, precisión y estandarización de información.",
@@ -145,32 +190,39 @@
     }
   },
   "education": {
-    "eyebrow": "Educación",
-    "title": "Formación académica y certificaciones",
-    "degreeLabel": "Título",
-    "coursesLabel": "Cursos y certificaciones",
-    "languagesLabel": "Idiomas",
+    "title": "Educa{ción}",
+    "period": "2022 – Actualidad · 7.º semestre",
     "degree": "Ingeniería en Sistemas Computacionales",
-    "period": "7.º semestre, en curso (2022 – Actualidad)",
-    "description": "Formación enfocada en bases de datos (diseño, normalización y administración) y en el despliegue de aplicaciones web con el backend bien protegido. La seguridad se trabaja en toda la carrera, desde los agentes de desarrollo hasta los servicios finales.",
+    "focusLabel": "Enfoque",
+    "focus": "Diseño, normalización y administración de *bases de datos*, además de desplegar aplicaciones web con un backend bien protegido. *Seguridad* en todo momento.",
+    "certsLabel": "Certificaciones",
+    "languagesLabel": "Idiomas",
     "languagesList": [
-      { "name": "Español", "level": "Nativo" },
-      { "name": "Inglés", "level": "Avanzado (C1)" }
+      {
+        "name": "Español",
+        "level": "Nativo"
+      },
+      {
+        "name": "Inglés",
+        "level": "Avanzado (C1)"
+      }
     ]
   },
   "contact": {
-    "eyebrow": "Contacto",
-    "title": "Trabajemos juntos",
-    "description": "Abierto a oportunidades en frontend, cloud y soporte IT. Haz clic en el correo para copiarlo al instante.",
-    "emailLabel": "Correo",
-    "githubLabel": "GitHub",
-    "copied": "Copiado al portapapeles",
-    "copyEmailAria": "Copiar correo al portapapeles"
+    "title": "Hablemos",
+    "titleEm": "",
+    "description": "Abierto a oportunidades en *frontend*, *cloud* y *soporte IT*.",
+    "copyEmail": "Copiar correo",
+    "copied": "Copiado ✓",
+    "copyEmailAria": "Copiar correo al portapapeles",
+    "github": "GitHub ↗",
+    "imageAlt": "Minifigura Lego de Uriel sosteniendo una laptop"
   },
   "footer": {
     "rights": "Todos los derechos reservados.",
-    "github": "GitHub",
-    "email": "Correo",
-    "cv": "CV"
+    "credit": "developed by v1000"
+  },
+  "common": {
+    "backToTop": "Volver arriba"
   }
 }

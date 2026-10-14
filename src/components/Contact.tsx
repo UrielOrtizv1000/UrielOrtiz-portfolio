@@ -1,115 +1,93 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { useLanguage } from "@/i18n/LanguageProvider";
 import { profile } from "@/lib/data";
+import Rich from "./Rich";
 import ScrollReveal from "./Reveal";
-import SectionHeading from "./SectionHeading";
-
-type CopiedField = "email" | null;
 
 export default function Contact() {
   const { t } = useLanguage();
-  const [copiedField, setCopiedField] = useState<CopiedField>(null);
+  const [copied, setCopied] = useState(false);
+  const timer = useRef<number>(0);
 
-  const copyToClipboard = async (field: "email", value: string) => {
+  useEffect(() => () => window.clearTimeout(timer.current), []);
+
+  const copyEmail = async () => {
     try {
-      await navigator.clipboard.writeText(value);
-      setCopiedField(field);
-      window.setTimeout(() => setCopiedField(null), 1800);
+      await navigator.clipboard.writeText(profile.email);
+      setCopied(true);
+      window.clearTimeout(timer.current);
+      timer.current = window.setTimeout(() => setCopied(false), 1600);
     } catch {
       // Clipboard unavailable — nothing to fall back to here.
     }
   };
 
+  const titleEm = t("contact.titleEm");
+
   return (
     <section
       id="contact"
-      className="mx-auto max-w-6xl border-t border-border px-6 py-14 sm:px-8 sm:py-20"
+      className="flex flex-wrap items-center justify-center gap-x-[clamp(24px,5vw,72px)] gap-y-6 py-[clamp(110px,13vw,180px)] text-center"
     >
       <ScrollReveal>
-        <SectionHeading
-          eyebrow={t("contact.eyebrow")}
-          title={t("contact.title")}
-          description={t("contact.description")}
+        <Image
+          src="/assets/lego-laptop.webp"
+          alt={t("contact.imageAlt")}
+          width={267}
+          height={400}
+          className="h-[clamp(240px,28vw,400px)] w-auto drop-shadow-[0_24px_30px_rgba(0,0,0,0.4)]"
         />
       </ScrollReveal>
 
-      <div className="grid gap-4 sm:grid-cols-2">
-        <ScrollReveal delay={0}>
-          <button
-            type="button"
-            onClick={() => copyToClipboard("email", profile.email)}
-            aria-label={t("contact.copyEmailAria")}
-            className="hoverable press group flex h-full w-full flex-col justify-between rounded-2xl border border-border bg-surface p-6 text-left hover:border-accent/60 hover:-translate-y-1"
-          >
-            <span
-              className={`hoverable flex h-10 w-10 items-center justify-center rounded-full text-accent ${
-                copiedField === "email" ? "bg-accent text-white" : "bg-accent-soft"
-              }`}
-            >
-              {copiedField === "email" ? (
-                <svg aria-hidden="true" viewBox="0 0 20 20" fill="none" className="h-4.5 w-4.5">
-                  <path
-                    d="M4.5 10.5l3.5 3.5 7.5-8"
-                    stroke="currentColor"
-                    strokeWidth="1.6"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              ) : (
-                <svg aria-hidden="true" viewBox="0 0 20 20" fill="none" className="h-4.5 w-4.5">
-                  <path
-                    d="M3 5.5h14v9H3v-9Zm0 0 7 5.5 7-5.5"
-                    stroke="currentColor"
-                    strokeWidth="1.4"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              )}
-            </span>
-            <div className="mt-6">
-              <p className="mono-tag text-xs font-semibold uppercase tracking-wide text-muted-2">
-                {t("contact.emailLabel")}
-              </p>
-              <p
-                className={`mt-1 text-sm font-medium ${
-                  copiedField === "email"
-                    ? "text-accent"
-                    : "text-foreground group-hover:text-accent"
-                }`}
-              >
-                {copiedField === "email" ? t("contact.copied") : profile.email}
-              </p>
-            </div>
-          </button>
-        </ScrollReveal>
+      <ScrollReveal delay={120}>
+        <div className="flex w-fit max-w-full flex-col items-stretch gap-6">
+          <h2 className="display text-[clamp(64px,13vw,190px)] leading-[0.88]">
+            {t("contact.title")}
+            {titleEm ? (
+              <>
+                {" "}
+                <span className="font-serif text-accent normal-case italic font-normal [font-stretch:100%] tracking-[-0.015em]">
+                  {titleEm}
+                </span>
+              </>
+            ) : null}
+          </h2>
+          <p className="text-[17px] leading-[1.6] text-muted">
+            <Rich text={t("contact.description")} />
+          </p>
 
-        <ScrollReveal delay={90}>
-          <a
-            href={profile.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hoverable press group flex h-full flex-col justify-between rounded-2xl border border-border bg-surface p-6 hover:border-accent/60 hover:-translate-y-1"
-          >
-            <span className="hoverable flex h-10 w-10 items-center justify-center rounded-full bg-accent-soft text-accent">
-              <svg aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" className="h-4.5 w-4.5">
-                <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z" />
+          <div className="mt-2 grid grid-cols-[repeat(auto-fit,minmax(min(100%,220px),1fr))] gap-3">
+            <button
+              type="button"
+              onClick={copyEmail}
+              aria-label={t("contact.copyEmailAria")}
+              className="hoverable press label-cond flex items-center justify-center gap-3 rounded-full bg-brand px-6 py-[18px] text-[22px] tracking-[0.03em] text-white hover:bg-brand-strong"
+            >
+              <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                <rect x="3" y="5" width="18" height="14" rx="2" />
+                <path d="M3 7l9 6 9-6" />
               </svg>
-            </span>
-            <div className="mt-6">
-              <p className="mono-tag text-xs font-semibold uppercase tracking-wide text-muted-2">
-                {t("contact.githubLabel")}
-              </p>
-              <p className="mt-1 text-sm font-medium text-foreground group-hover:text-accent">
-                UrielOrtizv1000
-              </p>
-            </div>
-          </a>
-        </ScrollReveal>
-      </div>
+              <span aria-live="polite">{copied ? t("contact.copied") : t("contact.copyEmail")}</span>
+            </button>
+            <a
+              href={profile.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hoverable press label-cond flex items-center justify-center gap-3 rounded-full border border-border-strong px-6 py-[18px] text-[22px] tracking-[0.03em] hover:border-brand hover:!text-foreground"
+            >
+              <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 .5C5.65.5.5 5.65.5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.7 5.39-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z" />
+              </svg>
+              {t("contact.github")}
+            </a>
+          </div>
+
+          <p className="font-mono text-[13px] text-muted-2">{profile.email}</p>
+        </div>
+      </ScrollReveal>
     </section>
   );
 }
