@@ -52,7 +52,7 @@ flowchart LR
 
 ## Tech stack
 
-- Framework: Next.js 16.3.2 (App Router, Turbopack build)
+- Framework: Next.js 16.4.1 (App Router, Turbopack build)
 - UI: React 19.2.8
 - Language: TypeScript 5 (strict)
 - Styling: Tailwind CSS 4 (@tailwindcss/postcss)
@@ -78,7 +78,8 @@ portfolio/
 │   ├── lib/data.ts           # Profile, skills, projects, experience, education
 │   └── theme/ThemeProvider.tsx
 ├── public/
-│   └── Uriel_Ortiz_Rosales_CV.pdf
+│   ├── Uriel_Ortiz_Rosales.pdf
+│   └── Uriel_Ortiz_Rosales_EN.pdf
 ├── .github/workflows/deploy-pages.yml
 ├── next.config.ts
 ├── tsconfig.json
@@ -91,13 +92,13 @@ portfolio/
 
 ### Prerequisites
 
-- Node.js 18.18+ (20.9+ recommended for Next.js 16)
+- Node.js 24 (the version used in CI)
 - npm
 
 ### Install and run
 
 ```bash
-npm install
+npm ci
 npm run dev
 ```
 
@@ -107,8 +108,9 @@ Open http://localhost:3000.
 
 ```bash
 npm run build      # type-checks and builds the static bundle
-npm start          # serves the production build
 ```
+
+Serve the generated `out/` directory with a static HTTP server to preview production. Do not use `npm start` / `next start`: this project uses static export, not a Next.js production server.
 
 ## Configuration
 
@@ -116,30 +118,40 @@ No environment variables. The app runs without configuration. TypeScript path al
 
 ## Testing
 
-There are no automated tests yet. npm run lint runs ESLint:
+There are no unit or browser tests yet. Run the same validation gates as CI:
 
 ```bash
 npm run lint
+npx tsc --noEmit
+npm audit --omit=dev --audit-level=high
+npm run build
 ```
 
 ## Deployment
 
-Deploys to GitHub Pages through a committed GitHub Actions workflow (.github/workflows/deploy-pages.yml). next.config.ts sets output: "export", so the build emits static files that the workflow uploads and publishes to Pages. The site lives at https://urielortizv1000.github.io/uriel-ortiz-portfolio/.
+Production runs at https://urielortiz.xyz/ on GitHub Pages. `next.config.ts` sets `output: "export"`; only the generated `out/` directory is published. The custom domain serves the site at `/`, so no repository base path is configured.
+
+The workflow in `.github/workflows/deploy-pages.yml` validates pull requests with lint, TypeScript, a production dependency audit, and a static build. Pull requests cannot deploy. After merging into `main`, the workflow repeats validation, checks the exported HTML and both CVs, uploads the artifact, and deploys through the `github-pages` environment. Actions are pinned by SHA; deployment permissions are scoped to the deploy job, with explicit timeouts.
+
+Repository setup: Pages source must be **GitHub Actions**, the custom domain must be `urielortiz.xyz`, HTTPS enforcement must remain enabled, and the `github-pages` environment must allow only `main`. DNS and certificate management stay in GitHub Pages/domain settings, not build-time environment variables.
+
+For a manual redeploy, run **Deploy to GitHub Pages** from the Actions tab on `main`. To roll back, revert the offending change through a pull request; merging it rebuilds and deploys the reverted source. Do not rewrite `main` or upload local build output to Git.
 
 ## Security
 
-- No secrets, API keys, tokens or credentials in the repo or its history.
+- The static site does not require secrets, API keys, tokens or credentials.
 - No environment variables, so there's no .env to leak.
 - Fully static: no backend, database or API surface.
 - Contact details (email and phone) are public on purpose; it's a portfolio site.
-- The only personal data asset is the CV PDF in public/, served as the download.
+- Both CV PDFs in public/ are intentionally available for download.
+- Production dependencies pass `npm audit --omit=dev`. The full audit still reports GHSA-vfj7-8cjw-p6xm in the ESLint-only `braces` dependency chain; no patched `braces` version is available at the time of this update. This tooling is not shipped in the static site. Do not apply the suggested forced downgrade to Next.js 14 tooling; reassess when an upstream fix becomes available.
 
 ## What's left
 
 - Unit tests (Vitest) and end to end tests (Playwright).
 - A real contact form backed by a serverless function or third party service.
 - Individual project detail pages or dynamic routing.
-- A CI pipeline to lint and type-check on every push.
+
 
 ## License
 
