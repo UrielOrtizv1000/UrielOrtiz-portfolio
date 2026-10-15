@@ -7,6 +7,7 @@
     "education": "Education",
     "contact": "Contact",
     "downloadCv": "Download CV",
+    "language": "Language",
     "openMenu": "Open menu",
     "closeMenu": "Close menu",
     "switchToLight": "Switch to light mode",
@@ -19,6 +20,7 @@
     "intro2": "I build interfaces and run my own *self-hosted* cloud — notes, movies and P2P communication. Experience with *LLMs*.",
     "imageAlt": "Lego minifigure of Uriel waving",
     "scrollCue": "See my work",
+    "talk": "Let's talk",
     "facts": [
       {
         "label": "Semester",
@@ -106,10 +108,19 @@
     "toggleOther": "Other",
     "builtWith": "Built with",
     "role": "My role:",
-    "code": "View code ↗",
+    "code": "View code",
     "live": "Live",
     "openAria": "Open {name}",
     "items": {
+      "rabit": {
+        "kinds": [
+          "Personal",
+          "Solo",
+          "Desktop app"
+        ],
+        "description": "Local-first desktop organizer for tasks, events, notes and routine — no account, no cloud, no ads. Everything lives in a local SQLite file on your machine.",
+        "role": "Led the entire project — product, architecture and data model — built with AI coding agents that I directed and reviewed at every change."
+      },
       "resilenciaKubernetes": {
         "kinds": [
           "Academic",
@@ -118,15 +129,6 @@
         ],
         "description": "Microservices system that tests how an application behaves on Kubernetes when a service fails and how it recovers.",
         "role": "Generated 50,000 simulated users for near-real testing, refactored the code, ran the resilience tests and documented observability."
-      },
-      "bookiaStore": {
-        "kinds": [
-          "Academic",
-          "Full-stack",
-          "Frontend role"
-        ],
-        "description": "Online store where users search, consult and buy books.",
-        "role": "Built the frontend structure and navigation, developed the visual components and improved the usability of the purchase process."
       },
       "ecommerceApi": {
         "kinds": [
@@ -140,8 +142,7 @@
       "nova": {
         "kinds": [
           "Personal",
-          "Solo",
-          "In development"
+          "Solo"
         ],
         "description": "Private Discord-style messaging app for two people, in development: 15-day message retention, calls and 1080p60fps screen sharing on a self-hosted server.",
         "role": "Led the entire project — interface, real-time communication and server — developed with an AI agent I configured and supervised at every stage."
@@ -164,7 +165,8 @@
         "description": "Web app to create a resume from scratch with live preview, skill charts and PDF export.",
         "role": "Built the editor, live preview and PDF export, and deployed automatically to GitHub Pages with GitHub Actions."
       }
-    }
+    },
+    "inDevelopment": "In development"
   },
   "experience": {
     "title": "Experi{ence}",

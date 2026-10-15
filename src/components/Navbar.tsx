@@ -14,7 +14,12 @@ export default function Navbar() {
   const [active, setActive] = useState<string>("");
   const cvFile = profile.cvFiles[language];
 
-  const links = SECTIONS.map((id) => ({ id, label: t(`nav.${id}`), href: `#${id}` }));
+  const links = SECTIONS.map((id, i) => ({
+    id,
+    label: t(`nav.${id}`),
+    href: `#${id}`,
+    n: `0${i + 1}`,
+  }));
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -35,19 +40,35 @@ export default function Navbar() {
   useEffect(() => {
     if (!menuOpen) return;
     document.body.style.overflow = "hidden";
+    document.body.dataset.menu = "open";
     return () => {
       document.body.style.overflow = "";
+      delete document.body.dataset.menu;
     };
   }, [menuOpen]);
 
+  // The full-screen menu only exists below `md`; close it if the viewport grows past that.
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 768px)");
+    const onChange = (e: MediaQueryListEvent) => {
+      if (e.matches) setMenuOpen(false);
+    };
+    mq.addEventListener("change", onChange);
+    return () => mq.removeEventListener("change", onChange);
+  }, []);
+
   return (
-    <header className="sticky top-0 z-40 bg-[var(--nav)] backdrop-blur-[10px]">
-      <nav className="mx-auto flex max-w-[1240px] items-center gap-4 px-[clamp(20px,4vw,48px)] py-3.5">
-        <a href="#top" className="press flex items-baseline gap-2 whitespace-nowrap">
+    <header className="sticky top-0 z-40 border-b border-border bg-[var(--nav)] backdrop-blur-[10px] md:border-b-0">
+      <nav className="mx-auto flex h-[60px] max-w-[1240px] items-center gap-2 px-[clamp(20px,4vw,48px)] md:h-auto md:gap-4 md:py-3.5">
+        <a
+          href="#top"
+          onClick={() => setMenuOpen(false)}
+          className="press flex items-baseline gap-1.5 whitespace-nowrap md:gap-2"
+        >
           <span className="text-[22px] font-extrabold leading-none tracking-[-0.04em] [font-stretch:125%]">
             UO<span className="text-brand">.</span>
           </span>
-          <span className="font-mono text-xs text-muted-2">({profile.version})</span>
+          <span className="font-mono text-[11px] text-muted-2 md:text-xs">({profile.version})</span>
         </a>
 
         <ul className="ml-auto hidden items-center md:flex">
@@ -67,7 +88,9 @@ export default function Navbar() {
 
         <div className="ml-auto flex shrink-0 items-center gap-2 md:ml-0">
           <ThemeToggle />
-          <LanguageToggle />
+          <div className="hidden md:block">
+            <LanguageToggle />
+          </div>
 
           <a
             href={cvFile}
@@ -91,52 +114,69 @@ export default function Navbar() {
             onClick={() => setMenuOpen((v) => !v)}
             aria-label={menuOpen ? t("nav.closeMenu") : t("nav.openMenu")}
             aria-expanded={menuOpen}
-            className="press hoverable flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-border-strong text-foreground md:hidden"
+            aria-controls="mobile-menu"
+            className="press hoverable grid h-11 w-11 shrink-0 place-items-center rounded-full bg-brand text-white md:hidden"
           >
-            <svg aria-hidden="true" viewBox="0 0 20 20" fill="none" className="h-4 w-4">
+            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" className="h-[18px] w-[18px]">
               {menuOpen ? (
-                <path d="M5 5l10 10M15 5L5 15" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+                <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
               ) : (
-                <path d="M3 6h14M3 10h14M3 14h14" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+                <path d="M4 8h16M4 16h16" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
               )}
             </svg>
           </button>
         </div>
       </nav>
 
-      <div
-        className={`grid overflow-hidden bg-[var(--nav)] backdrop-blur-[10px] transition-[grid-template-rows] duration-300 ease-out md:hidden ${
-          menuOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
-        }`}
-      >
-        <div className="min-h-0">
-          <ul className="flex flex-col gap-1 px-[clamp(20px,4vw,48px)] pb-4 pt-2">
+      {menuOpen ? (
+        <div
+          id="mobile-menu"
+          className="absolute inset-x-0 top-[60px] flex h-[calc(100dvh-60px)] flex-col gap-7 overflow-y-auto bg-background px-[clamp(20px,4vw,48px)] pb-8 pt-6 md:hidden"
+        >
+          <nav aria-label="Menu" className="flex flex-col">
             {links.map((link) => (
-              <li key={link.id}>
-                <a
-                  href={link.href}
-                  onClick={() => setMenuOpen(false)}
-                  className={`label-cond block rounded-lg px-3 py-2.5 text-lg hover:bg-surface hover:text-accent ${
-                    active === link.id ? "text-accent" : "text-foreground"
-                  }`}
-                >
-                  {link.label}
-                </a>
-              </li>
-            ))}
-            <li className="pt-2">
               <a
-                href={cvFile}
-                download={cvFile}
+                key={link.id}
+                href={link.href}
                 onClick={() => setMenuOpen(false)}
-                className="label-cond flex items-center justify-center gap-2 rounded-full bg-brand px-4 py-2.5 text-lg !text-white hover:bg-brand-strong"
+                className={`display flex items-baseline justify-between border-b border-border py-3 text-[44px] leading-none ${
+                  active === link.id ? "!text-accent" : ""
+                }`}
               >
-                {t("nav.downloadCv")}
+                <span>{link.label}</span>
+                <span className="font-mono text-xs font-medium normal-case tracking-normal text-muted-2">
+                  {link.n}
+                </span>
               </a>
-            </li>
-          </ul>
+            ))}
+          </nav>
+
+          <div className="flex items-center justify-between gap-3">
+            <span className="font-mono text-[11px] uppercase tracking-[0.06em] text-muted-2">
+              {t("nav.language")}
+            </span>
+            <LanguageToggle large />
+          </div>
+
+          <a
+            href={cvFile}
+            download={cvFile}
+            onClick={() => setMenuOpen(false)}
+            className="label-cond flex items-center justify-center gap-2 rounded-full bg-brand p-4 text-xl tracking-[0.04em] !text-white hover:bg-brand-strong"
+          >
+            {t("nav.downloadCv")}
+            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" className="h-3.5 w-3.5">
+              <path
+                d="M12 4v11M7 10l5 5 5-5M5 20h14"
+                stroke="currentColor"
+                strokeWidth="2.2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </a>
         </div>
-      </div>
+      ) : null}
     </header>
   );
 }

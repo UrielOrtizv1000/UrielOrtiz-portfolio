@@ -10,11 +10,11 @@ export default function Footer() {
 
   return (
     <footer className="border-t border-border">
-      <div className="mx-auto flex max-w-[1240px] flex-wrap gap-x-6 gap-y-3 px-[clamp(20px,4vw,48px)] py-[22px] font-mono text-[11px] uppercase text-muted-2">
+      <div className="mx-auto flex max-w-[1240px] flex-col gap-1.5 px-[clamp(20px,4vw,48px)] pb-7 pt-5 font-mono text-[10px] uppercase text-muted-2 md:flex-row md:flex-wrap md:gap-x-6 md:gap-y-3 md:py-[22px] md:text-[11px]">
         <span>
           © {year} {profile.fullName}
         </span>
-        <span className="ml-auto whitespace-nowrap">{t("footer.credit")}</span>
+        <span className="whitespace-nowrap md:ml-auto">{t("footer.credit")}</span>
       </div>
     </footer>
   );

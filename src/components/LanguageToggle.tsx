@@ -7,11 +7,16 @@ const OPTIONS = [
   { code: "es", label: "ES", aria: "Español" },
 ] as const;
 
-export default function LanguageToggle() {
+/** `large` is the touch-sized variant used inside the phone menu. */
+export default function LanguageToggle({ large = false }: { large?: boolean }) {
   const { language, setLanguage } = useLanguage();
 
   return (
-    <div className="flex shrink-0 rounded-full border border-border-strong p-0.5 font-mono text-[10px] font-bold">
+    <div
+      className={`flex shrink-0 rounded-full border border-border-strong font-mono font-bold ${
+        large ? "p-[3px] text-xs" : "p-0.5 text-[10px]"
+      }`}
+    >
       {OPTIONS.map((opt) => {
         const on = language === opt.code;
         return (
@@ -21,7 +26,7 @@ export default function LanguageToggle() {
             onClick={() => setLanguage(opt.code)}
             aria-label={opt.aria}
             aria-pressed={on}
-            className={`press hoverable rounded-full px-2 py-[5px] ${
+            className={`press hoverable rounded-full ${large ? "px-4 py-2.5" : "px-2 py-[5px]"} ${
               on ? "bg-foreground text-background" : "text-muted hover:text-foreground"
             }`}
           >

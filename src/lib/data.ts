@@ -60,58 +60,64 @@ export type Project = {
   tech: string[];
   github: string;
   live?: string;
+  inDevelopment?: boolean;
+};
+
+const resilenciaKubernetes: Project = {
+  id: "resilenciaKubernetes",
+  name: "Resilencia-Kubernetes",
+  tech: [
+    "Python",
+    "FastAPI",
+    "Docker",
+    "Kubernetes",
+    "Prometheus",
+    "Grafana",
+    "Jaeger",
+    "OpenTelemetry",
+  ],
+  github: "https://github.com/AzaelFajardo/Resilencia-Kubernetes",
+};
+
+const rabit: Project = {
+  id: "rabit",
+  name: "RaBit",
+  tech: ["Tauri 2", "React", "TypeScript", "SQLite"],
+  github: "https://github.com/UrielOrtizv1000/RaBit",
+};
+
+const nova: Project = {
+  id: "nova",
+  name: "NOVA",
+  tech: ["Tauri", "React", "NestJS", "Socket.IO", "WebRTC", "Cloudflare Tunnel"],
+  github: "https://github.com/UrielOrtizv1000/NOVA-THE-NEW-STAR",
+  inDevelopment: true,
+};
+
+const devprofile: Project = {
+  id: "devprofile",
+  name: "DevProfile",
+  tech: ["React", "Vite", "Context API"],
+  github: "https://github.com/UrielOrtizv1000/devprofile-cv-generator",
+};
+
+const intercambioMagico: Project = {
+  id: "intercambioMagico",
+  name: "Intercambio Mágico",
+  tech: ["HTML5", "CSS3", "JavaScript", "Bootstrap", "LocalStorage"],
+  github: "https://github.com/UrielOrtizv1000/gift-exchange-web-app",
+};
+
+const ecommerceApi: Project = {
+  id: "ecommerceApi",
+  name: "Ecommerce API — Team Tokioona",
+  tech: ["HTML", "CSS", "JavaScript", "Node.js", "Express", "MySQL"],
+  github: "https://github.com/UrielOrtizv1000/Ecommerce-API-EquipoTokioona",
 };
 
 export const projects: { featured: Project[]; other: Project[] } = {
-  featured: [
-    {
-      id: "resilenciaKubernetes",
-      name: "Resilencia-Kubernetes",
-      tech: [
-        "Python",
-        "FastAPI",
-        "Docker",
-        "Kubernetes",
-        "Prometheus",
-        "Grafana",
-        "Jaeger",
-        "OpenTelemetry",
-      ],
-      github: "https://github.com/AzaelFajardo/Resilencia-Kubernetes",
-    },
-    {
-      id: "bookiaStore",
-      name: "bookIA-store",
-      tech: ["Angular", "Node.js", "MySQL"],
-      github: "https://github.com/UrielOrtizv1000/bookIA-store",
-    },
-    {
-      id: "ecommerceApi",
-      name: "Ecommerce API — Team Tokioona",
-      tech: ["HTML", "CSS", "JavaScript", "Node.js", "Express", "MySQL"],
-      github: "https://github.com/UrielOrtizv1000/Ecommerce-API-EquipoTokioona",
-    },
-  ],
-  other: [
-    {
-      id: "nova",
-      name: "NOVA",
-      tech: ["Electron", "Cloudflare Tunnel"],
-      github: "https://github.com/UrielOrtizv1000",
-    },
-    {
-      id: "intercambioMagico",
-      name: "Intercambio Mágico",
-      tech: ["HTML5", "CSS3", "JavaScript", "Bootstrap", "LocalStorage"],
-      github: "https://github.com/UrielOrtizv1000/gift-exchange-web-app",
-    },
-    {
-      id: "devprofile",
-      name: "DevProfile",
-      tech: ["React", "Vite", "Context API"],
-      github: "https://github.com/UrielOrtizv1000/devprofile-cv-generator",
-    },
-  ],
+  featured: [rabit, nova, resilenciaKubernetes],
+  other: [devprofile, intercambioMagico, ecommerceApi],
 };
 
 export type ExperienceItem = {
