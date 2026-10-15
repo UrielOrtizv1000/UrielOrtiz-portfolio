@@ -7,18 +7,20 @@
     "education": "Educación",
     "contact": "Contacto",
     "downloadCv": "Descargar CV",
+    "language": "Idioma",
     "openMenu": "Abrir menú",
     "closeMenu": "Cerrar menú",
     "switchToLight": "Cambiar a modo claro",
     "switchToDark": "Cambiar a modo oscuro"
   },
   "hero": {
-    "greeting": "¡Hola! Soy {Uriel}",
+    "greeting": "Soy {Uriel}",
     "intro": "**Uriel Ezequiel Ortiz Rosales** — estudiante de *Ingeniería en Sistemas Computacionales* en Aguascalientes, MX. Inglés *C1*.",
     "headline": "Frontend {&} Cloud",
     "intro2": "Construyo interfaces y mantengo mi propia nube *autoalojada* — notas, películas y comunicación P2P. Experiencia con *LLMs*.",
     "imageAlt": "Minifigura Lego de Uriel saludando",
     "scrollCue": "Ver mi trabajo",
+    "talk": "Hablemos",
     "facts": [
       {
         "label": "Semestre",
@@ -42,7 +44,7 @@
       },
       {
         "label": "IA",
-        "value": "Experiencia con LLMs"
+        "value": "Experiencia LLM"
       }
     ]
   },
@@ -66,7 +68,7 @@
     ]
   },
   "skills": {
-    "title": "Herramientas que {uso}",
+    "title": "Lo que {uso}",
     "description": "Desde fundamentos de *frontend* hasta herramientas de *cloud* y soporte. Filtra por categoría.",
     "all": "Todas",
     "categories": {
@@ -106,10 +108,19 @@
     "toggleOther": "Otros",
     "builtWith": "Hecho con",
     "role": "Mi rol:",
-    "code": "Ver código ↗",
+    "code": "Ver código",
     "live": "En vivo",
     "openAria": "Abrir {name}",
     "items": {
+      "rabit": {
+        "kinds": [
+          "Personal",
+          "Individual",
+          "App de escritorio"
+        ],
+        "description": "Organizador de escritorio local-first para tareas, eventos, notas y rutina — sin cuenta, sin nube, sin anuncios. Todo vive en un archivo SQLite local en tu equipo.",
+        "role": "Me encargué del proyecto completo — producto, arquitectura y modelo de datos — construido con agentes de IA que yo dirigí y revisé en cada cambio."
+      },
       "resilenciaKubernetes": {
         "kinds": [
           "Académico",
@@ -118,15 +129,6 @@
         ],
         "description": "Sistema de microservicios que prueba cómo se comporta una aplicación en Kubernetes cuando un servicio falla y cómo se recupera.",
         "role": "Generé 50,000 usuarios simulados para pruebas casi reales, refactoricé el código, ejecuté las pruebas de resiliencia y documenté la observabilidad."
-      },
-      "bookiaStore": {
-        "kinds": [
-          "Académico",
-          "Full-stack",
-          "Rol frontend"
-        ],
-        "description": "Tienda en línea donde el usuario busca, consulta y compra libros.",
-        "role": "Construí la estructura del frontend y la navegación, desarrollé los componentes visuales y mejoré la usabilidad del proceso de compra."
       },
       "ecommerceApi": {
         "kinds": [
@@ -140,8 +142,7 @@
       "nova": {
         "kinds": [
           "Personal",
-          "Individual",
-          "En desarrollo"
+          "Individual"
         ],
         "description": "Aplicación de chat privado estilo Discord para dos personas, en desarrollo: retención de mensajes de 15 días, llamadas y compartición de pantalla a 1080p60fps en un servidor propio.",
         "role": "Me encargué del proyecto completo — interfaz, comunicación en tiempo real y servidor — desarrollado con un agente de IA que yo mismo configuré y supervisé en cada etapa."
@@ -164,7 +165,8 @@
         "description": "Aplicación web para crear un CV desde cero con vista previa en vivo, gráficas de habilidades y exportación a PDF.",
         "role": "Construí el editor, la vista previa en vivo y la exportación a PDF, y la desplegué automáticamente en GitHub Pages con GitHub Actions."
       }
-    }
+    },
+    "inDevelopment": "En desarrollo"
   },
   "experience": {
     "title": "Experi{encia}",

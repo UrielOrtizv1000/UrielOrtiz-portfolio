@@ -206,6 +206,19 @@ path {
   }
 }
 
+/* Hide the floating button while the phone menu covers the page */
+body[data-menu="open"] .back-to-top {
+  display: none;
+}
+
+/* Horizontally scrolling chip rows (phone skills filter) */
+.scrollbar-none {
+  scrollbar-width: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
 .text-balance {
   text-wrap: balance;
 }

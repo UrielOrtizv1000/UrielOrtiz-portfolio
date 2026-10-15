@@ -16,7 +16,7 @@ export default function ThemeToggle() {
       onClick={toggleTheme}
       aria-label={label}
       title={label}
-      className="press hoverable grid h-8 w-8 shrink-0 place-items-center rounded-full border border-border-strong text-foreground hover:border-brand"
+      className="press hoverable grid h-11 w-11 shrink-0 md:h-8 md:w-8 place-items-center rounded-full border border-border-strong text-foreground hover:border-brand"
     >
       {isDark ? (
         <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
