@@ -156,14 +156,14 @@
         "description": "Sitio web de amigo secreto con sorteos con restricciones: crear eventos, agregar participantes y definir quién no puede regalarle a quién.",
         "role": "Diseñé el algoritmo de sorteo con exclusiones, construí la interfaz con drag & drop e implementé la persistencia en el navegador."
       },
-      "devprofile": {
+      "hardboard": {
         "kinds": [
           "Personal",
           "Individual",
           "App web"
         ],
-        "description": "Aplicación web para crear un CV desde cero con vista previa en vivo, gráficas de habilidades y exportación a PDF.",
-        "role": "Construí el editor, la vista previa en vivo y la exportación a PDF, y la desplegué automáticamente en GitHub Pages con GitHub Actions."
+        "description": "Editor bilingüe de currículum estilo Harvard con vista previa en vivo y descarga directa en PDF o DOCX con tu nombre — sin cuenta ni paso de compilación.",
+        "role": "Diseñé y construí el editor, la exportación a PDF y DOCX y la interfaz bilingüe, y lo desplegué en hardboard.xyz con GitHub Actions."
       }
     },
     "inDevelopment": "En desarrollo"

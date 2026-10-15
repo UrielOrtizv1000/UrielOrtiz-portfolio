@@ -156,14 +156,14 @@
         "description": "Secret Santa website with restricted draws: create events, add participants and define who cannot gift whom.",
         "role": "Designed the draw algorithm with exclusions, built the drag & drop interface and implemented in-browser persistence."
       },
-      "devprofile": {
+      "hardboard": {
         "kinds": [
           "Personal",
           "Solo",
           "Web app"
         ],
-        "description": "Web app to create a resume from scratch with live preview, skill charts and PDF export.",
-        "role": "Built the editor, live preview and PDF export, and deployed automatically to GitHub Pages with GitHub Actions."
+        "description": "Bilingual Harvard-style resume editor with live preview and direct PDF or DOCX download named after you — no account, no build step.",
+        "role": "Designed and built the editor, the PDF and DOCX export and the bilingual interface, and deployed it to hardboard.xyz with GitHub Actions."
       }
     },
     "inDevelopment": "In development"

@@ -94,11 +94,12 @@ const nova: Project = {
   inDevelopment: true,
 };
 
-const devprofile: Project = {
-  id: "devprofile",
-  name: "DevProfile",
-  tech: ["React", "Vite", "Context API"],
-  github: "https://github.com/UrielOrtizv1000/devprofile-cv-generator",
+const hardboard: Project = {
+  id: "hardboard",
+  name: "Hardboard",
+  tech: ["HTML", "CSS", "JavaScript", "jsPDF", "docx", "GitHub Pages"],
+  github: "https://github.com/UrielOrtizv1000/Hardboard",
+  live: "https://hardboard.xyz",
 };
 
 const intercambioMagico: Project = {
@@ -117,7 +118,7 @@ const ecommerceApi: Project = {
 
 export const projects: { featured: Project[]; other: Project[] } = {
   featured: [rabit, nova, resilenciaKubernetes],
-  other: [devprofile, intercambioMagico, ecommerceApi],
+  other: [hardboard, intercambioMagico, ecommerceApi],
 };
 
 export type ExperienceItem = {
