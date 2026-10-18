@@ -16,7 +16,7 @@ A single page, fully static React app. All content is data driven: text lives in
 - Featured projects as cards that link out to each project's repo, and to the live URL when there is one.
 - An experience timeline with role and responsibility bullets.
 - Education, certifications and languages.
-- A contact section that copies email or phone to the clipboard with one click, plus a GitHub link.
+- A contact section with a link to GitHub (no email or phone is published on the site).
 - Scroll reveal animations done with IntersectionObserver.
 - A downloadable CV served from public/.
 - SEO and OpenGraph metadata in the App Router layout.
@@ -142,7 +142,7 @@ For a manual redeploy, run **Deploy to GitHub Pages** from the Actions tab on `m
 - The static site does not require secrets, API keys, tokens or credentials.
 - No environment variables, so there's no .env to leak.
 - Fully static: no backend, database or API surface.
-- Contact details (email and phone) are public on purpose; it's a portfolio site.
+- No personal email or phone is published in the code or on the site; contact goes through GitHub.
 - Both CV PDFs in public/ are intentionally available for download.
 - Production dependencies pass `npm audit --omit=dev`. The full audit still reports GHSA-vfj7-8cjw-p6xm in the ESLint-only `braces` dependency chain; no patched `braces` version is available at the time of this update. This tooling is not shipped in the static site. Do not apply the suggested forced downgrade to Next.js 14 tooling; reassess when an upstream fix becomes available.
 
