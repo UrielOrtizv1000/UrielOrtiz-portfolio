@@ -3,6 +3,7 @@ export const profile = {
   fullName: "Uriel Ezequiel Ortiz Rosales",
   version: "v1000",
   location: "Aguascalientes, Mexico",
+  email: "urielortizrr@gmail.com",
   github: "https://github.com/UrielOrtizv1000",
   cvFiles: {
     en: "Uriel_Ortiz_Rosales_EN.pdf",

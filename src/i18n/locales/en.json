@@ -214,6 +214,9 @@
     "title": "Let's",
     "titleEm": "talk",
     "description": "Open to opportunities across *frontend*, *cloud*, and *IT support*.",
+    "copyEmail": "Copy email",
+    "copied": "Copied ✓",
+    "copyEmailAria": "Copy email to clipboard",
     "github": "GitHub ↗",
     "imageAlt": "Lego minifigure of Uriel holding a laptop"
   },

@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { useLanguage } from "@/i18n/LanguageProvider";
 import { profile } from "@/lib/data";
@@ -8,6 +9,22 @@ import ScrollReveal from "./Reveal";
 
 export default function Contact() {
   const { t } = useLanguage();
+  const [copied, setCopied] = useState(false);
+  const timer = useRef<number>(0);
+
+  useEffect(() => () => window.clearTimeout(timer.current), []);
+
+  const copyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(profile.email);
+      setCopied(true);
+      window.clearTimeout(timer.current);
+      timer.current = window.setTimeout(() => setCopied(false), 1600);
+    } catch {
+      // Clipboard unavailable — nothing to fall back to here.
+    }
+  };
+
   const titleEm = t("contact.titleEm");
 
   return (
@@ -43,11 +60,23 @@ export default function Contact() {
           </p>
 
           <div className="mt-2 grid grid-cols-[repeat(auto-fit,minmax(min(100%,220px),1fr))] gap-2.5 md:gap-3">
+            <button
+              type="button"
+              onClick={copyEmail}
+              aria-label={t("contact.copyEmailAria")}
+              className="hoverable press label-cond flex min-h-[58px] items-center justify-center gap-2.5 rounded-full bg-brand px-6 py-3 text-[21px] tracking-[0.03em] text-white hover:bg-brand-strong md:gap-3 md:py-[18px] md:text-[22px]"
+            >
+              <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                <rect x="3" y="5" width="18" height="14" rx="2" />
+                <path d="M3 7l9 6 9-6" />
+              </svg>
+              <span aria-live="polite">{copied ? t("contact.copied") : t("contact.copyEmail")}</span>
+            </button>
             <a
               href={profile.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="hoverable press label-cond flex min-h-[58px] items-center justify-center gap-2.5 rounded-full bg-brand px-6 py-3 text-white hover:bg-brand-strong text-[21px] tracking-[0.03em] md:gap-3 md:py-[18px] md:text-[22px]"
+              className="hoverable press label-cond flex min-h-[58px] items-center justify-center gap-2.5 rounded-full border border-border-strong px-6 py-3 text-[21px] tracking-[0.03em] hover:border-brand hover:!text-foreground md:gap-3 md:py-[18px] md:text-[22px]"
             >
               <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M12 .5C5.65.5.5 5.65.5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.7 5.39-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z" />
@@ -56,6 +85,12 @@ export default function Contact() {
             </a>
           </div>
 
+          <a
+            href={`mailto:${profile.email}`}
+            className="py-3 font-mono text-[13px] text-muted-2 hover:text-accent md:py-0"
+          >
+            {profile.email}
+          </a>
         </div>
       </ScrollReveal>
     </section>
